@@ -7,6 +7,7 @@ interface Particle {
   vy: number;
   size: number;
   opacity: number;
+  stuck: number;
 }
 
 @Component({
@@ -54,6 +55,7 @@ export class ParticlesComponent implements OnInit, OnDestroy {
     p.vy = (Math.random() - 0.5) * 0.4;
     p.size = Math.random() * 2.5 + 1;
     p.opacity = Math.random() * 0.5 + 0.2;
+    p.stuck = 0;
   }
 
   private initParticles() {
@@ -64,6 +66,7 @@ export class ParticlesComponent implements OnInit, OnDestroy {
       vy: (Math.random() - 0.5) * 0.4,
       size: Math.random() * 2.5 + 1,
       opacity: Math.random() * 0.5 + 0.2,
+      stuck: 0,
     }));
   }
 
@@ -98,8 +101,16 @@ export class ParticlesComponent implements OnInit, OnDestroy {
 
       if (p.x < -50 || p.x > canvas.width + 50 || p.y < -50 || p.y > canvas.height + 50) {
         this.respawnParticle(p, canvas.width, canvas.height);
-      } else if (Math.random() < 0.003) {
-        this.respawnParticle(p, canvas.width, canvas.height);
+      } else {
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed < 0.05) {
+          p.stuck++;
+          if (p.stuck > 120) {
+            this.respawnParticle(p, canvas.width, canvas.height);
+          }
+        } else {
+          p.stuck = 0;
+        }
       }
 
       ctx.beginPath();
