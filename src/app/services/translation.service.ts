@@ -83,6 +83,7 @@ export class TranslationService {
       'competenze.communication': 'Comunicazione',
       'competenze.organization': 'Organizzazione',
       'competenze.problemsolving': 'Problem solving',
+'competenze.view_certifications': 'Vedi le mie certificazioni →',
 
       'contatti.title': 'Contatti',
       'contatti.email': 'Email',
@@ -175,6 +176,7 @@ export class TranslationService {
       'competenze.communication': 'Communication',
       'competenze.organization': 'Organization',
       'competenze.problemsolving': 'Problem Solving',
+'competenze.view_certifications': 'View my certifications →',
 
       'contatti.title': 'Contact',
       'contatti.email': 'Email',

@@ -1,11 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-competenze',
-  imports: [ScrollFadeDirective],
+  imports: [ScrollFadeDirective, RouterModule],
   templateUrl: './competenze.component.html',
   styleUrl: './competenze.component.css',
   changeDetection: ChangeDetectionStrategy.Eager
