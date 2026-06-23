@@ -6,6 +6,7 @@ export const routes: Routes = [
     { path: 'studi', loadComponent: () => import('./pages/studi/studi.component').then(c => c.StudiComponent) },
     { path: 'esperienze', loadComponent: () => import('./pages/esperienze/esperienze.component').then(c => c.EsperienzeComponent) },
     { path: 'progetti', loadComponent: () => import('./pages/progetti/progetti.component').then(c => c.ProgettiComponent) },
+    { path: 'certificazioni', loadComponent: () => import('./pages/certificazioni/certificazioni.component').then(c => c.CertificazioniComponent) },
     { path: 'competenze', loadComponent: () => import('./pages/competenze/competenze.component').then(c => c.CompetenzeComponent) },
     { path: 'contatti', loadComponent: () => import('./pages/contatti/contatti.component').then(c => c.ContattiComponent) },
     { path: '**', loadComponent: () => import('./pages/not-found/not-found.component').then(c => c.NotFoundComponent) }
