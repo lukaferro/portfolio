@@ -47,6 +47,15 @@ export class ParticlesComponent implements OnInit, OnDestroy {
     cancelAnimationFrame(this.animationId);
   }
 
+  private respawnParticle(p: Particle, width: number, height: number) {
+    p.x = Math.random() * width;
+    p.y = Math.random() * height;
+    p.vx = (Math.random() - 0.5) * 0.4;
+    p.vy = (Math.random() - 0.5) * 0.4;
+    p.size = Math.random() * 2.5 + 1;
+    p.opacity = Math.random() * 0.5 + 0.2;
+  }
+
   private initParticles() {
     this.particles = Array.from({ length: this.count }, () => ({
       x: Math.random() * window.innerWidth,
@@ -88,10 +97,9 @@ export class ParticlesComponent implements OnInit, OnDestroy {
       p.y += p.vy;
 
       if (p.x < -50 || p.x > canvas.width + 50 || p.y < -50 || p.y > canvas.height + 50) {
-        p.x = Math.random() * canvas.width;
-        p.y = Math.random() * canvas.height;
-        p.vx = (Math.random() - 0.5) * 0.4;
-        p.vy = (Math.random() - 0.5) * 0.4;
+        this.respawnParticle(p, canvas.width, canvas.height);
+      } else if (Math.random() < 0.003) {
+        this.respawnParticle(p, canvas.width, canvas.height);
       }
 
       ctx.beginPath();
