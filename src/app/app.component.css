@@ -1,1 +1,4 @@
-/* Navbar has been moved to its own component */
+main {
+  position: relative;
+  z-index: 1;
+}
