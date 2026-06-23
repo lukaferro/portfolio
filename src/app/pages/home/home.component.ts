@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
@@ -9,7 +11,7 @@ interface TextSegment {
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterModule, ScrollFadeDirective],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.css'
@@ -18,6 +20,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private meta = inject(MetaService);
   private ts = inject(TranslationService);
   tr(key: string): string { return this.ts.t(key); }
+
+  techs = ['Angular', 'React', 'TypeScript', 'Java', 'JavaScript', 'CSS3', 'PHP', 'SQL'];
 
   phrases: TextSegment[][] = [
     [
@@ -54,15 +58,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   loop(): void {
     const currentPhrase = this.phrases[this.currentPhraseIndex];
     const fullText = currentPhrase.map(s => s.text).join('');
-
-    // Determine current text length based on displayedHtml is hard because of tags.
-    // Easier approach: track character count.
-    // Let's rely on a separate specific method for constructing HTML.
-
     this.handleTyping(currentPhrase, fullText);
   }
 
-  // Helper to track how many plain chars are currently shown
   private currentCharCount: number = 0;
 
   handleTyping(phrase: TextSegment[], fullText: string) {
@@ -74,7 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.isDeleting = false;
         this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-        this.timeoutId = setTimeout(() => this.loop(), 500); // Short pause before typing next
+        this.timeoutId = setTimeout(() => this.loop(), 500);
       }
     } else {
       if (this.currentCharCount < fullText.length) {
@@ -96,13 +94,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (charsRemaining <= 0) break;
 
       if (charsRemaining >= segment.text.length) {
-        // Full segment
         html += segment.class
           ? `<span class="${segment.class}">${segment.text}</span>`
           : segment.text;
         charsRemaining -= segment.text.length;
       } else {
-        // Partial segment
         const partialText = segment.text.substring(0, charsRemaining);
         html += segment.class
           ? `<span class="${segment.class}">${partialText}</span>`

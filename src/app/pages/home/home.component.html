@@ -12,3 +12,20 @@
         </div>
     </div>
 </section>
+
+<section class="bio-section" appScrollFade>
+    <p class="bio-text">{{ tr('home.bio') }}</p>
+</section>
+
+<section class="tech-section" appScrollFade>
+    <h3 class="section-label">{{ tr('home.tech_stack') }}</h3>
+    <div class="home-techs">
+        @for (tech of techs; track tech) {
+            <span class="home-tech-pill">{{ tech }}</span>
+        }
+    </div>
+</section>
+
+<div class="cta-section" appScrollFade>
+    <a routerLink="/progetti" class="cta-btn">{{ tr('home.cta') }}</a>
+</div>

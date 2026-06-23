@@ -27,8 +27,12 @@ export class TranslationService {
       'nav.contatti': 'CONTATTI',
       'nav.cv': 'CV',
 
-      'home.subtitle': "Hello World, I'm",
-      'home.description': 'Benvenuto nel mio sito personale.',
+'home.subtitle': "Hello World, I'm",
+'home.description': 'Benvenuto nel mio sito personale.',
+'home.bio': 'Sono uno sviluppatore front-end specializzato nella creazione di web app moderne, performanti e accessibili. Con una solida esperienza in Angular, React e Java, trasformo idee in esperienze digitali.',
+
+      'home.tech_stack': 'Tech Stack',
+'home.cta': 'Scopri i miei progetti →',
 
       'studi.title': 'Studi',
       'studi.item1.title': 'ITS Incom — Web Developer',
@@ -122,6 +126,9 @@ export class TranslationService {
 
       'home.subtitle': "Hello World, I'm",
       'home.description': 'Welcome to my personal website.',
+      'home.bio': 'I\'m a front-end developer specialized in building modern, performant and accessible web applications. With solid experience in Angular, React and Java, I turn ideas into digital experiences.',
+      'home.tech_stack': 'Tech Stack',
+      'home.cta': 'Discover my projects →',
 
       'studi.title': 'Education',
       'studi.item1.title': 'ITS Incom — Web Developer',
