@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-contatti',
@@ -11,6 +12,8 @@ import { MetaService } from '../../services/meta.service';
 })
 export class ContattiComponent implements OnInit {
   private meta = inject(MetaService);
+  private ts = inject(TranslationService);
+  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -34,7 +37,7 @@ export class ContattiComponent implements OnInit {
     this.inviato = false;
 
     if (!this.formData.nome || !this.formData.email || !this.formData.oggetto || !this.formData.messaggio) {
-      this.errore = 'Tutti i campi sono obbligatori.';
+      this.errore = this.ts.t('contatti.form.error.required');
       return;
     }
 
@@ -49,13 +52,13 @@ export class ContattiComponent implements OnInit {
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || 'Errore nell\'invio del messaggio.');
+        throw new Error(data.error || this.ts.t('contatti.form.error.generic'));
       }
 
       this.inviato = true;
       this.formData = { nome: '', email: '', oggetto: '', messaggio: '' };
     } catch (err: any) {
-      this.errore = err.message || 'Errore di connessione. Riprova più tardi.';
+      this.errore = err.message || this.ts.t('contatti.form.error.connection');
     } finally {
       this.caricamento = false;
     }

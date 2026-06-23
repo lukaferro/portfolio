@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-studi',
@@ -10,6 +11,8 @@ import { MetaService } from '../../services/meta.service';
 })
 export class StudiComponent implements OnInit {
   private meta = inject(MetaService);
+  private ts = inject(TranslationService);
+  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({

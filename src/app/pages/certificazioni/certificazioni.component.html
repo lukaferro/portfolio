@@ -1,29 +1,29 @@
 <section class="page-section">
-  <h1 class="page-title" appScrollFade>Certificazioni</h1>
+  <h1 class="page-title" appScrollFade>{{ tr('certificazioni.title') }}</h1>
 
   @if (certifications.length > 0) {
     <div class="certs-grid">
-      @for (cert of certifications; track cert.title) {
+      @for (cert of certifications; track cert.titleKey) {
         <div class="cert-card" appScrollFade>
           <div class="cert-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
           </div>
           <div class="cert-body">
-            <h2 class="cert-title">{{ cert.title }}</h2>
+            <h2 class="cert-title">{{ tr(cert.titleKey) }}</h2>
             <div class="cert-meta">
-              <span class="cert-issuer">{{ cert.issuer }}</span>
-              @if (cert.date) {
-                <span class="cert-date">{{ cert.date }}</span>
+              <span class="cert-issuer">{{ tr(cert.issuerKey) }}</span>
+              @if (cert.dateKey) {
+                <span class="cert-date">{{ tr(cert.dateKey) }}</span>
               }
             </div>
-            <p class="cert-description">{{ cert.description }}</p>
+            <p class="cert-description">{{ tr(cert.descKey) }}</p>
           </div>
         </div>
       }
     </div>
   } @else {
     <div class="empty-state" appScrollFade>
-      <p class="empty-text">Nessuna certificazione ancora.</p>
+      <p class="empty-text">{{ tr('certificazioni.empty') }}</p>
     </div>
   }
 </section>

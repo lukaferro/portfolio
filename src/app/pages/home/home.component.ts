@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MetaService } from '../../services/meta.service';
+import { TranslationService } from '../../services/translation.service';
 
 interface TextSegment {
   text: string;
@@ -15,6 +16,8 @@ interface TextSegment {
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private meta = inject(MetaService);
+  private ts = inject(TranslationService);
+  tr(key: string): string { return this.ts.t(key); }
 
   phrases: TextSegment[][] = [
     [

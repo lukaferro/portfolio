@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
+import { TranslationService } from '../../services/translation.service';
 
 interface Project {
-  title: string;
-  description: string;
+  titleKey: string;
+  descKey: string;
   techs: string[];
-  links: { label: string; url: string }[];
+  links: { labelKey: string; url: string }[];
 }
 
 @Component({
@@ -18,6 +19,8 @@ interface Project {
 })
 export class ProgettiComponent implements OnInit {
   private meta = inject(MetaService);
+  private ts = inject(TranslationService);
+  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -28,29 +31,29 @@ export class ProgettiComponent implements OnInit {
 
   projects: Project[] = [
     {
-      title: 'Sito Vetrina Angular',
-      description: 'Sito vetrina sviluppato autonomamente durante lo stage in Angular. Sito multilingua con form contatti PHP, componenti riutilizzabili e design responsive.',
+      titleKey: 'progetti.item1.title',
+      descKey: 'progetti.item1.desc',
       techs: ['Angular', 'PHP', 'Figma', 'Responsive'],
       links: []
     },
     {
-      title: 'Piattaforma B2B Blazor',
-      description: 'Piattaforma B2B sviluppata in team con Blazor. Analisi, progettazione UI/UX in Figma, sviluppo frontend e back-end, localizzazione e validazione form.',
+      titleKey: 'progetti.item2.title',
+      descKey: 'progetti.item2.desc',
       techs: ['Blazor', 'C#', '.NET', 'Figma', 'SQL'],
       links: []
     },
     {
-      title: 'UI Component Library',
-      description: 'Libreria di componenti UI in stile Claymorphism. Componenti accessibili e riutilizzabili: Alert, Toast, Accordion, Tabs con semantica HTML.',
+      titleKey: 'progetti.item3.title',
+      descKey: 'progetti.item3.desc',
       techs: ['HTML5', 'CSS3', 'Accessibilità', 'UI Library'],
       links: []
     },
     {
-      title: 'Portfolio Personale',
-      description: 'Portfolio personale sviluppato con Angular 22, design dark/orange, animazioni particellari, form contatti serverless e view transitions.',
+      titleKey: 'progetti.item4.title',
+      descKey: 'progetti.item4.desc',
       techs: ['Angular', 'TypeScript', 'CSS3', 'Vercel'],
       links: [
-        { label: 'GitHub', url: 'https://github.com/lukaferro/portfolio' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/portfolio' }
       ]
     }
   ];

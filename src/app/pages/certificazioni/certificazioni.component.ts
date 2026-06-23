@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
+import { TranslationService } from '../../services/translation.service';
 
 interface Certification {
-  title: string;
-  issuer: string;
-  date: string;
-  description: string;
+  titleKey: string;
+  issuerKey: string;
+  dateKey: string;
+  descKey: string;
 }
 
 @Component({
@@ -18,6 +19,8 @@ interface Certification {
 })
 export class CertificazioniComponent implements OnInit {
   private meta = inject(MetaService);
+  private ts = inject(TranslationService);
+  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -28,10 +31,10 @@ export class CertificazioniComponent implements OnInit {
 
   certifications: Certification[] = [
     {
-      title: 'ITS Web Developer',
-      issuer: 'ITS Incom',
-      date: '2026',
-      description: 'Diploma biennale di alta formazione in sviluppo software e web. Esami conclusi, in attesa di valutazione finale.'
+      titleKey: 'certificazioni.item1.title',
+      issuerKey: 'certificazioni.item1.issuer',
+      dateKey: 'certificazioni.item1.date',
+      descKey: 'certificazioni.item1.desc'
     }
   ];
 }

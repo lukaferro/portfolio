@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-not-found',
@@ -11,6 +12,8 @@ import { MetaService } from '../../services/meta.service';
 })
 export class NotFoundComponent implements OnInit {
   private meta = inject(MetaService);
+  private ts = inject(TranslationService);
+  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({
