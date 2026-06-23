@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
+import { MetaService } from '../../services/meta.service';
 
 interface Certification {
   title: string;
@@ -15,7 +16,16 @@ interface Certification {
   styleUrl: './certificazioni.component.css',
   changeDetection: ChangeDetectionStrategy.Eager
 })
-export class CertificazioniComponent {
+export class CertificazioniComponent implements OnInit {
+  private meta = inject(MetaService);
+
+  ngOnInit(): void {
+    this.meta.setPageMeta({
+      title: 'Certificazioni',
+      description: 'Le mie certificazioni: ITS Web Developer e altri corsi di formazione.'
+    });
+  }
+
   certifications: Certification[] = [
     {
       title: 'ITS Web Developer',

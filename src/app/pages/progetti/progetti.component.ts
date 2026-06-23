@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
+import { MetaService } from '../../services/meta.service';
 
 interface Project {
   title: string;
@@ -15,7 +16,16 @@ interface Project {
   styleUrl: './progetti.component.css',
   changeDetection: ChangeDetectionStrategy.Eager
 })
-export class ProgettiComponent {
+export class ProgettiComponent implements OnInit {
+  private meta = inject(MetaService);
+
+  ngOnInit(): void {
+    this.meta.setPageMeta({
+      title: 'Progetti',
+      description: 'I miei progetti: sito vetrina Angular, piattaforma B2B Blazor, UI Component Library e portfolio personale.'
+    });
+  }
+
   projects: Project[] = [
     {
       title: 'Sito Vetrina Angular',

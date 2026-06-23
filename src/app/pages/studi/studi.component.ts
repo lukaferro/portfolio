@@ -3,18 +3,18 @@ import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
 
 @Component({
-  selector: 'app-esperienze',
+  selector: 'app-studi',
   imports: [ScrollFadeDirective],
-  templateUrl: './esperienze.component.html',
-  styleUrl: './esperienze.component.css'
+  templateUrl: './studi.component.html',
+  styleUrl: './studi.component.css'
 })
-export class EsperienzeComponent implements OnInit {
+export class StudiComponent implements OnInit {
   private meta = inject(MetaService);
 
   ngOnInit(): void {
     this.meta.setPageMeta({
-      title: 'Esperienze',
-      description: 'Le mie esperienze lavorative come Web Developer: FM Group, Link IT Europe, Servizio Civile e altro.'
+      title: 'Studi',
+      description: 'Il mio percorso di studi: ITS Incom Web Developer e diploma in Manutenzione e Assistenza Tecnica.'
     });
   }
 }

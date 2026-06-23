@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { MetaService } from '../../services/meta.service';
 
 interface TextSegment {
   text: string;
@@ -13,6 +14,8 @@ interface TextSegment {
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  private meta = inject(MetaService);
+
   phrases: TextSegment[][] = [
     [
       { text: 'WEB ', class: '' },
@@ -32,6 +35,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   private timeoutId: any;
 
   ngOnInit(): void {
+    this.meta.setPageMeta({
+      title: 'Home',
+      description: 'Portfolio di Luca Ferro, Frontend Developer. Scopri i miei progetti, competenze e esperienze nel mondo dello sviluppo web.'
+    });
     this.loop();
   }
 
