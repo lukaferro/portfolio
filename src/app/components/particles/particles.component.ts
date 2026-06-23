@@ -30,7 +30,7 @@ export class ParticlesComponent implements OnInit, OnDestroy {
   private particles: Particle[] = [];
   private mouse = { x: -1000, y: -1000 };
   private animationId = 0;
-  private readonly count = 120;
+  private readonly count = 300;
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
@@ -53,8 +53,8 @@ export class ParticlesComponent implements OnInit, OnDestroy {
       y: Math.random() * window.innerHeight,
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.5 + 0.15,
+      size: Math.random() * 2.5 + 1,
+      opacity: Math.random() * 0.5 + 0.2,
     }));
   }
 
