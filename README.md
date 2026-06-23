@@ -1,59 +1,53 @@
-# Portfolio
+# Luca Ferro — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+Portfolio personale sviluppato con **Angular 22** (standalone components), tema scuro con accento arancione, animazioni particellari e supporto multilingua.
 
-## Development server
+## Tecnologie
 
-To start a local development server, run:
+- **Angular 22** — framework standalone con lazy loading
+- **TypeScript 6** — strict mode
+- **CSS3** — custom properties, glassmorphism, view transitions
+- **Vercel** — deployment con serverless function per il form contatti
+- **Nodemailer** — invio email dal form contatti
 
-```bash
-ng serve
-```
+## Struttura
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+| Pagina | Rotta | Descrizione |
+|--------|-------|-------------|
+| Home | `/` | Hero con typewriter, foto profilo |
+| Studi | `/studi` | Timeline percorso formativo |
+| Esperienze | `/esperienze` | Timeline esperienze lavorative |
+| Progetti | `/progetti` | Card progetti con tech tags |
+| Certificazioni | `/certificazioni` | Elenco certificazioni |
+| Competenze | `/competenze` | Skill cloud e soft skills |
+| Contatti | `/contatti` | Info contatto + form |
+| 404 | `**` | Pagina personalizzata |
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Sviluppo
 
 ```bash
-ng build
+ng serve        # Avvia dev server su http://localhost:4200
+ng build        # Build produzione in dist/
+ng test         # Esegui test unitari
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Deploy
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Il sito è deployato su **Vercel**. Build automatica su push al branch `master`.
 
 ```bash
-ng test
+npx vercel --prod
 ```
 
-## Running end-to-end tests
+## Variabili d'ambiente
 
-For end-to-end (e2e) testing, run:
+Per il form contatti, configurare su Vercel:
 
-```bash
-ng e2e
-```
+- `EMAIL_USER` — indirizzo Gmail
+- `EMAIL_PASS` — app password Gmail
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Contatti
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- GitHub: [lukaferro](https://github.com/lukaferro)
+- LinkedIn: [Luca Ferro](https://www.linkedin.com/in/luca-ferro-849a212b8/)
+- Email: luca.ferro2003@gmail.com
