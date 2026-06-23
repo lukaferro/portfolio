@@ -10,7 +10,14 @@
           </div>
         </div>
         <div class="card-body">
-          <h2 class="card-title">{{ tr(project.titleKey) }}</h2>
+          <div class="card-header">
+            <h2 class="card-title">{{ tr(project.titleKey) }}</h2>
+            @if (project.visibility === 'nda') {
+              <span class="badge badge-nda">NDA</span>
+            } @else if (project.visibility === 'private') {
+              <span class="badge badge-private">{{ tr('progetti.badge.private') }}</span>
+            }
+          </div>
           <p class="card-description">{{ tr(project.descKey) }}</p>
           <div class="card-techs">
             @for (tech of project.techs; track tech) {

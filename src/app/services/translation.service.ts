@@ -72,6 +72,8 @@ export class TranslationService {
       'progetti.item4.title': 'Portfolio Personale',
       'progetti.item4.desc': 'Portfolio personale sviluppato con Angular 22, design dark/orange, animazioni particellari, form contatti serverless e view transitions.',
       'progetti.link.github': 'GitHub',
+      'progetti.link.stackblitz': 'Apri in browser →',
+      'progetti.badge.private': 'Privato',
 
       'certificazioni.title': 'Certificazioni',
       'certificazioni.empty': 'Nessuna certificazione ancora.',
@@ -168,6 +170,8 @@ export class TranslationService {
       'progetti.item4.title': 'Personal Portfolio',
       'progetti.item4.desc': 'Personal portfolio built with Angular 22, dark/orange theme, particle animations, serverless contact form and view transitions.',
       'progetti.link.github': 'GitHub',
+      'progetti.link.stackblitz': 'Open in browser →',
+      'progetti.badge.private': 'Private',
 
       'certificazioni.title': 'Certifications',
       'certificazioni.empty': 'No certifications yet.',

@@ -3,11 +3,19 @@ import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
+type Visibility = 'public' | 'private' | 'nda';
+
+interface ProjectLink {
+  labelKey: string;
+  url: string;
+}
+
 interface Project {
   titleKey: string;
   descKey: string;
   techs: string[];
-  links: { labelKey: string; url: string }[];
+  links: ProjectLink[];
+  visibility: Visibility;
 }
 
 @Component({
@@ -34,26 +42,31 @@ export class ProgettiComponent implements OnInit {
       titleKey: 'progetti.item1.title',
       descKey: 'progetti.item1.desc',
       techs: ['Angular', 'PHP', 'Figma', 'Responsive'],
-      links: []
+      links: [],
+      visibility: 'nda'
     },
     {
       titleKey: 'progetti.item2.title',
       descKey: 'progetti.item2.desc',
       techs: ['Blazor', 'C#', '.NET', 'Figma', 'SQL'],
-      links: []
+      links: [],
+      visibility: 'nda'
     },
     {
       titleKey: 'progetti.item3.title',
       descKey: 'progetti.item3.desc',
       techs: ['HTML5', 'CSS3', 'Accessibilità', 'UI Library'],
-      links: []
+      links: [],
+      visibility: 'nda'
     },
     {
       titleKey: 'progetti.item4.title',
       descKey: 'progetti.item4.desc',
       techs: ['Angular', 'TypeScript', 'CSS3', 'Vercel'],
+      visibility: 'public',
       links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/portfolio' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/portfolio' },
+        { labelKey: 'progetti.link.stackblitz', url: 'https://stackblitz.com/github/lukaferro/portfolio' }
       ]
     }
   ];
