@@ -33,7 +33,7 @@ export class ProgettiComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Progetti',
-      description: 'I miei progetti: sito vetrina Angular, piattaforma B2B Blazor, UI Component Library e portfolio personale.'
+      description: 'I miei progetti: sviluppo web full-stack con Angular, Quarkus, Java, Vue, componenti UI, app mobile e molto altro.'
     });
   }
 
@@ -56,7 +56,9 @@ export class ProgettiComponent implements OnInit {
       titleKey: 'progetti.item3.title',
       descKey: 'progetti.item3.desc',
       techs: ['HTML5', 'CSS3', 'Accessibilità', 'UI Library'],
-      links: [],
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' }
+      ],
       visibility: 'nda'
     },
     {
@@ -65,8 +67,94 @@ export class ProgettiComponent implements OnInit {
       techs: ['Angular', 'TypeScript', 'CSS3', 'Vercel'],
       visibility: 'public',
       links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/portfolio' },
-        { labelKey: 'progetti.link.stackblitz', url: 'https://stackblitz.com/github/lukaferro/portfolio' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/portfolio' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item5.title',
+      descKey: 'progetti.item5.desc',
+      techs: ['HTML', 'CSS', 'JavaScript'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/ristorante' },
+        { labelKey: 'progetti.link.demo', url: 'https://ristorante-taupe.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item6.title',
+      descKey: 'progetti.item6.desc',
+      techs: ['JavaScript', 'CSS', 'HTML'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/stand-up' },
+        { labelKey: 'progetti.link.demo', url: 'https://stand-up-eta.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item7.title',
+      descKey: 'progetti.item7.desc',
+      techs: ['CSS', 'HTML', 'JavaScript'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/simulazioneProjetWork' },
+        { labelKey: 'progetti.link.demo', url: 'https://simulazione-projet-work.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item8.title',
+      descKey: 'progetti.item8.desc',
+      techs: ['Angular', 'TypeScript', 'CSS3'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/cinema' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item9.title',
+      descKey: 'progetti.item9.desc',
+      techs: ['Angular', 'TypeScript', 'CSS3'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/F1' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item10.title',
+      descKey: 'progetti.item10.desc',
+      techs: ['Angular', 'TypeScript', 'CSS3'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/gym' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item11.title',
+      descKey: 'progetti.item11.desc',
+      techs: ['Angular', 'ApexCharts', 'PokéAPI', 'TypeScript'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/LucaMimmo05/pokezone' },
+        { labelKey: 'progetti.link.demo', url: 'https://pokezone-phi.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item12.title',
+      descKey: 'progetti.item12.desc',
+      techs: ['Angular', 'Quarkus', 'Java', 'MongoDB', 'SCSS'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github_fe', url: 'https://github.com/LucaMimmo05/taskflow-fe' },
+        { labelKey: 'progetti.link.github_be', url: 'https://github.com/LucaMimmo05/taskflow-be' },
+        { labelKey: 'progetti.link.demo', url: 'https://taskflow-beta-one.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item13.title',
+      descKey: 'progetti.item13.desc',
+      techs: ['Quarkus', 'Next.js', 'Java', 'TypeScript', 'CSS'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/MarcoCorradini0/Gruppo_2_PW_3' }
       ]
     }
   ];

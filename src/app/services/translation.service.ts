@@ -72,8 +72,37 @@ export class TranslationService {
       'progetti.item4.title': 'Portfolio Personale',
       'progetti.item4.desc': 'Portfolio personale sviluppato con Angular 22, design dark/orange, animazioni particellari, form contatti serverless e view transitions.',
       'progetti.link.github': 'GitHub',
-      'progetti.link.stackblitz': 'Apri in browser →',
+      'progetti.link.github_fe': 'GitHub FE',
+      'progetti.link.github_be': 'GitHub BE',
+      'progetti.link.demo': 'Live Demo →',
       'progetti.badge.private': 'Privato',
+
+      'progetti.item5.title': 'Sito Ristorante',
+      'progetti.item5.desc': 'Sito vetrina per ristorante realizzato con HTML, CSS e JavaScript. Layout responsive con design pulito e navigazione fluida.',
+
+      'progetti.item6.title': 'Stand-Up Meeting App',
+      'progetti.item6.desc': 'Applicazione per la gestione di stand-up meeting con dashboard, storico e tracciamento attivita. Interfaccia reattiva con JavaScript vanilla.',
+
+      'progetti.item7.title': 'Simulazione Projet Work',
+      'progetti.item7.desc': 'Simulazione di progetto lavorativo con interfaccia interattiva, gestione asset e layout responsive. Sviluppato con HTML, CSS e JavaScript.',
+
+      'progetti.item8.title': 'App Cinema',
+      'progetti.item8.desc': 'Applicazione Angular per la gestione e visualizzazione di film. Esame di sviluppo web con componenti Angular, routing e styling avanzato.',
+
+      'progetti.item9.title': 'Dashboard F1',
+      'progetti.item9.desc': 'Dashboard interattiva sulla Formula 1 sviluppata con Angular. Visualizzazione dati, statistiche piloti e statistiche团队 con TypeScript.',
+
+      'progetti.item10.title': 'App Gym',
+      'progetti.item10.desc': 'Applicazione Angular per la gestione di schede di allenamento e esercizi. Interface moderna con componenti riutilizzabili e design responsive.',
+
+      'progetti.item11.title': 'PokeZone',
+      'progetti.item11.desc': 'Applicazione Angular per l\'esplorazione dei dati Pokemon utilizzando PokéAPI. Dashboard con grafici ApexCharts, filtri avanzati e design glassmorphism. Progetto team.',
+
+      'progetti.item12.title': 'TaskFlow',
+      'progetti.item12.desc': 'Piattaforma di gestione task full-stack con frontend Angular 20 e backend Quarkus/Java. Autenticazione JWT, gestione progetti, collaboratori e notifiche.',
+
+      'progetti.item13.title': 'Project Work Mona S.P.A.',
+      'progetti.item13.desc': 'Project work scolastico full-stack con backend Quarkus/Java e frontend Next.js/TypeScript. Applicazione aziendale con grafici e gestione dati.',
 
       'certificazioni.title': 'Certificazioni',
       'certificazioni.empty': 'Nessuna certificazione ancora.',
@@ -170,8 +199,37 @@ export class TranslationService {
       'progetti.item4.title': 'Personal Portfolio',
       'progetti.item4.desc': 'Personal portfolio built with Angular 22, dark/orange theme, particle animations, serverless contact form and view transitions.',
       'progetti.link.github': 'GitHub',
-      'progetti.link.stackblitz': 'Open in browser →',
+      'progetti.link.github_fe': 'GitHub FE',
+      'progetti.link.github_be': 'GitHub BE',
+      'progetti.link.demo': 'Live Demo →',
       'progetti.badge.private': 'Private',
+
+      'progetti.item5.title': 'Restaurant Website',
+      'progetti.item5.desc': 'Restaurant showcase website built with HTML, CSS and JavaScript. Responsive layout with clean design and smooth navigation.',
+
+      'progetti.item6.title': 'Stand-Up Meeting App',
+      'progetti.item6.desc': 'Application for managing stand-up meetings with dashboard, history and activity tracking. Reactive interface with vanilla JavaScript.',
+
+      'progetti.item7.title': 'Project Work Simulation',
+      'progetti.item7.desc': 'Work project simulation with interactive interface, asset management and responsive layout. Built with HTML, CSS and JavaScript.',
+
+      'progetti.item8.title': 'Cinema App',
+      'progetti.item8.desc': 'Angular application for managing and browsing movies. Web development exam with Angular components, routing and advanced styling.',
+
+      'progetti.item9.title': 'F1 Dashboard',
+      'progetti.item9.desc': 'Interactive Formula 1 dashboard built with Angular. Data visualization, driver statistics and team stats with TypeScript.',
+
+      'progetti.item10.title': 'Gym App',
+      'progetti.item10.desc': 'Angular application for managing workout plans and exercises. Modern interface with reusable components and responsive design.',
+
+      'progetti.item11.title': 'PokeZone',
+      'progetti.item11.desc': 'Angular application for exploring Pokemon data using PokéAPI. Dashboard with ApexCharts graphs, advanced filters and glassmorphism design. Team project.',
+
+      'progetti.item12.title': 'TaskFlow',
+      'progetti.item12.desc': 'Full-stack task management platform with Angular 20 frontend and Quarkus/Java backend. JWT authentication, project management, collaborators and notifications.',
+
+      'progetti.item13.title': 'Mona S.P.A. Project Work',
+      'progetti.item13.desc': 'School project work full-stack with Quarkus/Java backend and Next.js/TypeScript frontend. Business application with charts and data management.',
 
       'certificazioni.title': 'Certifications',
       'certificazioni.empty': 'No certifications yet.',
