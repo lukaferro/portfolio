@@ -106,7 +106,8 @@ export class ProgettiComponent implements OnInit {
       techs: ['Angular', 'TypeScript', 'CSS3'],
       visibility: 'public',
       links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/cinema' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/cinema' },
+        { labelKey: 'progetti.link.demo', url: 'https://cinema-app-theta.vercel.app' }
       ]
     },
     {
@@ -115,7 +116,8 @@ export class ProgettiComponent implements OnInit {
       techs: ['Angular', 'TypeScript', 'CSS3'],
       visibility: 'public',
       links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/F1' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/F1' },
+        { labelKey: 'progetti.link.demo', url: 'https://f1-dashboard-zeta-brown.vercel.app' }
       ]
     },
     {
@@ -124,7 +126,8 @@ export class ProgettiComponent implements OnInit {
       techs: ['Angular', 'TypeScript', 'CSS3'],
       visibility: 'public',
       links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/gym' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/gym' },
+        { labelKey: 'progetti.link.demo', url: 'https://gym-app-jade-iota.vercel.app' }
       ]
     },
     {
