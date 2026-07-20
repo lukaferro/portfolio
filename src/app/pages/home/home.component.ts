@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
-import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
@@ -29,7 +28,7 @@ interface HomeTimelineItem {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule, ScrollFadeDirective, SkillBarDirective],
+  imports: [RouterModule, ScrollFadeDirective],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.css'

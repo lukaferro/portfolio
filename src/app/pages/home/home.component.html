@@ -24,18 +24,11 @@
     </div>
 </section>
 
-<section class="home-skills-section" appScrollFade>
+<section class="home-tech-section" appScrollFade>
     <h3 class="section-label">{{ tr('competenze.technical') }}</h3>
-    <div class="home-skill-list">
+    <div class="home-techs">
         @for (skill of topSkills; track skill.name) {
-            <div class="home-skill-item">
-                <div class="home-skill-bar" appSkillBar>
-                    <div class="home-skill-fill" [style.height.%]="skill.level" [style.background]="skill.color">
-                        <div class="home-skill-wave"></div>
-                    </div>
-                </div>
-                <span class="home-skill-name">{{ skill.name }}</span>
-            </div>
+            <span class="home-tech-pill" [style.--pill-color]="skill.color">{{ skill.name }}</span>
         }
     </div>
 </section>

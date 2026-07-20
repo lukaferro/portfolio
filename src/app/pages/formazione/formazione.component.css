@@ -151,11 +151,11 @@
   transform: translateY(-1px);
 }
 
-/* ── Competenze IT verticali con onda ── */
+/* ── Competenze IT orizzontali ── */
 .skills-levels {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   max-width: 700px;
   width: 100%;
 }
@@ -163,7 +163,7 @@
 .skill-category {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .category-title {
@@ -172,76 +172,55 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin: 0;
-  text-align: center;
 }
 
 .skill-list {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1.2rem;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
+  gap: 0.3rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  max-width: 80px;
+}
+
+.skill-name {
+  font-size: 0.85rem;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.skill-percent {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .skill-bar {
   width: 100%;
-  height: 160px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50px;
   overflow: hidden;
-  position: relative;
 }
 
 .skill-fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  border-radius: 10px;
+  height: 100%;
+  border-radius: 50px;
+  width: 0%;
 }
 
 .skill-fill.animate {
-  transition: height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.skill-wave {
-  position: absolute;
-  top: -8px;
-  left: -50%;
-  width: 200%;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 40%;
-  animation: wave 2.5s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(180deg); }
-}
-
-.skill-name {
-  font-size: 0.7rem;
-  color: #ddd;
-  font-weight: 500;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.skill-percent {
-  font-size: 0.65rem;
-  color: #888;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ── Soft Skills Tag Cloud ── */
@@ -312,6 +291,7 @@
   top: 0.3rem;
   width: 14px;
   height: 14px;
+  box-sizing: border-box;
   border-radius: 50%;
   background: #ff9900;
   border: 3px solid #0c0c0c;
@@ -405,15 +385,6 @@
 
   .cert-meta {
     justify-content: center;
-  }
-
-  .skill-list {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .skill-item {
-    min-width: calc(25% - 1rem);
   }
 
   .timeline {

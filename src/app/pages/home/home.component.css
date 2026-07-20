@@ -147,8 +147,8 @@
     text-align: center;
 }
 
-/* ── Home Skills ── */
-.home-skills-section {
+/* ── Home Tech Pills ── */
+.home-tech-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,70 +161,33 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
 }
 
-.home-skill-list {
+.home-techs {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    max-width: 700px;
-    width: 100%;
+    gap: 0.6rem;
+    max-width: 600px;
 }
 
-.home-skill-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    flex: 1;
-    max-width: 80px;
-}
-
-.home-skill-bar {
-    width: 100%;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-}
-
-.home-skill-fill {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0%;
-    border-radius: 8px;
-}
-
-.home-skill-fill.animate {
-    transition: height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.home-skill-wave {
-    position: absolute;
-    top: -6px;
-    left: -50%;
-    width: 200%;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 40%;
-    animation: wave 2.5s ease-in-out infinite;
-}
-
-@keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    50%      { transform: rotate(180deg); }
-}
-
-.home-skill-name {
-    font-size: 0.7rem;
+.home-tech-pill {
+    background: color-mix(in srgb, var(--pill-color, #ff9900) 8%, transparent);
     color: #ddd;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
     font-weight: 500;
-    text-align: center;
+    border: 1px solid color-mix(in srgb, var(--pill-color, #ff9900) 20%, transparent);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.home-tech-pill:hover {
+    background: color-mix(in srgb, var(--pill-color, #ff9900) 20%, transparent);
+    border-color: var(--pill-color, #ff9900);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 /* ── Home Timeline ── */
@@ -268,6 +231,7 @@
     top: 0.3rem;
     width: 12px;
     height: 12px;
+    box-sizing: border-box;
     border-radius: 50%;
     background: #ff9900;
     border: 3px solid #0c0c0c;
@@ -357,14 +321,5 @@
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .home-skill-list {
-        flex-wrap: wrap;
-        gap: 0.8rem;
-    }
-
-    .home-skill-item {
-        min-width: calc(33% - 1rem);
     }
 }

@@ -46,13 +46,13 @@
         <div class="skill-list">
           @for (skill of cat.skills; track skill.name) {
             <div class="skill-item">
-              <div class="skill-bar" appSkillBar>
-                <div class="skill-fill" [style.height.%]="skill.level" [style.background]="cat.color">
-                  <div class="skill-wave"></div>
-                </div>
+              <div class="skill-info">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-percent">{{ skill.level }}%</span>
               </div>
-              <span class="skill-name">{{ skill.name }}</span>
-              <span class="skill-percent">{{ skill.level }}%</span>
+              <div class="skill-bar" appSkillBar>
+                <div class="skill-fill" [style.width.%]="skill.level" [style.background]="cat.color"></div>
+              </div>
             </div>
           }
         </div>
