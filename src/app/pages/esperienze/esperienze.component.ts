@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-esperienze',
-  imports: [ScrollFadeDirective],
+  imports: [RouterModule, ScrollFadeDirective],
   templateUrl: './esperienze.component.html',
   styleUrl: './esperienze.component.css'
 })

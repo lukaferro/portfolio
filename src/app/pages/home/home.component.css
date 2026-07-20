@@ -147,8 +147,8 @@
     text-align: center;
 }
 
-/* ── Home Tech Pills ── */
-.home-tech-section {
+/* ── Home Skills ── */
+.home-skills-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,30 +164,71 @@
     margin: 0 0 1rem;
 }
 
-.home-techs {
+.home-skill-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 0.6rem;
-    max-width: 600px;
+    max-width: 700px;
+    width: 100%;
 }
 
-.home-tech-pill {
-    background: color-mix(in srgb, var(--pill-color, #ff9900) 8%, transparent);
-    color: #ddd;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
+.home-skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.home-skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-skill-name {
     font-size: 0.85rem;
+    color: #ddd;
     font-weight: 500;
-    border: 1px solid color-mix(in srgb, var(--pill-color, #ff9900) 20%, transparent);
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.home-tech-pill:hover {
-    background: color-mix(in srgb, var(--pill-color, #ff9900) 20%, transparent);
-    border-color: var(--pill-color, #ff9900);
-    color: #fff;
-    transform: translateY(-2px);
+.home-skill-percent {
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.home-skill-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.home-skill-fill {
+    height: 100%;
+    border-radius: 50px;
+    width: 0%;
+}
+
+.home-skill-fill.animate {
+    transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Section Link ── */
+.section-link {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ff9900;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.section-link:hover {
+    color: #ffaa22;
+    text-decoration: underline;
 }
 
 /* ── Home Timeline ── */

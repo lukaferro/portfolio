@@ -147,6 +147,8 @@ export class TranslationService {
       'home.stat.internships': 'Stage professionali',
       'home.stat.hours': 'Ore di formazione',
 
+      'home.see_education': 'Vedi la formazione completa →',
+
       'contatti.title': 'Contatti',
       'contatti.email': 'Email',
       'contatti.phone': 'Telefono',
@@ -300,6 +302,8 @@ export class TranslationService {
       'home.stat.certs': 'Certifications',
       'home.stat.internships': 'Internships',
       'home.stat.hours': 'Training hours',
+
+      'home.see_education': 'See full education →',
 
       'contatti.title': 'Contact',
       'contatti.email': 'Email',

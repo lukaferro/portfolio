@@ -24,13 +24,22 @@
     </div>
 </section>
 
-<section class="home-tech-section" appScrollFade>
+<section class="home-skills-section" appScrollFade>
     <h3 class="section-label">{{ tr('competenze.technical') }}</h3>
-    <div class="home-techs">
+    <div class="home-skill-list">
         @for (skill of topSkills; track skill.name) {
-            <span class="home-tech-pill" [style.--pill-color]="skill.color">{{ skill.name }}</span>
+            <div class="home-skill-item">
+                <div class="home-skill-info">
+                    <span class="home-skill-name">{{ skill.name }}</span>
+                    <span class="home-skill-percent">{{ skill.level }}%</span>
+                </div>
+                <div class="home-skill-bar" appSkillBar>
+                    <div class="home-skill-fill" [style.width.%]="skill.level" [style.background]="skill.color"></div>
+                </div>
+            </div>
         }
     </div>
+    <a routerLink="/formazione" class="section-link">{{ tr('competenze.view_certifications') }}</a>
 </section>
 
 <section class="home-timeline-section" appScrollFade>
@@ -47,6 +56,7 @@
             </div>
         }
     </div>
+    <a routerLink="/formazione" class="section-link">{{ tr('home.see_education') }}</a>
 </section>
 
 <div class="cta-section" appScrollFade>
