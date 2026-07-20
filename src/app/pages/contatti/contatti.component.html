@@ -1,61 +1,61 @@
 <section class="page-section">
-  <h1 class="page-title" appScrollFade>{{ tr('contatti.title') }}</h1>
+  <h1 class="page-title" appScrollFade>{{ 'contatti.title' | translate }}</h1>
 
   <div class="info-cards" appScrollFade>
     <div class="info-card">
       <div class="info-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </div>
-      <h3>{{ tr('contatti.email') }}</h3>
+      <h3>{{ 'contatti.email' | translate }}</h3>
       <a href="mailto:luca.ferro2003@gmail.com">luca.ferro2003&#64;gmail.com</a>
     </div>
     <div class="info-card">
       <div class="info-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </div>
-      <h3>{{ tr('contatti.phone') }}</h3>
+      <h3>{{ 'contatti.phone' | translate }}</h3>
       <a href="tel:+393775454100">+39 377 545 4100</a>
     </div>
     <div class="info-card">
       <div class="info-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
-      <h3>{{ tr('contatti.location') }}</h3>
-      <p>{{ tr('contatti.location.value') }}</p>
+      <h3>{{ 'contatti.location' | translate }}</h3>
+      <p>{{ 'contatti.location.value' | translate }}</p>
     </div>
   </div>
 
   <div class="form-section" appScrollFade>
-    <h2 class="form-title">{{ tr('contatti.form.title') }}</h2>
-    <form class="contact-form" (ngSubmit)="inviaForm()" #form="ngForm">
+    <h2 class="form-title">{{ 'contatti.form.title' | translate }}</h2>
+    <form class="contact-form" (ngSubmit)="inviaForm()">
       <div class="form-row">
         <div class="form-group">
-          <label for="nome">{{ tr('contatti.form.name') }}</label>
-          <input type="text" id="nome" name="nome" [(ngModel)]="formData.nome" [placeholder]="tr('contatti.form.name.placeholder')" required>
+          <label for="nome">{{ 'contatti.form.name' | translate }}</label>
+          <input type="text" id="nome" name="nome" [(ngModel)]="formData.nome" [placeholder]="'contatti.form.name.placeholder' | translate" required>
         </div>
         <div class="form-group">
-          <label for="email">{{ tr('contatti.form.email') }}</label>
-          <input type="email" id="email" name="email" [(ngModel)]="formData.email" [placeholder]="tr('contatti.form.email.placeholder')" required>
+          <label for="email">{{ 'contatti.form.email' | translate }}</label>
+          <input type="email" id="email" name="email" [(ngModel)]="formData.email" [placeholder]="'contatti.form.email.placeholder' | translate" required>
         </div>
       </div>
       <div class="form-group">
-        <label for="oggetto">{{ tr('contatti.form.subject') }}</label>
-        <input type="text" id="oggetto" name="oggetto" [(ngModel)]="formData.oggetto" [placeholder]="tr('contatti.form.subject.placeholder')" required>
+        <label for="oggetto">{{ 'contatti.form.subject' | translate }}</label>
+        <input type="text" id="oggetto" name="oggetto" [(ngModel)]="formData.oggetto" [placeholder]="'contatti.form.subject.placeholder' | translate" required>
       </div>
       <div class="form-group">
-        <label for="messaggio">{{ tr('contatti.form.message') }}</label>
-        <textarea id="messaggio" name="messaggio" [(ngModel)]="formData.messaggio" [placeholder]="tr('contatti.form.message.placeholder')" rows="5" required></textarea>
+        <label for="messaggio">{{ 'contatti.form.message' | translate }}</label>
+        <textarea id="messaggio" name="messaggio" [(ngModel)]="formData.messaggio" [placeholder]="'contatti.form.message.placeholder' | translate" rows="5" required></textarea>
       </div>
 
       @if (errore) {
         <div class="form-message error">{{ errore }}</div>
       }
       @if (inviato) {
-        <div class="form-message success">{{ tr('contatti.form.success') }}</div>
+        <div class="form-message success">{{ 'contatti.form.success' | translate }}</div>
       }
 
       <button type="submit" class="submit-btn" [disabled]="caricamento">
-        {{ caricamento ? tr('contatti.form.sending') : tr('contatti.form.submit') }}
+        {{ caricamento ? ('contatti.form.sending' | translate) : ('contatti.form.submit' | translate) }}
       </button>
     </form>
   </div>

@@ -140,7 +140,6 @@ export class TranslationService {
       'competenze.selflearning': 'Auto-apprendimento',
       'competenze.proactivity': 'Proattività',
       'competenze.empathy': 'Empatia',
-      'competenze.view_certifications': 'Vedi le mie certificazioni →',
 
       'home.stat.projects': 'Progetti completati',
       'home.stat.certs': 'Certificazioni',
@@ -297,7 +296,6 @@ export class TranslationService {
       'competenze.selflearning': 'Self-learning',
       'competenze.proactivity': 'Proactivity',
       'competenze.empathy': 'Empathy',
-      'competenze.view_certifications': 'View my certifications →',
 
       'home.stat.projects': 'Projects completed',
       'home.stat.certs': 'Certifications',

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
-import { TranslationService } from '../../services/translation.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 interface TimelineItem {
   dateKey: string;
@@ -47,16 +47,14 @@ interface SoftSkill {
 
 @Component({
   selector: 'app-formazione',
-  imports: [ScrollFadeDirective, SkillBarDirective],
+  imports: [ScrollFadeDirective, SkillBarDirective, TranslatePipe],
   templateUrl: './formazione.component.html',
   styleUrl: './formazione.component.css',
   changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FormazioneComponent implements OnInit {
   private meta = inject(MetaService);
-  private ts = inject(TranslationService);
   private route = inject(ActivatedRoute);
-  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({

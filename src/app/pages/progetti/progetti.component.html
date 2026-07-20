@@ -1,19 +1,19 @@
 <section class="page-section">
-  <h1 class="page-title" appScrollFade>{{ tr('progetti.title') }}</h1>
+  <h1 class="page-title" appScrollFade>{{ 'progetti.title' | translate }}</h1>
 
   <div class="projects-grid">
     @for (project of projects; track project.titleKey) {
       <div class="project-card" appScrollFade>
         <div class="card-body">
           <div class="card-header">
-            <h2 class="card-title">{{ tr(project.titleKey) }}</h2>
+            <h2 class="card-title">{{ project.titleKey | translate }}</h2>
             @if (project.visibility === 'nda') {
               <span class="badge badge-nda">NDA</span>
             } @else if (project.visibility === 'private') {
-              <span class="badge badge-private">{{ tr('progetti.badge.private') }}</span>
+              <span class="badge badge-private">{{ 'progetti.badge.private' | translate }}</span>
             }
           </div>
-          <p class="card-description">{{ tr(project.descKey) }}</p>
+          <p class="card-description">{{ project.descKey | translate }}</p>
           <div class="card-techs">
             @for (tech of project.techs; track tech) {
               <span class="tech-tag">{{ tech }}</span>
@@ -22,7 +22,7 @@
           @if (project.links.length > 0) {
             <div class="card-links">
               @for (link of project.links; track link.labelKey) {
-                <a [href]="link.url" target="_blank" class="card-link">{{ tr(link.labelKey) }}</a>
+                <a [href]="link.url" target="_blank" class="card-link">{{ link.labelKey | translate }}</a>
               }
             </div>
           }

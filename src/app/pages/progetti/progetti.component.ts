@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
-import { TranslationService } from '../../services/translation.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 type Visibility = 'public' | 'private' | 'nda';
 
@@ -20,15 +20,13 @@ interface Project {
 
 @Component({
   selector: 'app-progetti',
-  imports: [ScrollFadeDirective],
+  imports: [ScrollFadeDirective, TranslatePipe],
   templateUrl: './progetti.component.html',
   styleUrl: './progetti.component.css',
   changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ProgettiComponent implements OnInit {
   private meta = inject(MetaService);
-  private ts = inject(TranslationService);
-  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({

@@ -2,14 +2,14 @@
     <nav class="nav-container">
         <div class="nav-links">
             <a routerLink="/" class="nav-link" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">{{ tr('nav.home') }}</a>
-            <a routerLink="/formazione" class="nav-link" routerLinkActive="active">{{ tr('nav.formazione') }}</a>
-            <a routerLink="/esperienze" class="nav-link" routerLinkActive="active">{{ tr('nav.esperienze') }}</a>
-            <a routerLink="/progetti" class="nav-link" routerLinkActive="active">{{ tr('nav.progetti') }}</a>
-            <a routerLink="/contatti" class="nav-link" routerLinkActive="active">{{ tr('nav.contatti') }}</a>
+                [routerLinkActiveOptions]="{exact: true}">{{ 'nav.home' | translate }}</a>
+            <a routerLink="/formazione" class="nav-link" routerLinkActive="active">{{ 'nav.formazione' | translate }}</a>
+            <a routerLink="/esperienze" class="nav-link" routerLinkActive="active">{{ 'nav.esperienze' | translate }}</a>
+            <a routerLink="/progetti" class="nav-link" routerLinkActive="active">{{ 'nav.progetti' | translate }}</a>
+            <a routerLink="/contatti" class="nav-link" routerLinkActive="active">{{ 'nav.contatti' | translate }}</a>
         </div>
         <div class="nav-actions">
-            <a href="/cv.pdf" download class="cv-btn">{{ tr('nav.cv') }}</a>
+            <a href="/cv.pdf" download class="cv-btn">{{ 'nav.cv' | translate }}</a>
             <button class="lang-btn" (click)="toggleLang()" [attr.aria-label]="currentLang === 'it' ? 'Switch to English' : 'Passa in italiano'">
                 {{ currentLang === 'it' ? 'EN' : 'IT' }}
             </button>

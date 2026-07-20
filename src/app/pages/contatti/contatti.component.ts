@@ -3,17 +3,17 @@ import { FormsModule } from '@angular/forms';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-contatti',
-  imports: [FormsModule, ScrollFadeDirective],
+  imports: [FormsModule, ScrollFadeDirective, TranslatePipe],
   templateUrl: './contatti.component.html',
   styleUrl: './contatti.component.css'
 })
 export class ContattiComponent implements OnInit {
   private meta = inject(MetaService);
   private ts = inject(TranslationService);
-  tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({

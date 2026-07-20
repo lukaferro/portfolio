@@ -3,12 +3,7 @@ import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
-import { TranslationService } from '../../services/translation.service';
-
-interface TextSegment {
-  text: string;
-  class: string;
-}
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 interface Stat {
   value: string;
@@ -29,15 +24,13 @@ interface HomeTimelineItem {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule, ScrollFadeDirective, SkillBarDirective],
+  imports: [RouterModule, ScrollFadeDirective, SkillBarDirective, TranslatePipe],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private meta = inject(MetaService);
-  private ts = inject(TranslationService);
-  tr(key: string): string { return this.ts.t(key); }
 
   stats: Stat[] = [
     { value: '12+', labelKey: 'home.stat.projects' },
@@ -62,24 +55,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     { date: 'Mag 2023 — Mag 2024', titleKey: 'esperienze.item3.title', subtitleKey: 'esperienze.item3.subtitle' }
   ];
 
-  techs = ['Angular', 'React', 'TypeScript', 'Java', 'JavaScript', 'CSS3', 'PHP', 'SQL'];
-
-  phrases: TextSegment[][] = [
-    [
-      { text: 'WEB ', class: '' },
-      { text: 'DEVELOPER', class: 'highlight' }
-    ],
-    [
-      { text: 'FRONT-END', class: 'highlight' }
-    ]
+  private readonly phrases: { text: string; highlight: [number, number] }[] = [
+    { text: 'WEB DEVELOPER', highlight: [4, 11] },
+    { text: 'FRONT-END', highlight: [0, 9] }
   ];
 
-  displayedHtml: string = '';
-  currentPhraseIndex: number = 0;
-  isDeleting: boolean = false;
-  typingSpeed: number = 100;
-  deletingSpeed: number = 50;
-  pauseBetweenPhrases: number = 2000;
+  displayedHtml = '';
+  private phraseIndex = 0;
+  private charIndex = 0;
+  private deleting = false;
   private timeoutId: any;
 
   ngOnInit(): void {
@@ -87,66 +71,44 @@ export class HomeComponent implements OnInit, OnDestroy {
       title: 'Home',
       description: 'Portfolio di Luca Ferro, Frontend Developer. Scopri i miei progetti, competenze e esperienze nel mondo dello sviluppo web.'
     });
-    this.loop();
+    this.tick();
   }
 
   ngOnDestroy(): void {
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId);
-    }
+    clearTimeout(this.timeoutId);
   }
 
-  loop(): void {
-    const currentPhrase = this.phrases[this.currentPhraseIndex];
-    const fullText = currentPhrase.map(s => s.text).join('');
-    this.handleTyping(currentPhrase, fullText);
-  }
+  private tick(): void {
+    const { text, highlight } = this.phrases[this.phraseIndex];
 
-  private currentCharCount: number = 0;
-
-  handleTyping(phrase: TextSegment[], fullText: string) {
-    if (this.isDeleting) {
-      if (this.currentCharCount > 0) {
-        this.currentCharCount--;
-        this.updateDisplayedHtml(phrase);
-        this.timeoutId = setTimeout(() => this.loop(), this.deletingSpeed);
-      } else {
-        this.isDeleting = false;
-        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-        this.timeoutId = setTimeout(() => this.loop(), 500);
+    if (this.deleting) {
+      this.charIndex--;
+      if (this.charIndex < 0) {
+        this.deleting = false;
+        this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
+        this.timeoutId = setTimeout(() => this.tick(), 500);
+        return;
       }
     } else {
-      if (this.currentCharCount < fullText.length) {
-        this.currentCharCount++;
-        this.updateDisplayedHtml(phrase);
-        this.timeoutId = setTimeout(() => this.loop(), this.typingSpeed);
-      } else {
-        this.isDeleting = true;
-        this.timeoutId = setTimeout(() => this.loop(), this.pauseBetweenPhrases);
+      this.charIndex++;
+      if (this.charIndex > text.length) {
+        this.deleting = true;
+        this.timeoutId = setTimeout(() => this.tick(), 2000);
+        return;
       }
     }
+
+    this.displayedHtml = this.buildHtml(text.substring(0, this.charIndex), highlight);
+    const speed = this.deleting ? 50 : 100;
+    this.timeoutId = setTimeout(() => this.tick(), speed);
   }
 
-  updateDisplayedHtml(phrase: TextSegment[]) {
-    let html = '';
-    let charsRemaining = this.currentCharCount;
-
-    for (const segment of phrase) {
-      if (charsRemaining <= 0) break;
-
-      if (charsRemaining >= segment.text.length) {
-        html += segment.class
-          ? `<span class="${segment.class}">${segment.text}</span>`
-          : segment.text;
-        charsRemaining -= segment.text.length;
-      } else {
-        const partialText = segment.text.substring(0, charsRemaining);
-        html += segment.class
-          ? `<span class="${segment.class}">${partialText}</span>`
-          : partialText;
-        charsRemaining = 0;
-      }
+  private buildHtml(visible: string, highlight: [number, number]): string {
+    const [start, end] = highlight;
+    if (visible.length <= start) return visible;
+    if (visible.length >= end) {
+      return visible.substring(0, start) + `<span class="highlight">${visible.substring(start, end)}</span>` + visible.substring(end);
     }
-    this.displayedHtml = html;
+    return visible.substring(0, start) + `<span class="highlight">${visible.substring(start)}</span>`;
   }
 }

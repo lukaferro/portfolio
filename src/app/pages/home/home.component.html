@@ -1,10 +1,10 @@
 <section class="hero-section">
     <div class="hero-content">
         <div class="text-content">
-            <h3 class="subtitle">{{ tr('home.subtitle') }}</h3>
+            <h3 class="subtitle">{{ 'home.subtitle' | translate }}</h3>
             <h1 class="main-title">LUCA FERRO</h1>
             <h2 class="role-title"><span [innerHTML]="displayedHtml"></span><span class="blink">|</span></h2>
-            <p class="description">{{ tr('home.description') }}</p>
+            <p class="description">{{ 'home.description' | translate }}</p>
         </div>
         <div class="image-content">
             <div class="image-glow"></div>
@@ -18,14 +18,14 @@
         @for (stat of stats; track stat.labelKey) {
             <div class="stat-card">
                 <span class="stat-value">{{ stat.value }}</span>
-                <span class="stat-label">{{ tr(stat.labelKey) }}</span>
+                <span class="stat-label">{{ stat.labelKey | translate }}</span>
             </div>
         }
     </div>
 </section>
 
 <section class="home-skills-section" appScrollFade>
-    <h3 class="section-label">{{ tr('competenze.technical') }}</h3>
+    <h3 class="section-label">{{ 'competenze.technical' | translate }}</h3>
     <div class="home-skill-list">
         @for (skill of topSkills; track skill.name) {
             <div class="home-skill-item">
@@ -39,26 +39,26 @@
             </div>
         }
     </div>
-    <a routerLink="/formazione" fragment="competenze" class="section-link">{{ tr('home.view_all_skills') }}</a>
+    <a routerLink="/formazione" fragment="competenze" class="section-link">{{ 'home.view_all_skills' | translate }}</a>
 </section>
 
 <section class="home-timeline-section" appScrollFade>
-    <h3 class="section-label">{{ tr('formazione.education') }}</h3>
+    <h3 class="section-label">{{ 'formazione.education' | translate }}</h3>
     <div class="home-timeline">
         @for (item of homeTimeline; track item.titleKey) {
             <div class="home-timeline-item">
                 <div class="home-timeline-dot"></div>
                 <div class="home-timeline-content">
                     <span class="home-timeline-date">{{ item.date }}</span>
-                    <h4>{{ tr(item.titleKey) }}</h4>
-                    <p>{{ tr(item.subtitleKey) }}</p>
+                    <h4>{{ item.titleKey | translate }}</h4>
+                    <p>{{ item.subtitleKey | translate }}</p>
                 </div>
             </div>
         }
     </div>
-    <a routerLink="/formazione" fragment="educazione" class="section-link">{{ tr('home.see_education') }}</a>
+    <a routerLink="/formazione" fragment="educazione" class="section-link">{{ 'home.see_education' | translate }}</a>
 </section>
 
 <div class="cta-section" appScrollFade>
-    <a routerLink="/progetti" class="cta-btn">{{ tr('home.cta') }}</a>
+    <a routerLink="/progetti" class="cta-btn">{{ 'home.cta' | translate }}</a>
 </div>

@@ -1,7 +1,7 @@
 <section class="page-section">
-  <h1 class="page-title" appScrollFade>{{ tr('formazione.title') }}</h1>
+  <h1 class="page-title" appScrollFade>{{ 'formazione.title' | translate }}</h1>
 
-  <h2 class="section-subtitle" appScrollFade>{{ tr('formazione.certifications') }}</h2>
+  <h2 class="section-subtitle" appScrollFade>{{ 'formazione.certifications' | translate }}</h2>
 
   <div class="certs-grid" appScrollFade>
     @for (cert of certifications; track cert.titleKey) {
@@ -10,14 +10,14 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
         </div>
         <div class="cert-body">
-          <h3 class="cert-title">{{ tr(cert.titleKey) }}</h3>
+          <h3 class="cert-title">{{ cert.titleKey | translate }}</h3>
           <div class="cert-meta">
-            <span class="cert-issuer">{{ tr(cert.issuerKey) }}</span>
+            <span class="cert-issuer">{{ cert.issuerKey | translate }}</span>
             @if (cert.dateKey) {
-              <span class="cert-date">{{ tr(cert.dateKey) }}</span>
+              <span class="cert-date">{{ cert.dateKey | translate }}</span>
             }
           </div>
-          <p class="cert-description">{{ tr(cert.descKey) }}</p>
+          <p class="cert-description">{{ cert.descKey | translate }}</p>
           @if (cert.skills && cert.skills.length > 0) {
             <div class="cert-skills">
               @for (skill of cert.skills; track skill) {
@@ -37,12 +37,12 @@
     }
   </div>
 
-  <h2 id="competenze" class="section-subtitle" appScrollFade>{{ tr('competenze.technical') }}</h2>
+  <h2 id="competenze" class="section-subtitle" appScrollFade>{{ 'competenze.technical' | translate }}</h2>
 
   <div class="skills-levels" appScrollFade>
     @for (cat of categories; track cat.labelKey) {
       <div class="skill-category">
-        <h3 class="category-title" [style.color]="cat.color">{{ tr(cat.labelKey) }}</h3>
+        <h3 class="category-title" [style.color]="cat.color">{{ cat.labelKey | translate }}</h3>
         <div class="skill-list">
           @for (skill of cat.skills; track skill.name) {
             <div class="skill-item">
@@ -60,28 +60,28 @@
     }
   </div>
 
-  <h2 class="section-subtitle" appScrollFade>{{ tr('competenze.soft') }}</h2>
+  <h2 class="section-subtitle" appScrollFade>{{ 'competenze.soft' | translate }}</h2>
 
   <div class="soft-tags" appScrollFade>
     @for (soft of softSkills; track soft.labelKey) {
       <span class="soft-tag" [style.--tag-color]="soft.color" [style.transform]="'rotate(' + soft.rotation + 'deg)'">
         <span class="soft-tag-icon">{{ soft.icon }}</span>
-        {{ tr(soft.labelKey) }}
+        {{ soft.labelKey | translate }}
       </span>
     }
   </div>
 
-  <h2 id="educazione" class="section-subtitle" appScrollFade>{{ tr('formazione.education') }}</h2>
+  <h2 id="educazione" class="section-subtitle" appScrollFade>{{ 'formazione.education' | translate }}</h2>
 
   <div class="timeline" appScrollFade>
     @for (item of timeline; track item.titleKey) {
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">{{ tr(item.dateKey) }}</span>
-          <h3>{{ tr(item.titleKey) }}</h3>
-          <h4>{{ tr(item.subtitleKey) }}</h4>
-          <p>{{ tr(item.descKey) }}</p>
+          <span class="timeline-date">{{ item.dateKey | translate }}</span>
+          <h3>{{ item.titleKey | translate }}</h3>
+          <h4>{{ item.subtitleKey | translate }}</h4>
+          <p>{{ item.descKey | translate }}</p>
           @if (item.pdfUrl) {
             <div class="timeline-links">
               <a [href]="item.pdfUrl" target="_blank" rel="noopener" class="timeline-link">Visualizza documento →</a>
