@@ -19,13 +19,15 @@ export class TranslationService {
   private readonly translations: TranslationSet = {
     it: {
       'nav.home': 'HOME',
-      'nav.studi': 'STUDI',
+      'nav.formazione': 'FORMAZIONE',
       'nav.esperienze': 'ESPERIENZE',
       'nav.progetti': 'PROGETTI',
-      'nav.certificazioni': 'CERTIFICAZIONI',
-      'nav.competenze': 'COMPETENZE',
       'nav.contatti': 'CONTATTI',
       'nav.cv': 'CV',
+
+      'formazione.title': 'Formazione e Competenze',
+      'formazione.education': 'Formazione',
+      'formazione.certifications': 'Certificazioni',
 
 'home.subtitle': "Hello World, I'm",
 'home.description': 'Benvenuto nel mio sito personale.',
@@ -163,13 +165,15 @@ export class TranslationService {
     },
     en: {
       'nav.home': 'HOME',
-      'nav.studi': 'EDUCATION',
+      'nav.formazione': 'EDUCATION',
       'nav.esperienze': 'EXPERIENCE',
       'nav.progetti': 'PROJECTS',
-      'nav.certificazioni': 'CERTIFICATIONS',
-      'nav.competenze': 'SKILLS',
       'nav.contatti': 'CONTACT',
       'nav.cv': 'CV',
+
+      'formazione.title': 'Education & Skills',
+      'formazione.education': 'Education',
+      'formazione.certifications': 'Certifications',
 
       'home.subtitle': "Hello World, I'm",
       'home.description': 'Welcome to my personal website.',
