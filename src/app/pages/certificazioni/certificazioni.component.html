@@ -17,6 +17,13 @@
               }
             </div>
             <p class="cert-description">{{ tr(cert.descKey) }}</p>
+            @if (cert.skills && cert.skills.length > 0) {
+              <div class="cert-skills">
+                @for (skill of cert.skills; track skill) {
+                  <span class="skill-badge">{{ skill }}</span>
+                }
+              </div>
+            }
             @if (cert.links && cert.links.length > 0) {
               <div class="cert-links">
                 @for (link of cert.links; track link.url) {

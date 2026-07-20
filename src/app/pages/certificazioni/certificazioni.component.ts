@@ -13,6 +13,7 @@ interface Certification {
   issuerKey: string;
   dateKey: string;
   descKey: string;
+  skills?: string[];
   links?: CertificationLink[];
 }
 
@@ -41,6 +42,7 @@ export class CertificazioniComponent implements OnInit {
       issuerKey: 'certificazioni.item1.issuer',
       dateKey: 'certificazioni.item1.date',
       descKey: 'certificazioni.item1.desc',
+      skills: ['Angular', 'Blazor', 'C#', '.NET', 'SQL', 'Figma', 'HTML5', 'CSS3', 'JavaScript'],
       links: [
         { label: 'Visualizza certificato →', url: '/certificazioni/its-web-developer.pdf' }
       ]
@@ -50,6 +52,7 @@ export class CertificazioniComponent implements OnInit {
       issuerKey: 'certificazioni.item2.issuer',
       dateKey: 'certificazioni.item2.date',
       descKey: 'certificazioni.item2.desc',
+      skills: ['Project Management', 'Turismo Sostenibile', 'Comunicazione Pubblica'],
       links: [
         { label: 'Visualizza attestato →', url: '/certificazioni/servizio-civile.pdf' }
       ]
@@ -59,6 +62,7 @@ export class CertificazioniComponent implements OnInit {
       issuerKey: 'certificazioni.item3.issuer',
       dateKey: 'certificazioni.item3.date',
       descKey: 'certificazioni.item3.desc',
+      skills: ['Comunicazione Pubblica', 'Privacy', 'Accessibilità Web', 'Usabilità Web'],
       links: [
         { label: 'Visualizza attestato →', url: '/certificazioni/corso-mosaico.pdf' }
       ]
@@ -68,6 +72,7 @@ export class CertificazioniComponent implements OnInit {
       issuerKey: 'certificazioni.item4.issuer',
       dateKey: 'certificazioni.item4.date',
       descKey: 'certificazioni.item4.desc',
+      skills: ['AI Literacy', 'Claude', 'API Anthropic', 'MCP', 'Claude Code'],
       links: [
         { label: 'Claude 101', url: '/certificazioni/claude/claude-101.pdf' },
         { label: 'Claude Platform 101', url: '/certificazioni/claude/claude-platform-101.pdf' },
