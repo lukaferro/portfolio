@@ -93,6 +93,33 @@
   margin: 0;
 }
 
+.cert-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ff9900;
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(255, 153, 0, 0.3);
+  border-radius: 6px;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.cert-link:hover {
+  background: rgba(255, 153, 0, 0.15);
+  border-color: rgba(255, 153, 0, 0.6);
+  transform: translateY(-1px);
+}
+
 .empty-state {
   text-align: center;
   padding: 3rem;

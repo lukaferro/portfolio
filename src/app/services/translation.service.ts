@@ -104,9 +104,24 @@ export class TranslationService {
       'certificazioni.title': 'Certificazioni',
       'certificazioni.empty': 'Nessuna certificazione ancora.',
       'certificazioni.item1.title': 'ITS Web Developer',
-      'certificazioni.item1.issuer': 'ITS Incom',
+      'certificazioni.item1.issuer': 'ITS Incom Academy',
       'certificazioni.item1.date': '2026',
-      'certificazioni.item1.desc': 'Diploma biennale di alta formazione in sviluppo software e web. Esami conclusi, in attesa di valutazione finale.',
+      'certificazioni.item1.desc': 'Attestato sostitutivo del corso biennale ITS Web Developer (ID 48332), 2000 ore, sessione giugno 2026 con esito idoneo e votazione 91/110.',
+
+      'certificazioni.item2.title': 'Servizio Civile Universale',
+      'certificazioni.item2.issuer': 'Presidenza del Consiglio dei Ministri',
+      'certificazioni.item2.date': 'Mag 2023 — Mag 2024',
+      'certificazioni.item2.desc': 'Progetto "La promozione del territorio - educazione al turismo sostenibile e sociale" presso Associazione Mosaico, Varese.',
+
+      'certificazioni.item3.title': 'Addetto all\'Informazione',
+      'certificazioni.item3.issuer': 'CE.SVI.P. Lombardia',
+      'certificazioni.item3.date': '2024',
+      'certificazioni.item3.desc': 'Corso di 30 ore su comunicazione pubblica, privacy, accessibilità e usabilità web. Regione Lombardia.',
+
+      'certificazioni.item4.title': 'Certificazioni Anthropic (Claude AI)',
+      'certificazioni.item4.issuer': 'Anthropic',
+      'certificazioni.item4.date': '2025 — 2026',
+      'certificazioni.item4.desc': 'Completamento di 9 corsi ufficiali Anthropic su Claude, AI Fluency e Model Context Protocol.',
 
       'competenze.title': 'Competenze',
       'competenze.technical': 'Competenze Tecniche',
@@ -228,9 +243,24 @@ export class TranslationService {
       'certificazioni.title': 'Certifications',
       'certificazioni.empty': 'No certifications yet.',
       'certificazioni.item1.title': 'ITS Web Developer',
-      'certificazioni.item1.issuer': 'ITS Incom',
+      'certificazioni.item1.issuer': 'ITS Incom Academy',
       'certificazioni.item1.date': '2026',
-      'certificazioni.item1.desc': 'Two-year advanced diploma in software and web development. Exams completed, awaiting final evaluation.',
+      'certificazioni.item1.desc': 'Substitute attestation for the two-year ITS Web Developer course (ID 48332), 2000 hours, June 2026 session with pass result and 91/110 grade.',
+
+      'certificazioni.item2.title': 'Universal Civil Service',
+      'certificazioni.item2.issuer': 'Presidency of the Council of Ministers',
+      'certificazioni.item2.date': 'May 2023 — May 2024',
+      'certificazioni.item2.desc': 'Project "Territory promotion - Education for sustainable and social tourism" at Associazione Mosaico, Varese.',
+
+      'certificazioni.item3.title': 'Information Officer',
+      'certificazioni.item3.issuer': 'CE.SVI.P. Lombardia',
+      'certificazioni.item3.date': '2024',
+      'certificazioni.item3.desc': '30-hour course on public communication, privacy, web accessibility and usability. Regione Lombardia.',
+
+      'certificazioni.item4.title': 'Anthropic Certifications (Claude AI)',
+      'certificazioni.item4.issuer': 'Anthropic',
+      'certificazioni.item4.date': '2025 — 2026',
+      'certificazioni.item4.desc': 'Completion of 9 official Anthropic courses on Claude, AI Fluency and Model Context Protocol.',
 
       'competenze.title': 'Skills',
       'competenze.technical': 'Technical Skills',
