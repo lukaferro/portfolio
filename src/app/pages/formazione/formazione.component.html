@@ -50,7 +50,7 @@
                 <span class="skill-name">{{ skill.name }}</span>
                 <span class="skill-percent">{{ skill.level }}%</span>
               </div>
-              <div class="skill-bar">
+              <div class="skill-bar" appSkillBar>
                 <div class="skill-fill" [style.width.%]="skill.level" [style.background]="cat.color"></div>
               </div>
             </div>
@@ -62,10 +62,10 @@
 
   <h2 class="section-subtitle" appScrollFade>{{ tr('competenze.soft') }}</h2>
 
-  <div class="soft-badges" appScrollFade>
+  <div class="soft-tags" appScrollFade>
     @for (soft of softSkills; track soft.labelKey) {
-      <span class="soft-badge">
-        <span class="soft-icon">{{ soft.icon }}</span>
+      <span class="soft-tag" [style.--tag-color]="soft.color" [style.transform]="'rotate(' + soft.rotation + 'deg)'">
+        <span class="soft-tag-icon">{{ soft.icon }}</span>
         {{ tr(soft.labelKey) }}
       </span>
     }

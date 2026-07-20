@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
+import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
@@ -36,9 +37,16 @@ interface Certification {
   links?: CertificationLink[];
 }
 
+interface SoftSkill {
+  icon: string;
+  labelKey: string;
+  color: string;
+  rotation: number;
+}
+
 @Component({
   selector: 'app-formazione',
-  imports: [ScrollFadeDirective],
+  imports: [ScrollFadeDirective, SkillBarDirective],
   templateUrl: './formazione.component.html',
   styleUrl: './formazione.component.css',
   changeDetection: ChangeDetectionStrategy.Eager
@@ -103,34 +111,14 @@ export class FormazioneComponent implements OnInit {
     }
   ];
 
-  softSkills = [
-    { icon: '🤝', labelKey: 'competenze.teamwork' },
-    { icon: '💬', labelKey: 'competenze.communication' },
-    { icon: '📋', labelKey: 'competenze.organization' },
-    { icon: '🧠', labelKey: 'competenze.problemsolving' }
+  softSkills: SoftSkill[] = [
+    { icon: '🤝', labelKey: 'competenze.teamwork', color: '#ff9900', rotation: -3 },
+    { icon: '💬', labelKey: 'competenze.communication', color: '#4fc3f7', rotation: 2 },
+    { icon: '📋', labelKey: 'competenze.organization', color: '#81c784', rotation: -1.5 },
+    { icon: '🧠', labelKey: 'competenze.problemsolving', color: '#ce93d8', rotation: 3.5 }
   ];
 
   certifications: Certification[] = [
-    {
-      titleKey: 'certificazioni.item2.title',
-      issuerKey: 'certificazioni.item2.issuer',
-      dateKey: 'certificazioni.item2.date',
-      descKey: 'certificazioni.item2.desc',
-      skills: ['Project Management', 'Turismo Sostenibile', 'Comunicazione Pubblica'],
-      links: [
-        { label: 'Visualizza attestato →', url: '/certificazioni/servizio-civile.pdf' }
-      ]
-    },
-    {
-      titleKey: 'certificazioni.item3.title',
-      issuerKey: 'certificazioni.item3.issuer',
-      dateKey: 'certificazioni.item3.date',
-      descKey: 'certificazioni.item3.desc',
-      skills: ['Comunicazione Pubblica', 'Privacy', 'Accessibilità Web', 'Usabilità Web'],
-      links: [
-        { label: 'Visualizza attestato →', url: '/certificazioni/corso-mosaico.pdf' }
-      ]
-    },
     {
       titleKey: 'certificazioni.item4.title',
       issuerKey: 'certificazioni.item4.issuer',
@@ -147,6 +135,26 @@ export class FormazioneComponent implements OnInit {
         { label: 'AI Fluency: Foundations', url: '/certificazioni/claude/ai-fluency-foundations.pdf' },
         { label: 'Intro Model Context Protocol', url: '/certificazioni/claude/intro-mcp.pdf' },
         { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' }
+      ]
+    },
+    {
+      titleKey: 'certificazioni.item3.title',
+      issuerKey: 'certificazioni.item3.issuer',
+      dateKey: 'certificazioni.item3.date',
+      descKey: 'certificazioni.item3.desc',
+      skills: ['Comunicazione Pubblica', 'Privacy', 'Accessibilità Web', 'Usabilità Web'],
+      links: [
+        { label: 'Visualizza attestato →', url: '/certificazioni/corso-mosaico.pdf' }
+      ]
+    },
+    {
+      titleKey: 'certificazioni.item2.title',
+      issuerKey: 'certificazioni.item2.issuer',
+      dateKey: 'certificazioni.item2.date',
+      descKey: 'certificazioni.item2.desc',
+      skills: ['Project Management', 'Turismo Sostenibile', 'Comunicazione Pubblica'],
+      links: [
+        { label: 'Visualizza attestato →', url: '/certificazioni/servizio-civile.pdf' }
       ]
     }
   ];
