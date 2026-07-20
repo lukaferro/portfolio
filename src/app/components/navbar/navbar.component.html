@@ -9,7 +9,7 @@
             <a routerLink="/contatti" class="nav-link" routerLinkActive="active">{{ 'nav.contatti' | translate }}</a>
         </div>
         <div class="nav-actions">
-            <a href="/cv.pdf" download class="cv-btn">{{ 'nav.cv' | translate }}</a>
+            <a href="/cv.pdf" target="_blank" class="cv-btn">{{ 'nav.cv' | translate }}</a>
             <button class="lang-btn" (click)="toggleLang()" [attr.aria-label]="currentLang === 'it' ? 'Switch to English' : 'Passa in italiano'">
                 {{ currentLang === 'it' ? 'EN' : 'IT' }}
             </button>
