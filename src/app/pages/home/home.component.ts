@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
+import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 
@@ -9,9 +10,26 @@ interface TextSegment {
   class: string;
 }
 
+interface Stat {
+  value: string;
+  labelKey: string;
+}
+
+interface TopSkill {
+  name: string;
+  level: number;
+  color: string;
+}
+
+interface HomeTimelineItem {
+  date: string;
+  titleKey: string;
+  subtitleKey: string;
+}
+
 @Component({
   selector: 'app-home',
-  imports: [RouterModule, ScrollFadeDirective],
+  imports: [RouterModule, ScrollFadeDirective, SkillBarDirective],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.css'
@@ -20,6 +38,29 @@ export class HomeComponent implements OnInit, OnDestroy {
   private meta = inject(MetaService);
   private ts = inject(TranslationService);
   tr(key: string): string { return this.ts.t(key); }
+
+  stats: Stat[] = [
+    { value: '12+', labelKey: 'home.stat.projects' },
+    { value: '9', labelKey: 'home.stat.certs' },
+    { value: '2', labelKey: 'home.stat.internships' },
+    { value: '2000+', labelKey: 'home.stat.hours' }
+  ];
+
+  topSkills: TopSkill[] = [
+    { name: 'Angular', level: 90, color: '#ff9900' },
+    { name: 'TypeScript', level: 85, color: '#ff9900' },
+    { name: 'JavaScript', level: 85, color: '#ff9900' },
+    { name: 'HTML5', level: 90, color: '#ff9900' },
+    { name: 'Java', level: 75, color: '#4fc3f7' },
+    { name: 'CSS3', level: 85, color: '#ff9900' }
+  ];
+
+  homeTimeline: HomeTimelineItem[] = [
+    { date: '2024 — 2026', titleKey: 'studi.item1.title', subtitleKey: 'studi.item1.subtitle' },
+    { date: 'Gen — Mag 2026', titleKey: 'esperienze.item1.title', subtitleKey: 'esperienze.item1.subtitle' },
+    { date: 'Giu — Lug 2025', titleKey: 'esperienze.item2.title', subtitleKey: 'esperienze.item2.subtitle' },
+    { date: 'Mag 2023 — Mag 2024', titleKey: 'esperienze.item3.title', subtitleKey: 'esperienze.item3.subtitle' }
+  ];
 
   techs = ['Angular', 'React', 'TypeScript', 'Java', 'JavaScript', 'CSS3', 'PHP', 'SQL'];
 

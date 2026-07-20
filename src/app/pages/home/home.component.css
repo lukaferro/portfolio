@@ -101,22 +101,54 @@
     }
 }
 
-.bio-section {
+/* ── Stats ── */
+.stats-section {
     display: flex;
     justify-content: center;
     padding: 2rem 2rem;
 }
 
-.bio-text {
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     max-width: 700px;
-    text-align: center;
-    font-size: 1.05rem;
-    color: #ccc;
-    line-height: 1.7;
-    margin: 0;
+    width: 100%;
 }
 
-.tech-section {
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 153, 0, 0.12);
+    border-radius: 12px;
+    padding: 1.2rem 0.8rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: rgba(255, 153, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ff9900;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ── Home Skills ── */
+.home-skills-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,35 +161,153 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0 0 1rem;
+    margin: 0 0 1.5rem;
 }
 
-.home-techs {
+.home-skill-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
-    gap: 0.6rem;
-    max-width: 500px;
+    gap: 1rem;
+    max-width: 700px;
+    width: 100%;
 }
 
-.home-tech-pill {
-    background: rgba(255, 153, 0, 0.06);
+.home-skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 1;
+    max-width: 80px;
+}
+
+.home-skill-bar {
+    width: 100%;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.home-skill-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    border-radius: 8px;
+}
+
+.home-skill-fill.animate {
+    transition: height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.home-skill-wave {
+    position: absolute;
+    top: -6px;
+    left: -50%;
+    width: 200%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 40%;
+    animation: wave 2.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    50%      { transform: rotate(180deg); }
+}
+
+.home-skill-name {
+    font-size: 0.7rem;
     color: #ddd;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid rgba(255, 153, 0, 0.12);
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    text-align: center;
 }
 
-.home-tech-pill:hover {
-    background: rgba(255, 153, 0, 0.15);
-    border-color: rgba(255, 153, 0, 0.4);
-    color: #fff;
+/* ── Home Timeline ── */
+.home-timeline-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem;
+}
+
+.home-timeline {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    padding-left: 1.5rem;
+}
+
+.home-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #ff9900, rgba(255, 153, 0, 0.2));
+}
+
+.home-timeline-item {
+    position: relative;
+    padding-left: 1.5rem;
+    padding-bottom: 1.2rem;
+}
+
+.home-timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.home-timeline-dot {
+    position: absolute;
+    left: calc(-1.5rem - 5px);
+    top: 0.3rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff9900;
+    border: 3px solid #0c0c0c;
+    box-shadow: 0 0 8px rgba(255, 153, 0, 0.5);
+}
+
+.home-timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 153, 0, 0.12);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.home-timeline-content:hover {
+    border-color: rgba(255, 153, 0, 0.35);
     transform: translateY(-2px);
 }
 
+.home-timeline-date {
+    font-size: 0.75rem;
+    color: #ff9900;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.home-timeline-content h4 {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 700;
+    margin: 0.2rem 0 0.1rem;
+}
+
+.home-timeline-content p {
+    font-size: 0.8rem;
+    color: #999;
+    margin: 0;
+}
+
+/* ── CTA ── */
 .cta-section {
     display: flex;
     justify-content: center;
@@ -203,5 +353,18 @@
     .image-glow {
         width: 260px;
         height: 260px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-skill-list {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .home-skill-item {
+        min-width: calc(33% - 1rem);
     }
 }

@@ -13,15 +13,45 @@
     </div>
 </section>
 
-<section class="bio-section" appScrollFade>
-    <p class="bio-text">{{ tr('home.bio') }}</p>
+<section class="stats-section" appScrollFade>
+    <div class="stats-grid">
+        @for (stat of stats; track stat.labelKey) {
+            <div class="stat-card">
+                <span class="stat-value">{{ stat.value }}</span>
+                <span class="stat-label">{{ tr(stat.labelKey) }}</span>
+            </div>
+        }
+    </div>
 </section>
 
-<section class="tech-section" appScrollFade>
-    <h3 class="section-label">{{ tr('home.tech_stack') }}</h3>
-    <div class="home-techs">
-        @for (tech of techs; track tech) {
-            <span class="home-tech-pill">{{ tech }}</span>
+<section class="home-skills-section" appScrollFade>
+    <h3 class="section-label">{{ tr('competenze.technical') }}</h3>
+    <div class="home-skill-list">
+        @for (skill of topSkills; track skill.name) {
+            <div class="home-skill-item">
+                <div class="home-skill-bar" appSkillBar>
+                    <div class="home-skill-fill" [style.height.%]="skill.level" [style.background]="skill.color">
+                        <div class="home-skill-wave"></div>
+                    </div>
+                </div>
+                <span class="home-skill-name">{{ skill.name }}</span>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="home-timeline-section" appScrollFade>
+    <h3 class="section-label">{{ tr('formazione.education') }}</h3>
+    <div class="home-timeline">
+        @for (item of homeTimeline; track item.titleKey) {
+            <div class="home-timeline-item">
+                <div class="home-timeline-dot"></div>
+                <div class="home-timeline-content">
+                    <span class="home-timeline-date">{{ item.date }}</span>
+                    <h4>{{ tr(item.titleKey) }}</h4>
+                    <p>{{ tr(item.subtitleKey) }}</p>
+                </div>
+            </div>
         }
     </div>
 </section>

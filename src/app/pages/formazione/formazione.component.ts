@@ -115,7 +115,11 @@ export class FormazioneComponent implements OnInit {
     { icon: '🤝', labelKey: 'competenze.teamwork', color: '#ff9900', rotation: -3 },
     { icon: '💬', labelKey: 'competenze.communication', color: '#4fc3f7', rotation: 2 },
     { icon: '📋', labelKey: 'competenze.organization', color: '#81c784', rotation: -1.5 },
-    { icon: '🧠', labelKey: 'competenze.problemsolving', color: '#ce93d8', rotation: 3.5 }
+    { icon: '🧠', labelKey: 'competenze.problemsolving', color: '#ce93d8', rotation: 3.5 },
+    { icon: '🔄', labelKey: 'competenze.adaptability', color: '#ff8a65', rotation: -2 },
+    { icon: '📚', labelKey: 'competenze.selflearning', color: '#4dd0e1', rotation: 1.5 },
+    { icon: '⚡', labelKey: 'competenze.proactivity', color: '#ffd54f', rotation: -4 },
+    { icon: '❤️', labelKey: 'competenze.empathy', color: '#f48fb1', rotation: 2.5 }
   ];
 
   certifications: Certification[] = [
