@@ -148,6 +148,7 @@ export class TranslationService {
       'home.stat.hours': 'Ore di formazione',
 
       'home.see_education': 'Vedi la formazione completa →',
+      'home.view_all_skills': 'Vedi tutte le competenze →',
 
       'contatti.title': 'Contatti',
       'contatti.email': 'Email',
@@ -304,6 +305,7 @@ export class TranslationService {
       'home.stat.hours': 'Training hours',
 
       'home.see_education': 'See full education →',
+      'home.view_all_skills': 'View all skills →',
 
       'contatti.title': 'Contact',
       'contatti.email': 'Email',

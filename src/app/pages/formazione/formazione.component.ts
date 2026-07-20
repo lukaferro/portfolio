@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
@@ -54,12 +55,21 @@ interface SoftSkill {
 export class FormazioneComponent implements OnInit {
   private meta = inject(MetaService);
   private ts = inject(TranslationService);
+  private route = inject(ActivatedRoute);
   tr(key: string): string { return this.ts.t(key); }
 
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
       description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, Java, Quarkus, Anthropic Claude AI.'
+    });
+
+    this.route.fragment.subscribe(fragment => {
+      if (fragment) {
+        setTimeout(() => {
+          document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
     });
   }
 
