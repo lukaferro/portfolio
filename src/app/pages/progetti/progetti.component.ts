@@ -101,16 +101,6 @@ export class ProgettiComponent implements OnInit {
       ]
     },
     {
-      titleKey: 'progetti.item8.title',
-      descKey: 'progetti.item8.desc',
-      techs: ['Angular', 'TypeScript', 'CSS3'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/cinema' },
-        { labelKey: 'progetti.link.demo', url: 'https://cinema-app-theta.vercel.app' }
-      ]
-    },
-    {
       titleKey: 'progetti.item9.title',
       descKey: 'progetti.item9.desc',
       techs: ['Angular', 'TypeScript', 'CSS3'],
@@ -147,8 +137,7 @@ export class ProgettiComponent implements OnInit {
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github_fe', url: 'https://github.com/LucaMimmo05/taskflow-fe' },
-        { labelKey: 'progetti.link.github_be', url: 'https://github.com/LucaMimmo05/taskflow-be' },
-        { labelKey: 'progetti.link.demo', url: 'https://taskflow-beta-one.vercel.app' }
+        { labelKey: 'progetti.link.github_be', url: 'https://github.com/LucaMimmo05/taskflow-be' }
       ]
     },
     {
