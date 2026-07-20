@@ -11,10 +11,15 @@ interface TimelineItem {
   pdfUrl?: string;
 }
 
+interface SkillItem {
+  name: string;
+  level: number;
+}
+
 interface SkillCategory {
   labelKey: string;
   color: string;
-  skills: string[];
+  skills: SkillItem[];
 }
 
 interface CertificationLink {
@@ -46,47 +51,55 @@ export class FormazioneComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
-      description: 'Percorso di studi, competenze tecniche e certificazioni: ITS Web Developer, servizio civile, corsi Anthropic Claude AI.'
+      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, Java, Quarkus, Anthropic Claude AI.'
     });
   }
-
-  timeline: TimelineItem[] = [
-    {
-      dateKey: 'studi.item1.date',
-      titleKey: 'studi.item1.title',
-      subtitleKey: 'studi.item1.subtitle',
-      descKey: 'studi.item1.desc',
-      pdfUrl: '/certificazioni/its-web-developer.pdf'
-    },
-    {
-      dateKey: 'studi.item2.date',
-      titleKey: 'studi.item2.title',
-      subtitleKey: 'studi.item2.subtitle',
-      descKey: 'studi.item2.desc',
-      pdfUrl: '/certificazioni/diploma-elettricista.pdf'
-    }
-  ];
 
   categories: SkillCategory[] = [
     {
       labelKey: 'competenze.cat.frontend',
       color: '#ff9900',
-      skills: ['Angular', 'React', 'Next.js', 'Blazor', 'HTML5', 'CSS3', 'JavaScript', 'TypeScript']
+      skills: [
+        { name: 'Angular', level: 90 },
+        { name: 'TypeScript', level: 85 },
+        { name: 'JavaScript', level: 85 },
+        { name: 'HTML5', level: 90 },
+        { name: 'CSS3', level: 85 },
+        { name: 'Blazor', level: 70 },
+        { name: 'React', level: 60 },
+        { name: 'Next.js', level: 50 }
+      ]
     },
     {
       labelKey: 'competenze.cat.backend',
       color: '#4fc3f7',
-      skills: ['Java', 'C#', '.NET', 'PHP', 'Quarkus', 'Python']
+      skills: [
+        { name: 'Java', level: 75 },
+        { name: 'Quarkus', level: 70 },
+        { name: 'C#', level: 65 },
+        { name: '.NET', level: 60 },
+        { name: 'PHP', level: 50 },
+        { name: 'Python', level: 40 }
+      ]
     },
     {
       labelKey: 'competenze.cat.database',
       color: '#81c784',
-      skills: ['SQL', 'MySQL', 'MongoDB', 'Redis']
+      skills: [
+        { name: 'SQL', level: 75 },
+        { name: 'MySQL', level: 70 },
+        { name: 'MongoDB', level: 60 },
+        { name: 'Redis', level: 30 }
+      ]
     },
     {
       labelKey: 'competenze.cat.tools',
       color: '#ce93d8',
-      skills: ['Git', 'Figma', 'VS Code']
+      skills: [
+        { name: 'VS Code', level: 90 },
+        { name: 'Git', level: 80 },
+        { name: 'Figma', level: 70 }
+      ]
     }
   ];
 
@@ -98,16 +111,6 @@ export class FormazioneComponent implements OnInit {
   ];
 
   certifications: Certification[] = [
-    {
-      titleKey: 'certificazioni.item1.title',
-      issuerKey: 'certificazioni.item1.issuer',
-      dateKey: 'certificazioni.item1.date',
-      descKey: 'certificazioni.item1.desc',
-      skills: ['Angular', 'Blazor', 'C#', '.NET', 'SQL', 'Figma', 'HTML5', 'CSS3', 'JavaScript'],
-      links: [
-        { label: 'Visualizza certificato →', url: '/certificazioni/its-web-developer.pdf' }
-      ]
-    },
     {
       titleKey: 'certificazioni.item2.title',
       issuerKey: 'certificazioni.item2.issuer',
@@ -145,6 +148,23 @@ export class FormazioneComponent implements OnInit {
         { label: 'Intro Model Context Protocol', url: '/certificazioni/claude/intro-mcp.pdf' },
         { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' }
       ]
+    }
+  ];
+
+  timeline: TimelineItem[] = [
+    {
+      dateKey: 'studi.item1.date',
+      titleKey: 'studi.item1.title',
+      subtitleKey: 'studi.item1.subtitle',
+      descKey: 'studi.item1.desc',
+      pdfUrl: '/certificazioni/its-web-developer.pdf'
+    },
+    {
+      dateKey: 'studi.item2.date',
+      titleKey: 'studi.item2.title',
+      subtitleKey: 'studi.item2.subtitle',
+      descKey: 'studi.item2.desc',
+      pdfUrl: '/certificazioni/diploma-elettricista.pdf'
     }
   ];
 }

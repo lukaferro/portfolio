@@ -1,53 +1,6 @@
 <section class="page-section">
   <h1 class="page-title" appScrollFade>{{ tr('formazione.title') }}</h1>
 
-  <h2 class="section-subtitle" appScrollFade>{{ tr('formazione.education') }}</h2>
-
-  <div class="timeline" appScrollFade>
-    @for (item of timeline; track item.titleKey) {
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <span class="timeline-date">{{ tr(item.dateKey) }}</span>
-          <h3>{{ tr(item.titleKey) }}</h3>
-          <h4>{{ tr(item.subtitleKey) }}</h4>
-          <p>{{ tr(item.descKey) }}</p>
-          @if (item.pdfUrl) {
-            <div class="timeline-links">
-              <a [href]="item.pdfUrl" target="_blank" rel="noopener" class="timeline-link">Visualizza documento →</a>
-            </div>
-          }
-        </div>
-      </div>
-    }
-  </div>
-
-  <h2 class="section-subtitle" appScrollFade>{{ tr('competenze.technical') }}</h2>
-
-  <div class="skills-categories" appScrollFade>
-    @for (cat of categories; track cat.labelKey) {
-      <div class="skill-category">
-        <h3 class="category-title" [style.color]="cat.color">{{ tr(cat.labelKey) }}</h3>
-        <div class="skill-pills">
-          @for (skill of cat.skills; track skill) {
-            <span class="skill-pill" [style.--pill-color]="cat.color">{{ skill }}</span>
-          }
-        </div>
-      </div>
-    }
-  </div>
-
-  <h2 class="section-subtitle" appScrollFade>{{ tr('competenze.soft') }}</h2>
-
-  <div class="soft-skills" appScrollFade>
-    @for (soft of softSkills; track soft.labelKey) {
-      <div class="soft-skill">
-        <span class="soft-icon">{{ soft.icon }}</span>
-        <span>{{ tr(soft.labelKey) }}</span>
-      </div>
-    }
-  </div>
-
   <h2 class="section-subtitle" appScrollFade>{{ tr('formazione.certifications') }}</h2>
 
   <div class="certs-grid" appScrollFade>
@@ -77,6 +30,61 @@
               @for (link of cert.links; track link.url) {
                 <a [href]="link.url" target="_blank" rel="noopener" class="cert-link">{{ link.label }}</a>
               }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <h2 class="section-subtitle" appScrollFade>{{ tr('competenze.technical') }}</h2>
+
+  <div class="skills-levels" appScrollFade>
+    @for (cat of categories; track cat.labelKey) {
+      <div class="skill-category">
+        <h3 class="category-title" [style.color]="cat.color">{{ tr(cat.labelKey) }}</h3>
+        <div class="skill-list">
+          @for (skill of cat.skills; track skill.name) {
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-percent">{{ skill.level }}%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" [style.width.%]="skill.level" [style.background]="cat.color"></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <h2 class="section-subtitle" appScrollFade>{{ tr('competenze.soft') }}</h2>
+
+  <div class="soft-badges" appScrollFade>
+    @for (soft of softSkills; track soft.labelKey) {
+      <span class="soft-badge">
+        <span class="soft-icon">{{ soft.icon }}</span>
+        {{ tr(soft.labelKey) }}
+      </span>
+    }
+  </div>
+
+  <h2 class="section-subtitle" appScrollFade>{{ tr('formazione.education') }}</h2>
+
+  <div class="timeline" appScrollFade>
+    @for (item of timeline; track item.titleKey) {
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">{{ tr(item.dateKey) }}</span>
+          <h3>{{ tr(item.titleKey) }}</h3>
+          <h4>{{ tr(item.subtitleKey) }}</h4>
+          <p>{{ tr(item.descKey) }}</p>
+          @if (item.pdfUrl) {
+            <div class="timeline-links">
+              <a [href]="item.pdfUrl" target="_blank" rel="noopener" class="timeline-link">Visualizza documento →</a>
             </div>
           }
         </div>
