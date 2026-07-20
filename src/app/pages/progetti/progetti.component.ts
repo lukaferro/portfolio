@@ -57,9 +57,10 @@ export class ProgettiComponent implements OnInit {
       descKey: 'progetti.item3.desc',
       techs: ['HTML5', 'CSS3', 'Accessibilità', 'UI Library'],
       links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' }
+        { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' },
+        { labelKey: 'progetti.link.demo', url: 'https://byloth.github.io/clay-vue/' }
       ],
-      visibility: 'nda'
+      visibility: 'public'
     },
     {
       titleKey: 'progetti.item4.title',
@@ -100,6 +101,7 @@ export class ProgettiComponent implements OnInit {
         { labelKey: 'progetti.link.demo', url: 'https://simulazione-projet-work.vercel.app' }
       ]
     },
+
     {
       titleKey: 'progetti.item9.title',
       descKey: 'progetti.item9.desc',
