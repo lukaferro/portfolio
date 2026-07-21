@@ -10,15 +10,38 @@ interface VercelRequest extends IncomingMessage {
   body?: Record<string, string>;
 }
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secretKey = process.env['RECAPTCHA_SECRET_KEY'];
+  if (!secretKey) return true;
+
+  try {
+    const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${encodeURIComponent(secretKey)}&response=${encodeURIComponent(token)}`
+    });
+
+    const data = await res.json() as { success: boolean; score: number };
+    return data.success && data.score >= 0.5;
+  } catch {
+    return false;
+  }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Metodo non consentito' });
   }
 
-  const { nome, email, oggetto, messaggio } = req.body ?? {};
+  const { nome, email, oggetto, messaggio, recaptchaToken } = req.body ?? {};
 
   if (!nome || !email || !oggetto || !messaggio) {
     return res.status(400).json({ error: 'Tutti i campi sono obbligatori.' });
+  }
+
+  const captchaValid = await verifyRecaptcha(recaptchaToken ?? '');
+  if (!captchaValid) {
+    return res.status(403).json({ error: 'Verifica anti-spam fallita. Riprova più tardi.' });
   }
 
   const transporter = nodemailer.createTransport({

@@ -5,6 +5,8 @@ import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
+declare const grecaptcha: any;
+
 @Component({
   selector: 'app-contatti',
   imports: [FormsModule, ScrollFadeDirective, TranslatePipe],
@@ -44,10 +46,17 @@ export class ContattiComponent implements OnInit {
     this.caricamento = true;
 
     try {
+      const siteKey = document.querySelector('meta[name="recaptcha-site-key"]')?.getAttribute('content') || '';
+      let token = '';
+
+      if (siteKey && typeof grecaptcha !== 'undefined') {
+        token = await grecaptcha.execute(siteKey, { action: 'submit' });
+      }
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.formData)
+        body: JSON.stringify({ ...this.formData, recaptchaToken: token })
       });
 
       if (!res.ok) {
