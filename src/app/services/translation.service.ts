@@ -141,11 +141,6 @@ export class TranslationService {
       'competenze.proactivity': 'Proattività',
       'competenze.empathy': 'Empatia',
 
-      'home.stat.projects': 'Progetti completati',
-      'home.stat.certs': 'Certificazioni',
-      'home.stat.internships': 'Stage professionali',
-      'home.stat.hours': 'Ore di formazione',
-
       'home.see_education': 'Vedi la formazione completa →',
       'home.view_all_skills': 'Vedi tutte le competenze →',
 
@@ -296,11 +291,6 @@ export class TranslationService {
       'competenze.selflearning': 'Self-learning',
       'competenze.proactivity': 'Proactivity',
       'competenze.empathy': 'Empathy',
-
-      'home.stat.projects': 'Projects completed',
-      'home.stat.certs': 'Certifications',
-      'home.stat.internships': 'Internships',
-      'home.stat.hours': 'Training hours',
 
       'home.see_education': 'See full education →',
       'home.view_all_skills': 'View all skills →',

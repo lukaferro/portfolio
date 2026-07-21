@@ -5,11 +5,6 @@ import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
-interface Stat {
-  value: string;
-  labelKey: string;
-}
-
 interface TopSkill {
   name: string;
   level: number;
@@ -31,13 +26,6 @@ interface HomeTimelineItem {
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private meta = inject(MetaService);
-
-  stats: Stat[] = [
-    { value: '12+', labelKey: 'home.stat.projects' },
-    { value: '9', labelKey: 'home.stat.certs' },
-    { value: '2', labelKey: 'home.stat.internships' },
-    { value: '2000+', labelKey: 'home.stat.hours' }
-  ];
 
   topSkills: TopSkill[] = [
     { name: 'Angular', level: 90, color: '#ff9900' },

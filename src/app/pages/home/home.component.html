@@ -13,17 +13,6 @@
     </div>
 </section>
 
-<section class="stats-section" appScrollFade>
-    <div class="stats-grid">
-        @for (stat of stats; track stat.labelKey) {
-            <div class="stat-card">
-                <span class="stat-value">{{ stat.value }}</span>
-                <span class="stat-label">{{ stat.labelKey | translate }}</span>
-            </div>
-        }
-    </div>
-</section>
-
 <section class="home-skills-section" appScrollFade>
     <h3 class="section-label">{{ 'competenze.technical' | translate }}</h3>
     <div class="home-skill-list">
