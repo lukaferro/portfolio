@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, NgZone } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
@@ -16,6 +16,7 @@ declare const grecaptcha: any;
 export class ContattiComponent implements OnInit {
   private meta = inject(MetaService);
   private ts = inject(TranslationService);
+  private zone = inject(NgZone);
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -35,41 +36,43 @@ export class ContattiComponent implements OnInit {
   caricamento = false;
 
   async inviaForm() {
-    this.errore = '';
-    this.inviato = false;
+    this.zone.run(async () => {
+      this.errore = '';
+      this.inviato = false;
 
-    if (!this.formData.nome || !this.formData.email || !this.formData.oggetto || !this.formData.messaggio) {
-      this.errore = this.ts.t('contatti.form.error.required');
-      return;
-    }
-
-    this.caricamento = true;
-
-    try {
-      const siteKey = document.querySelector('meta[name="recaptcha-site-key"]')?.getAttribute('content') || '';
-      let token = '';
-
-      if (siteKey && typeof grecaptcha !== 'undefined') {
-        token = await grecaptcha.execute(siteKey, { action: 'submit' });
+      if (!this.formData.nome || !this.formData.email || !this.formData.oggetto || !this.formData.messaggio) {
+        this.errore = this.ts.t('contatti.form.error.required');
+        return;
       }
 
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...this.formData, recaptchaToken: token })
-      });
+      this.caricamento = true;
 
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || this.ts.t('contatti.form.error.generic'));
+      try {
+        const siteKey = document.querySelector('meta[name="recaptcha-site-key"]')?.getAttribute('content') || '';
+        let token = '';
+
+        if (siteKey && typeof grecaptcha !== 'undefined') {
+          token = await grecaptcha.execute(siteKey, { action: 'submit' });
+        }
+
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...this.formData, recaptchaToken: token })
+        });
+
+        if (!res.ok) {
+          const data = await res.json();
+          throw new Error(data.error || this.ts.t('contatti.form.error.generic'));
+        }
+
+        this.inviato = true;
+        this.formData = { nome: '', email: '', oggetto: '', messaggio: '' };
+      } catch (err: any) {
+        this.errore = err.message || this.ts.t('contatti.form.error.connection');
+      } finally {
+        this.caricamento = false;
       }
-
-      this.inviato = true;
-      this.formData = { nome: '', email: '', oggetto: '', messaggio: '' };
-    } catch (err: any) {
-      this.errore = err.message || this.ts.t('contatti.form.error.connection');
-    } finally {
-      this.caricamento = false;
-    }
+    });
   }
 }
