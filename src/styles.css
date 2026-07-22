@@ -201,3 +201,7 @@ a {
     margin-bottom: 2rem;
   }
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'http';
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
 interface VercelResponse extends ServerResponse {
   status(code: number): VercelResponse;
