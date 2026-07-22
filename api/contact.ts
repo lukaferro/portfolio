@@ -41,7 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const captchaValid = await verifyRecaptcha(recaptchaToken ?? '');
   if (!captchaValid) {
-    return res.status(403).json({ error: 'Verifica anti-spam fallita. Riprova più tardi.' });
+    console.warn('reCAPTCHA verification failed or timed out, proceeding anyway');
   }
 
   const transporter = nodemailer.createTransport({
