@@ -1,6 +1,29 @@
 <section class="page-section">
   <h1 class="page-title" appScrollFade>{{ 'formazione.title' | translate }}</h1>
 
+  <h2 id="competenze" class="section-subtitle" appScrollFade>{{ 'competenze.technical' | translate }}</h2>
+
+  <div class="skills-levels" appScrollFade>
+    @for (cat of categories; track cat.labelKey) {
+      <div class="skill-category">
+        <h3 class="category-title" [style.color]="cat.color">{{ cat.labelKey | translate }}</h3>
+        <div class="skill-list">
+          @for (skill of cat.skills; track skill.name) {
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-percent">{{ skill.level }}%</span>
+              </div>
+              <div class="skill-bar" appSkillBar>
+                <div class="skill-fill" [style.width.%]="skill.level" [style.background]="cat.color"></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
   <h2 class="section-subtitle" appScrollFade>{{ 'formazione.certifications' | translate }}</h2>
 
   <div class="certs-grid" appScrollFade>
@@ -30,29 +53,6 @@
               @for (link of cert.links; track link.url) {
                 <a [href]="link.url" target="_blank" rel="noopener" class="cert-link">{{ link.label }}</a>
               }
-            </div>
-          }
-        </div>
-      </div>
-    }
-  </div>
-
-  <h2 id="competenze" class="section-subtitle" appScrollFade>{{ 'competenze.technical' | translate }}</h2>
-
-  <div class="skills-levels" appScrollFade>
-    @for (cat of categories; track cat.labelKey) {
-      <div class="skill-category">
-        <h3 class="category-title" [style.color]="cat.color">{{ cat.labelKey | translate }}</h3>
-        <div class="skill-list">
-          @for (skill of cat.skills; track skill.name) {
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">{{ skill.name }}</span>
-                <span class="skill-percent">{{ skill.level }}%</span>
-              </div>
-              <div class="skill-bar" appSkillBar>
-                <div class="skill-fill" [style.width.%]="skill.level" [style.background]="cat.color"></div>
-              </div>
             </div>
           }
         </div>
