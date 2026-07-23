@@ -123,7 +123,7 @@ export class TranslationService {
       'certificazioni.item4.title': 'Certificazioni Anthropic (Claude AI)',
       'certificazioni.item4.issuer': 'Anthropic',
       'certificazioni.item4.date': '2025 — 2026',
-      'certificazioni.item4.desc': 'Completamento di 9 corsi ufficiali Anthropic su Claude, AI Fluency e Model Context Protocol.',
+      'certificazioni.item4.desc': 'Completamento di 10 corsi ufficiali Anthropic su Claude, AI Fluency e Model Context Protocol.',
 
       'competenze.title': 'Competenze',
       'competenze.technical': 'Competenze Tecniche',
@@ -274,7 +274,7 @@ export class TranslationService {
       'certificazioni.item4.title': 'Anthropic Certifications (Claude AI)',
       'certificazioni.item4.issuer': 'Anthropic',
       'certificazioni.item4.date': '2025 — 2026',
-      'certificazioni.item4.desc': 'Completion of 9 official Anthropic courses on Claude, AI Fluency and Model Context Protocol.',
+      'certificazioni.item4.desc': 'Completion of 10 official Anthropic courses on Claude, AI Fluency and Model Context Protocol.',
 
       'competenze.title': 'Skills',
       'competenze.technical': 'Technical Skills',

@@ -146,7 +146,8 @@ export class FormazioneComponent implements OnInit {
         { label: 'Claude with Anthropic API', url: '/certificazioni/claude/claude-anthropic-api.pdf' },
         { label: 'AI Fluency: Foundations', url: '/certificazioni/claude/ai-fluency-foundations.pdf' },
         { label: 'Intro Model Context Protocol', url: '/certificazioni/claude/intro-mcp.pdf' },
-        { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' }
+        { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' },
+        { label: 'AI Fluency for Students', url: '/certificazioni/claude/ai-fluency-students.pdf' }
       ]
     },
     {
