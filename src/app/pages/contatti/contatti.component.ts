@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
@@ -16,6 +16,7 @@ declare const grecaptcha: any;
 export class ContattiComponent implements OnInit {
   private meta = inject(MetaService);
   private ts = inject(TranslationService);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -37,13 +38,16 @@ export class ContattiComponent implements OnInit {
   async inviaForm() {
     this.errore = '';
     this.inviato = false;
+    this.cdr.detectChanges();
 
     if (!this.formData.nome || !this.formData.email || !this.formData.oggetto || !this.formData.messaggio) {
       this.errore = this.ts.t('contatti.form.error.required');
+      this.cdr.detectChanges();
       return;
     }
 
     this.caricamento = true;
+    this.cdr.detectChanges();
 
     try {
       const siteKey = document.querySelector('meta[name="recaptcha-site-key"]')?.getAttribute('content') || '';
@@ -61,11 +65,17 @@ export class ContattiComponent implements OnInit {
         }
       }
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...this.formData, recaptchaToken: token })
+        body: JSON.stringify({ ...this.formData, recaptchaToken: token }),
+        signal: controller.signal
       });
+
+      clearTimeout(timeoutId);
 
       if (!res.ok) {
         const data = await res.json();
@@ -74,10 +84,19 @@ export class ContattiComponent implements OnInit {
 
       this.inviato = true;
       this.formData = { nome: '', email: '', oggetto: '', messaggio: '' };
+      this.cdr.detectChanges();
+      setTimeout(() => {
+        this.inviato = false;
+        this.cdr.detectChanges();
+      }, 5000);
     } catch (err: any) {
-      this.errore = err.message || this.ts.t('contatti.form.error.connection');
+      this.errore = err.name === 'AbortError'
+        ? this.ts.t('contatti.form.error.connection')
+        : (err.message || this.ts.t('contatti.form.error.connection'));
+      this.cdr.detectChanges();
     } finally {
       this.caricamento = false;
+      this.cdr.detectChanges();
     }
   }
 }
