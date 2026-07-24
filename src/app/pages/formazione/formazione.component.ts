@@ -147,7 +147,8 @@ export class FormazioneComponent implements OnInit {
         { label: 'AI Fluency: Foundations', url: '/certificazioni/claude/ai-fluency-foundations.pdf' },
         { label: 'Intro Model Context Protocol', url: '/certificazioni/claude/intro-mcp.pdf' },
         { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' },
-        { label: 'AI Fluency for Students', url: '/certificazioni/claude/ai-fluency-students.pdf' }
+        { label: 'AI Fluency for Students', url: '/certificazioni/claude/ai-fluency-students.pdf' },
+        { label: 'MCP Advanced Topics', url: '/certificazioni/claude/mcp-advanced-topics.pdf' }
       ]
     },
     {
