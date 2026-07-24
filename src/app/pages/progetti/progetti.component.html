@@ -22,7 +22,7 @@
           @if (project.links.length > 0) {
             <div class="card-links">
               @for (link of project.links; track link.labelKey) {
-                <a [href]="link.url" target="_blank" class="card-link">{{ link.labelKey | translate }}</a>
+                <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="card-link">{{ link.labelKey | translate }}</a>
               }
             </div>
           }

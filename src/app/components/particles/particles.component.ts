@@ -31,6 +31,7 @@ export class ParticlesComponent implements OnInit, OnDestroy {
   private particles: Particle[] = [];
   private mouse = { x: -1000, y: -1000 };
   private animationId = 0;
+  private paused = false;
   private readonly isMobile = window.innerWidth < 768;
   private readonly count = this.isMobile ? 60 : 700;
   private readonly mouseRadius = this.isMobile ? 80 : 280;
@@ -61,11 +62,23 @@ export class ParticlesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.initParticles();
     this.animate();
+    document.addEventListener('visibilitychange', this.onVisibilityChange);
   }
 
   ngOnDestroy() {
     cancelAnimationFrame(this.animationId);
+    document.removeEventListener('visibilitychange', this.onVisibilityChange);
   }
+
+  private onVisibilityChange = () => {
+    if (document.hidden) {
+      this.paused = true;
+      cancelAnimationFrame(this.animationId);
+    } else {
+      this.paused = false;
+      this.animate();
+    }
+  };
 
   private respawnParticle(p: Particle, width: number, height: number) {
     p.x = Math.random() * width;
@@ -156,6 +169,7 @@ export class ParticlesComponent implements OnInit, OnDestroy {
       ctx.fill();
     }
 
+    if (this.paused) return;
     this.animationId = requestAnimationFrame(() => this.animate());
   }
 }

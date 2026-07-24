@@ -93,7 +93,7 @@
 
 .form-group label {
   font-size: 0.85rem;
-  color: #aaa;
+  color: #b5b5b5;
   font-weight: 600;
 }
 
@@ -110,15 +110,16 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
   border-color: #ff9900;
-  box-shadow: 0 0 12px rgba(255, 153, 0, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.5);
+  outline: none;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #555;
+  color: #777;
 }
 
 .form-group textarea {

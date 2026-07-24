@@ -29,7 +29,7 @@
 }
 
 .nav-desktop .nav-link {
-    color: #888;
+    color: #a3a3a3;
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
@@ -79,7 +79,7 @@
     min-width: 32px;
     flex-shrink: 0;
     background: transparent;
-    color: #888;
+    color: #a3a3a3;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     font-size: 0.75rem;
@@ -252,7 +252,7 @@
     }
 
     .nav-link {
-        color: #888;
+        color: #a3a3a3;
         font-weight: 600;
         font-size: 0.85rem;
         letter-spacing: 0.5px;

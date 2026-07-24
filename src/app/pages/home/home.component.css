@@ -162,7 +162,7 @@
 
 .section-label {
     font-size: 0.85rem;
-    color: #888;
+    color: #a3a3a3;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -197,7 +197,7 @@
 
 .home-skill-percent {
     font-size: 0.75rem;
-    color: #888;
+    color: #a3a3a3;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
 }
@@ -313,7 +313,7 @@
 
 .home-timeline-content p {
     font-size: 0.8rem;
-    color: #999;
+    color: #a3a3a3;
     margin: 0;
 }
 

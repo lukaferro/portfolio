@@ -327,6 +327,7 @@ export class TranslationService {
   setLang(lang: string): void {
     this.currentLang.set(lang);
     localStorage.setItem(this.storageKey, lang);
+    document.documentElement.lang = lang;
   }
 
   t(key: string): string {

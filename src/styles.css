@@ -14,6 +14,31 @@ body {
   overflow-x: hidden;
 }
 
+/* Skip to content */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: #ff9900;
+  color: #0c0c0c;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 100;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 2px;
+}
+
 a {
   text-decoration: none;
   color: inherit;

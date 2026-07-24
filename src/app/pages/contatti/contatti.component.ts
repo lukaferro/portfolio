@@ -7,6 +7,8 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 
 declare const grecaptcha: any;
 
+const RECAPTCHA_SITE_KEY = '6LeW-F8tAAAAAEh9kWALjsR5Qe7t0BKm7JDf-sWz';
+
 @Component({
   selector: 'app-contatti',
   imports: [FormsModule, ScrollFadeDirective, TranslatePipe],
@@ -18,11 +20,24 @@ export class ContattiComponent implements OnInit {
   private ts = inject(TranslationService);
   private cdr = inject(ChangeDetectorRef);
 
+  private recaptchaLoaded = false;
+
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Contatti',
       description: 'Contatta Luca Ferro per collaborazioni, progetti o opportunità lavorative.'
     });
+    this.loadRecaptcha();
+  }
+
+  private loadRecaptcha(): void {
+    if (this.recaptchaLoaded || typeof grecaptcha !== 'undefined') return;
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => this.recaptchaLoaded = true;
+    document.head.appendChild(script);
   }
   formData = {
     nome: '',
@@ -50,7 +65,7 @@ export class ContattiComponent implements OnInit {
     this.cdr.detectChanges();
 
     try {
-      const siteKey = document.querySelector('meta[name="recaptcha-site-key"]')?.getAttribute('content') || '';
+      const siteKey = RECAPTCHA_SITE_KEY;
       let token = '';
 
       if (siteKey && typeof grecaptcha !== 'undefined') {
