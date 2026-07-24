@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
@@ -24,7 +24,7 @@ interface HomeTimelineItem {
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private meta = inject(MetaService);
 
   topSkills: TopSkill[] = [
@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   displayedHtml = '';
+  heroLoaded = false;
   private phraseIndex = 0;
   private charIndex = 0;
   private deleting = false;
@@ -60,6 +61,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       description: 'Portfolio di Luca Ferro, Frontend Developer. Scopri i miei progetti, competenze e esperienze nel mondo dello sviluppo web.'
     });
     this.tick();
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.heroLoaded = true);
   }
 
   ngOnDestroy(): void {
