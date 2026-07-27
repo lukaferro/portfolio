@@ -99,6 +99,16 @@ export class ProgettiComponent implements OnInit {
         { labelKey: 'progetti.link.demo', url: 'https://simulazione-projet-work.vercel.app' }
       ]
     },
+    {
+      titleKey: 'progetti.item8.title',
+      descKey: 'progetti.item8.desc',
+      techs: ['Angular', 'TypeScript', 'CSS3', 'TMDB API', 'Vercel'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/cinema' },
+        { labelKey: 'progetti.link.demo', url: 'https://cinema-app-theta.vercel.app' }
+      ]
+    },
 
     {
       titleKey: 'progetti.item9.title',

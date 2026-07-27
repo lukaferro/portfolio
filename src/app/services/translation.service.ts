@@ -88,6 +88,9 @@ export class TranslationService {
       'progetti.item7.title': 'Simulazione Projet Work',
       'progetti.item7.desc': 'Simulazione di progetto lavorativo con interfaccia interattiva, gestione asset e layout responsive. Sviluppato con HTML, CSS e JavaScript.',
 
+      'progetti.item8.title': 'CinemaHub',
+      'progetti.item8.desc': 'Piattaforma cinematografica con catalogo film TMDB, prenotazione posti con selezione sedili, carosello animato e design dark/gold. PWA Angular con API REST e deploy Vercel.',
+
       'progetti.item9.title': 'Dashboard F1',
       'progetti.item9.desc': 'Dashboard interattiva sulla Formula 1 sviluppata con Angular. Visualizzazione dati, statistiche piloti e statistiche团队 con TypeScript.',
 
@@ -238,6 +241,9 @@ export class TranslationService {
 
       'progetti.item7.title': 'Project Work Simulation',
       'progetti.item7.desc': 'Work project simulation with interactive interface, asset management and responsive layout. Built with HTML, CSS and JavaScript.',
+
+      'progetti.item8.title': 'CinemaHub',
+      'progetti.item8.desc': 'Cinema platform with TMDB movie catalog, seat booking with seat selection, animated carousel and dark/gold design. Angular PWA with REST APIs and Vercel deployment.',
 
       'progetti.item9.title': 'F1 Dashboard',
       'progetti.item9.desc': 'Interactive Formula 1 dashboard built with Angular. Data visualization, driver statistics and team stats with TypeScript.',
