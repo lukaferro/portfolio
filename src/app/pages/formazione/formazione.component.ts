@@ -149,7 +149,8 @@ export class FormazioneComponent implements OnInit {
         { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' },
         { label: 'AI Fluency for Students', url: '/certificazioni/claude/ai-fluency-students.pdf' },
         { label: 'MCP Advanced Topics', url: '/certificazioni/claude/mcp-advanced-topics.pdf' },
-        { label: 'Claude with Amazon Bedrock', url: '/certificazioni/claude/claude-bedrock.pdf' }
+        { label: 'Claude with Amazon Bedrock', url: '/certificazioni/claude/claude-bedrock.pdf' },
+        { label: 'Claude on Google Cloud', url: '/certificazioni/claude/claude-google-cloud.pdf' }
       ]
     },
     {
