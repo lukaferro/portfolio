@@ -150,7 +150,12 @@ export class FormazioneComponent implements OnInit {
         { label: 'AI Fluency for Students', url: '/certificazioni/claude/ai-fluency-students.pdf' },
         { label: 'MCP Advanced Topics', url: '/certificazioni/claude/mcp-advanced-topics.pdf' },
         { label: 'Claude with Amazon Bedrock', url: '/certificazioni/claude/claude-bedrock.pdf' },
-        { label: 'Claude on Google Cloud', url: '/certificazioni/claude/claude-google-cloud.pdf' }
+        { label: 'Claude on Google Cloud', url: '/certificazioni/claude/claude-google-cloud.pdf' },
+        { label: 'Teaching AI Fluency', url: '/certificazioni/claude/teaching-ai-fluency.pdf' },
+        { label: 'AI Fluency for nonprofit', url: '/certificazioni/claude/ai-fluency-for-nonprofits.pdf' },
+        { label: 'Introduction to agent skills', url: '/certificazioni/claude/introduction-to-agent-skills.pdf' },
+        { label: 'Introduction to subagents', url: '/certificazioni/claude/introduction-to-subagents.pdf' },
+        { label: 'AI Capabilities and Limitations', url: '/certificazioni/claude/ai-capabilities-and-limitations.pdf' }
       ]
     },
     {
