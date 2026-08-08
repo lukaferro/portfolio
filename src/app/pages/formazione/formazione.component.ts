@@ -155,7 +155,10 @@ export class FormazioneComponent implements OnInit {
         { label: 'AI Fluency for nonprofit', url: '/certificazioni/claude/ai-fluency-for-nonprofits.pdf' },
         { label: 'Introduction to agent skills', url: '/certificazioni/claude/introduction-to-agent-skills.pdf' },
         { label: 'Introduction to subagents', url: '/certificazioni/claude/introduction-to-subagents.pdf' },
-        { label: 'AI Capabilities and Limitations', url: '/certificazioni/claude/ai-capabilities-and-limitations.pdf' }
+        { label: 'AI Capabilities and Limitations', url: '/certificazioni/claude/ai-capabilities-and-limitations.pdf' },
+        { label: 'AI Fluency for Small Businesses', url: '/certificazioni/claude/ai-fluency-for-small-businesses.pdf' },
+        { label: 'AI Fluency for Builders', url: '/certificazioni/claude/ai-fluency-for-builders.pdf' },
+        { label: 'AI Fluency for K-12 Educators', url: '/certificazioni/claude/ai-fluency-for-k-12-educators.pdf' }
       ]
     },
     {
