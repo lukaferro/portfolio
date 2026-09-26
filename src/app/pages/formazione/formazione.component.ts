@@ -59,7 +59,7 @@ export class FormazioneComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
-      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, Java, Quarkus, Anthropic Claude AI.'
+      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, TypeScript, Blazor, .NET, Java, PHP e Anthropic Claude AI.'
     });
 
     this.route.fragment.subscribe(fragment => {
@@ -114,7 +114,8 @@ export class FormazioneComponent implements OnInit {
       skills: [
         { name: 'VS Code', level: 90 },
         { name: 'Git', level: 80 },
-        { name: 'Figma', level: 70 }
+        { name: 'Figma', level: 70 },
+        { name: 'Adobe Illustrator', level: 65 }
       ]
     }
   ];

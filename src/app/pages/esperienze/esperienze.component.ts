@@ -16,7 +16,7 @@ export class EsperienzeComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Esperienze',
-      description: 'Le mie esperienze lavorative come Web Developer: FM Group, Link IT Europe, Servizio Civile e altro.'
+      description: 'Le mie esperienze lavorative come Web Developer: Grafico / Web Developer e Web Developer in FM Group, Link IT Europe, Servizio Civile e altro.'
     });
   }
 }

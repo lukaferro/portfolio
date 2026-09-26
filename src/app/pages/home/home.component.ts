@@ -37,10 +37,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   homeTimeline: HomeTimelineItem[] = [
+    { date: 'Ago 2026 — Presente', titleKey: 'esperienze.item1.title', subtitleKey: 'esperienze.item1.subtitle' },
     { date: '2024 — 2026', titleKey: 'studi.item1.title', subtitleKey: 'studi.item1.subtitle' },
-    { date: 'Gen — Mag 2026', titleKey: 'esperienze.item1.title', subtitleKey: 'esperienze.item1.subtitle' },
-    { date: 'Giu — Lug 2025', titleKey: 'esperienze.item2.title', subtitleKey: 'esperienze.item2.subtitle' },
-    { date: 'Mag 2023 — Mag 2024', titleKey: 'esperienze.item3.title', subtitleKey: 'esperienze.item3.subtitle' }
+    { date: 'Gen — Mag 2026', titleKey: 'esperienze.item2.title', subtitleKey: 'esperienze.item2.subtitle' },
+    { date: 'Giu — Lug 2025', titleKey: 'esperienze.item3.title', subtitleKey: 'esperienze.item3.subtitle' },
+    { date: 'Mag 2023 — Mag 2024', titleKey: 'esperienze.item4.title', subtitleKey: 'esperienze.item4.subtitle' }
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Home',
-      description: 'Portfolio di Luca Ferro, Frontend Developer. Scopri i miei progetti, competenze e esperienze nel mondo dello sviluppo web.'
+      description: 'Portfolio di Luca Ferro, Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo web.'
     });
     this.tick();
   }
