@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lukaferro.github.io/portfolio/sitemap.xml
+Sitemap: https://portfolio-five-sand-51.vercel.app/sitemap.xml

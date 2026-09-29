@@ -1,8 +1,22 @@
 <section class="page-section">
   <h1 class="page-title" appScrollFade>{{ 'progetti.title' | translate }}</h1>
 
+  <div class="filter-bar" role="group" aria-label="Filtra progetti per tecnologia" appScrollFade>
+    @for (f of filters; track f.id) {
+      <button
+        type="button"
+        class="filter-btn"
+        [class.active]="activeFilter === f.id"
+        [attr.aria-pressed]="activeFilter === f.id"
+        (click)="setFilter(f.id)">
+        <span>{{ f.labelKey | translate }}</span>
+        <span class="filter-count">{{ getFilterCount(f.id) }}</span>
+      </button>
+    }
+  </div>
+
   <div class="projects-grid">
-    @for (project of projects; track project.titleKey) {
+    @for (project of filteredProjects; track project.titleKey) {
       <div class="project-card" appScrollFade>
         <div class="card-body">
           <div class="card-header">

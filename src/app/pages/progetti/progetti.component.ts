@@ -4,6 +4,7 @@ import { MetaService } from '../../services/meta.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 type Visibility = 'public' | 'private' | 'nda';
+type FilterId = 'all' | 'angular' | 'blazor' | 'fullstack' | 'vanilla';
 
 interface ProjectLink {
   labelKey: string;
@@ -14,8 +15,14 @@ interface Project {
   titleKey: string;
   descKey: string;
   techs: string[];
+  categories: FilterId[];
   links: ProjectLink[];
   visibility: Visibility;
+}
+
+interface FilterOption {
+  id: FilterId;
+  labelKey: string;
 }
 
 @Component({
@@ -28,32 +35,61 @@ interface Project {
 export class ProgettiComponent implements OnInit {
   private meta = inject(MetaService);
 
+  activeFilter: FilterId = 'all';
+
+  filters: FilterOption[] = [
+    { id: 'all', labelKey: 'progetti.filter.all' },
+    { id: 'angular', labelKey: 'progetti.filter.angular' },
+    { id: 'blazor', labelKey: 'progetti.filter.blazor' },
+    { id: 'fullstack', labelKey: 'progetti.filter.fullstack' },
+    { id: 'vanilla', labelKey: 'progetti.filter.vanilla' }
+  ];
+
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Progetti',
-      description: 'I miei progetti: sviluppo web full-stack con Angular, Quarkus, Java, Vue, componenti UI, app mobile e molto altro.'
+      description: 'I miei progetti di sviluppo web: siti aziendali in Angular, piattaforme B2B in Blazor/.NET, UI Component Library accessibili e applicazioni full-stack.',
+      titleKey: 'meta.progetti.title',
+      descKey: 'meta.progetti.desc'
     });
+  }
+
+  setFilter(filter: FilterId): void {
+    this.activeFilter = filter;
+  }
+
+  get filteredProjects(): Project[] {
+    if (this.activeFilter === 'all') return this.projects;
+    return this.projects.filter(p => p.categories.includes(this.activeFilter));
+  }
+
+  getFilterCount(filterId: FilterId): number {
+    if (filterId === 'all') return this.projects.length;
+    return this.projects.filter(p => p.categories.includes(filterId)).length;
   }
 
   projects: Project[] = [
     {
       titleKey: 'progetti.item1.title',
       descKey: 'progetti.item1.desc',
-      techs: ['Angular', 'PHP', 'Figma', 'Responsive'],
+      techs: ['Angular', 'TypeScript', 'PHP', 'Figma', 'Responsive'],
+      categories: ['angular', 'fullstack'],
       links: [],
       visibility: 'nda'
     },
     {
       titleKey: 'progetti.item2.title',
       descKey: 'progetti.item2.desc',
-      techs: ['Blazor', 'C#', '.NET', 'Figma', 'SQL'],
+      techs: ['Blazor', 'C#', '.NET', 'Figma', 'UI/UX'],
+      categories: ['blazor', 'fullstack'],
       links: [],
       visibility: 'nda'
     },
     {
       titleKey: 'progetti.item3.title',
       descKey: 'progetti.item3.desc',
-      techs: ['HTML5', 'CSS3', 'Accessibilità', 'UI Library'],
+      techs: ['HTML5', 'CSS3', 'a11y', 'UI Library'],
+      categories: ['vanilla'],
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' },
         { labelKey: 'progetti.link.demo', url: 'https://byloth.github.io/clay-vue/' }
@@ -64,86 +100,28 @@ export class ProgettiComponent implements OnInit {
       titleKey: 'progetti.item4.title',
       descKey: 'progetti.item4.desc',
       techs: ['Angular', 'TypeScript', 'CSS3', 'Vercel'],
+      categories: ['angular'],
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/portfolio' }
       ]
     },
     {
-      titleKey: 'progetti.item5.title',
-      descKey: 'progetti.item5.desc',
-      techs: ['HTML', 'CSS', 'JavaScript'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/ristorante' },
-        { labelKey: 'progetti.link.demo', url: 'https://ristorante-taupe.vercel.app' }
-      ]
-    },
-    {
-      titleKey: 'progetti.item6.title',
-      descKey: 'progetti.item6.desc',
-      techs: ['JavaScript', 'CSS', 'HTML'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/stand-up' },
-        { labelKey: 'progetti.link.demo', url: 'https://stand-up-eta.vercel.app' }
-      ]
-    },
-    {
-      titleKey: 'progetti.item7.title',
-      descKey: 'progetti.item7.desc',
-      techs: ['CSS', 'HTML', 'JavaScript'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/simulazioneProjetWork' },
-        { labelKey: 'progetti.link.demo', url: 'https://simulazione-projet-work.vercel.app' }
-      ]
-    },
-    {
       titleKey: 'progetti.item8.title',
       descKey: 'progetti.item8.desc',
       techs: ['Angular', 'TypeScript', 'CSS3', 'TMDB API', 'Vercel'],
+      categories: ['angular'],
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/cinema' },
         { labelKey: 'progetti.link.demo', url: 'https://cinema-app-theta.vercel.app' }
       ]
     },
-
-    {
-      titleKey: 'progetti.item9.title',
-      descKey: 'progetti.item9.desc',
-      techs: ['Angular', 'TypeScript', 'CSS3'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/F1' },
-        { labelKey: 'progetti.link.demo', url: 'https://f1-dashboard-zeta-brown.vercel.app' }
-      ]
-    },
-    {
-      titleKey: 'progetti.item10.title',
-      descKey: 'progetti.item10.desc',
-      techs: ['Angular', 'TypeScript', 'CSS3'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/gym' },
-        { labelKey: 'progetti.link.demo', url: 'https://gym-app-jade-iota.vercel.app' }
-      ]
-    },
-    {
-      titleKey: 'progetti.item11.title',
-      descKey: 'progetti.item11.desc',
-      techs: ['Angular', 'ApexCharts', 'PokéAPI', 'TypeScript'],
-      visibility: 'public',
-      links: [
-        { labelKey: 'progetti.link.github', url: 'https://github.com/LucaMimmo05/pokezone' },
-        { labelKey: 'progetti.link.demo', url: 'https://pokezone-phi.vercel.app' }
-      ]
-    },
     {
       titleKey: 'progetti.item12.title',
       descKey: 'progetti.item12.desc',
       techs: ['Angular', 'Quarkus', 'Java', 'MongoDB', 'SCSS'],
+      categories: ['angular', 'fullstack'],
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github_fe', url: 'https://github.com/LucaMimmo05/taskflow-fe' },
@@ -154,9 +132,76 @@ export class ProgettiComponent implements OnInit {
       titleKey: 'progetti.item13.title',
       descKey: 'progetti.item13.desc',
       techs: ['Quarkus', 'Next.js', 'Java', 'TypeScript', 'CSS'],
+      categories: ['fullstack'],
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/MarcoCorradini0/Gruppo_2_PW_3' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item11.title',
+      descKey: 'progetti.item11.desc',
+      techs: ['Angular', 'ApexCharts', 'PokéAPI', 'TypeScript'],
+      categories: ['angular'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/LucaMimmo05/pokezone' },
+        { labelKey: 'progetti.link.demo', url: 'https://pokezone-phi.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item9.title',
+      descKey: 'progetti.item9.desc',
+      techs: ['Angular', 'TypeScript', 'CSS3'],
+      categories: ['angular'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/F1' },
+        { labelKey: 'progetti.link.demo', url: 'https://f1-dashboard-zeta-brown.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item10.title',
+      descKey: 'progetti.item10.desc',
+      techs: ['Angular', 'TypeScript', 'CSS3'],
+      categories: ['angular'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/gym' },
+        { labelKey: 'progetti.link.demo', url: 'https://gym-app-jade-iota.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item5.title',
+      descKey: 'progetti.item5.desc',
+      techs: ['HTML', 'CSS', 'JavaScript'],
+      categories: ['vanilla'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/ristorante' },
+        { labelKey: 'progetti.link.demo', url: 'https://ristorante-taupe.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item6.title',
+      descKey: 'progetti.item6.desc',
+      techs: ['JavaScript', 'CSS', 'HTML'],
+      categories: ['vanilla'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/stand-up' },
+        { labelKey: 'progetti.link.demo', url: 'https://stand-up-eta.vercel.app' }
+      ]
+    },
+    {
+      titleKey: 'progetti.item7.title',
+      descKey: 'progetti.item7.desc',
+      techs: ['CSS', 'HTML', 'JavaScript'],
+      categories: ['vanilla'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/simulazioneProjetWork' },
+        { labelKey: 'progetti.link.demo', url: 'https://simulazione-projet-work.vercel.app' }
       ]
     }
   ];

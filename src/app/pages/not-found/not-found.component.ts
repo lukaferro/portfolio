@@ -16,7 +16,9 @@ export class NotFoundComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Pagina non trovata',
-      description: 'La pagina che stai cercando non esiste o è stata spostata.'
+      description: 'La pagina che stai cercando non esiste o è stata spostata.',
+      titleKey: 'meta.notfound.title',
+      descKey: 'meta.notfound.desc'
     });
   }
 }

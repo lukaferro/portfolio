@@ -1,26 +1,26 @@
 # Luca Ferro — Portfolio
 
-Portfolio personale sviluppato con **Angular 22** (standalone components), tema scuro con accento arancione, animazioni particellari e supporto multilingua.
+Portfolio personale sviluppato con **Angular 22** (standalone components), tema scuro con accento arancione, animazioni particellari, accessibilità WCAG (a11y) e supporto multilingua (IT/EN).
+
+🔗 **Live Demo:** [portfolio-five-sand-51.vercel.app](https://portfolio-five-sand-51.vercel.app)
 
 ## Tecnologie
 
-- **Angular 22** — framework standalone con lazy loading
+- **Angular 22** — framework standalone con lazy loading, signals e view transitions
 - **TypeScript 6** — strict mode
-- **CSS3** — custom properties, glassmorphism, view transitions
-- **Vercel** — deployment con serverless function per il form contatti
+- **CSS3** — custom properties, glassmorphism, view transitions, `prefers-reduced-motion`
+- **Vercel** — deployment con serverless function per il form contatti e reCAPTCHA v3
 - **Nodemailer** — invio email dal form contatti
 
 ## Struttura
 
 | Pagina | Rotta | Descrizione |
 |--------|-------|-------------|
-| Home | `/` | Hero con typewriter, foto profilo |
-| Studi | `/studi` | Timeline percorso formativo |
-| Esperienze | `/esperienze` | Timeline esperienze lavorative |
-| Progetti | `/progetti` | Card progetti con tech tags |
-| Certificazioni | `/certificazioni` | Elenco certificazioni |
-| Competenze | `/competenze` | Skill cloud e soft skills |
-| Contatti | `/contatti` | Info contatto + form |
+| Home | `/` | Hero con typewriter, bio professionale, top skills e timeline sintetica |
+| Formazione e Competenze | `/formazione` | Competenze tecniche, Tecnologie e Concetti, Certificazioni, Soft Skills e Studi |
+| Esperienze | `/esperienze` | Timeline esperienze lavorative e professionali con tech tags |
+| Progetti | `/progetti` | Griglia progetti filtrabile per tecnologia (Angular, Blazor/.NET, Full-Stack, HTML/CSS/JS) |
+| Contatti | `/contatti` | Info contatto + form serverless con validazione e reCAPTCHA |
 | 404 | `**` | Pagina personalizzata |
 
 ## Sviluppo
@@ -45,6 +45,7 @@ Per il form contatti, configurare su Vercel:
 
 - `EMAIL_USER` — indirizzo Gmail
 - `EMAIL_PASS` — app password Gmail
+- `RECAPTCHA_SECRET_KEY` — chiave segreta Google reCAPTCHA v3
 
 ## Contatti
 

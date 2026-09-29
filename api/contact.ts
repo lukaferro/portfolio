@@ -10,6 +10,17 @@ interface VercelRequest extends IncomingMessage {
   body?: Record<string, string>;
 }
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = process.env['RECAPTCHA_SECRET_KEY'];
   if (!secretKey) return true;
@@ -35,14 +46,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const { nome, email, oggetto, messaggio, recaptchaToken } = req.body ?? {};
 
-  if (!nome || !email || !oggetto || !messaggio) {
+  if (!nome?.trim() || !email?.trim() || !oggetto?.trim() || !messaggio?.trim()) {
     return res.status(400).json({ error: 'Tutti i campi sono obbligatori.' });
+  }
+
+  if (!EMAIL_REGEX.test(email.trim())) {
+    return res.status(400).json({ error: 'Indirizzo email non valido.' });
   }
 
   const captchaValid = await verifyRecaptcha(recaptchaToken ?? '');
   if (!captchaValid) {
     console.warn('reCAPTCHA verification failed or timed out, proceeding anyway');
   }
+
+  const safeNome = escapeHtml(nome.trim());
+  const safeEmail = escapeHtml(email.trim());
+  const safeOggetto = escapeHtml(oggetto.trim());
+  const safeMessaggio = escapeHtml(messaggio.trim()).replace(/\n/g, '<br>');
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -54,17 +74,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await transporter.sendMail({
-      from: `"${nome}" <${process.env['EMAIL_USER']}>`,
-      replyTo: email,
+      from: `"${safeNome}" <${process.env['EMAIL_USER']}>`,
+      replyTo: email.trim(),
       to: process.env['EMAIL_USER'],
-      subject: `[Portfolio] ${oggetto}`,
+      subject: `[Portfolio] ${oggetto.trim()}`,
       html: `
         <h3>Nuovo messaggio dal portfolio</h3>
-        <p><strong>Nome:</strong> ${nome}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Oggetto:</strong> ${oggetto}</p>
+        <p><strong>Nome:</strong> ${safeNome}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Oggetto:</strong> ${safeOggetto}</p>
         <p><strong>Messaggio:</strong></p>
-        <p>${(messaggio ?? '').replace(/\n/g, '<br>')}</p>
+        <p>${safeMessaggio}</p>
       `,
     });
 

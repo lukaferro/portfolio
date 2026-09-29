@@ -8,6 +8,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 declare const grecaptcha: any;
 
 const RECAPTCHA_SITE_KEY = '6LeW-F8tAAAAAEh9kWALjsR5Qe7t0BKm7JDf-sWz';
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 @Component({
   selector: 'app-contatti',
@@ -25,7 +26,9 @@ export class ContattiComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Contatti',
-      description: 'Contatta Luca Ferro per collaborazioni, progetti o opportunità lavorative.'
+      description: 'Contatta Luca Ferro per collaborazioni, progetti o opportunità lavorative.',
+      titleKey: 'meta.contatti.title',
+      descKey: 'meta.contatti.desc'
     });
     this.loadRecaptcha();
   }
@@ -39,6 +42,7 @@ export class ContattiComponent implements OnInit {
     script.onload = () => this.recaptchaLoaded = true;
     document.head.appendChild(script);
   }
+
   formData = {
     nome: '',
     email: '',
@@ -55,8 +59,14 @@ export class ContattiComponent implements OnInit {
     this.inviato = false;
     this.cdr.detectChanges();
 
-    if (!this.formData.nome || !this.formData.email || !this.formData.oggetto || !this.formData.messaggio) {
+    if (!this.formData.nome.trim() || !this.formData.email.trim() || !this.formData.oggetto.trim() || !this.formData.messaggio.trim()) {
       this.errore = this.ts.t('contatti.form.error.required');
+      this.cdr.detectChanges();
+      return;
+    }
+
+    if (!EMAIL_REGEX.test(this.formData.email.trim())) {
+      this.errore = this.ts.t('contatti.form.error.email');
       this.cdr.detectChanges();
       return;
     }

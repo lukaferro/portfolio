@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lukaferro.github.io/portfolio/</loc>
+    <loc>https://portfolio-five-sand-51.vercel.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lukaferro.github.io/portfolio/formazione</loc>
+    <loc>https://portfolio-five-sand-51.vercel.app/formazione</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lukaferro.github.io/portfolio/esperienze</loc>
+    <loc>https://portfolio-five-sand-51.vercel.app/esperienze</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lukaferro.github.io/portfolio/progetti</loc>
+    <loc>https://portfolio-five-sand-51.vercel.app/progetti</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lukaferro.github.io/portfolio/contatti</loc>
+    <loc>https://portfolio-five-sand-51.vercel.app/contatti</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

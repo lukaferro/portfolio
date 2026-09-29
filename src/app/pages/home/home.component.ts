@@ -60,7 +60,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Home',
-      description: 'Portfolio di Luca Ferro, Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo web.'
+      description: 'Portfolio di Luca Ferro, Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo web.',
+      titleKey: 'meta.home.title',
+      descKey: 'meta.home.desc'
     });
     this.tick();
   }

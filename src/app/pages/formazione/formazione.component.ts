@@ -67,7 +67,9 @@ export class FormazioneComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
-      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, TypeScript, Blazor, C#, .NET, Java, PHP e Anthropic Claude AI.'
+      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, TypeScript, Blazor, C#, .NET, Java, PHP e Anthropic Claude AI.',
+      titleKey: 'meta.formazione.title',
+      descKey: 'meta.formazione.desc'
     });
 
     this.route.fragment.subscribe(fragment => {
