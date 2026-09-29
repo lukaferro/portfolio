@@ -35,6 +35,7 @@
 .hero-section .main-title,
 .hero-section .role-title,
 .hero-section .description,
+.hero-section .bio,
 .hero-section .image-content {
     opacity: 0;
 }
@@ -53,6 +54,10 @@
 
 .hero-section.loaded .description {
     animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.55s forwards;
+}
+
+.hero-section.loaded .bio {
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.65s forwards;
 }
 
 .hero-section.loaded .image-content {
@@ -103,6 +108,15 @@
     color: #fff;
     font-size: 1.1rem;
     font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+.bio {
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 520px;
 }
 
 .image-content {
@@ -349,6 +363,10 @@
         flex-direction: column-reverse;
         text-align: center;
         margin-top: 6rem;
+    }
+
+    .bio {
+        margin: 0 auto;
     }
 
     .main-title {

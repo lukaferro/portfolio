@@ -5,6 +5,7 @@
             <h1 class="main-title">LUCA FERRO</h1>
             <h2 class="role-title"><span [innerHTML]="displayedHtml"></span><span class="blink">|</span></h2>
             <p class="description">{{ 'home.description' | translate }}</p>
+            <p class="bio">{{ 'home.bio' | translate }}</p>
         </div>
         <div class="image-content">
             <div class="image-glow" aria-hidden="true"></div>
@@ -41,7 +42,7 @@
             <div class="home-timeline-item">
                 <div class="home-timeline-dot"></div>
                 <div class="home-timeline-content">
-                    <span class="home-timeline-date">{{ item.date }}</span>
+                    <span class="home-timeline-date">{{ item.dateKey | translate }}</span>
                     <h4>{{ item.titleKey | translate }}</h4>
                     <p>{{ item.subtitleKey | translate }}</p>
                 </div>

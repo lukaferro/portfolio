@@ -24,6 +24,15 @@
     }
   </div>
 
+  <div class="concepts-section" appScrollFade>
+    <h3 class="concepts-title">{{ 'competenze.concepts' | translate }}</h3>
+    <div class="concepts-tags">
+      @for (conceptKey of concepts; track conceptKey) {
+        <span class="concept-badge">{{ conceptKey | translate }}</span>
+      }
+    </div>
+  </div>
+
   <h2 class="section-subtitle" appScrollFade>{{ 'formazione.certifications' | translate }}</h2>
 
   <div class="certs-grid" appScrollFade>
@@ -51,9 +60,23 @@
           @if (cert.links && cert.links.length > 0) {
             <div class="cert-links">
               @for (link of cert.links; track link.url) {
-                <a [href]="link.url" target="_blank" rel="noopener" class="cert-link">{{ link.label }}</a>
+                <a [href]="link.url" target="_blank" rel="noopener" class="cert-link">
+                  {{ link.labelKey ? (link.labelKey | translate) : link.label }}
+                </a>
+              }
+              @if (cert.extraLinks && showAllCerts) {
+                @for (extra of cert.extraLinks; track extra.url) {
+                  <a [href]="extra.url" target="_blank" rel="noopener" class="cert-link cert-link-extra">
+                    {{ extra.labelKey ? (extra.labelKey | translate) : extra.label }}
+                  </a>
+                }
               }
             </div>
+            @if (cert.extraLinks && cert.extraLinks.length > 0) {
+              <button type="button" class="cert-toggle-btn" (click)="toggleAllCerts()" [attr.aria-expanded]="showAllCerts">
+                {{ (showAllCerts ? 'certificazioni.show_less' : 'certificazioni.show_all') | translate }}
+              </button>
+            }
           }
         </div>
       </div>
@@ -84,7 +107,7 @@
           <p>{{ item.descKey | translate }}</p>
           @if (item.pdfUrl) {
             <div class="timeline-links">
-              <a [href]="item.pdfUrl" target="_blank" rel="noopener" class="timeline-link">Visualizza documento →</a>
+              <a [href]="item.pdfUrl" target="_blank" rel="noopener" class="timeline-link">{{ 'studi.view_doc' | translate }}</a>
             </div>
           }
         </div>

@@ -12,7 +12,7 @@ interface TopSkill {
 }
 
 interface HomeTimelineItem {
-  date: string;
+  dateKey: string;
   titleKey: string;
   subtitleKey: string;
 }
@@ -31,21 +31,22 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     { name: 'Angular', level: 90, color: '#ff9900' },
     { name: 'TypeScript', level: 85, color: '#ff9900' },
     { name: 'JavaScript', level: 85, color: '#ff9900' },
-    { name: 'HTML5', level: 90, color: '#ff9900' },
-    { name: 'Java', level: 75, color: '#4fc3f7' },
-    { name: 'CSS3', level: 85, color: '#ff9900' }
+    { name: 'HTML5 / CSS3', level: 90, color: '#ff9900' },
+    { name: 'Blazor', level: 75, color: '#ff9900' },
+    { name: 'C# / .NET', level: 70, color: '#4fc3f7' },
+    { name: 'Java', level: 75, color: '#4fc3f7' }
   ];
 
   homeTimeline: HomeTimelineItem[] = [
-    { date: 'Ago 2026 — Presente', titleKey: 'esperienze.item1.title', subtitleKey: 'esperienze.item1.subtitle' },
-    { date: '2024 — 2026', titleKey: 'studi.item1.title', subtitleKey: 'studi.item1.subtitle' },
-    { date: 'Gen — Mag 2026', titleKey: 'esperienze.item2.title', subtitleKey: 'esperienze.item2.subtitle' },
-    { date: 'Giu — Lug 2025', titleKey: 'esperienze.item3.title', subtitleKey: 'esperienze.item3.subtitle' },
-    { date: 'Mag 2023 — Mag 2024', titleKey: 'esperienze.item4.title', subtitleKey: 'esperienze.item4.subtitle' }
+    { dateKey: 'esperienze.item1.date', titleKey: 'esperienze.item1.title', subtitleKey: 'esperienze.item1.subtitle' },
+    { dateKey: 'studi.item1.date', titleKey: 'studi.item1.title', subtitleKey: 'studi.item1.subtitle' },
+    { dateKey: 'esperienze.item2.date', titleKey: 'esperienze.item2.title', subtitleKey: 'esperienze.item2.subtitle' },
+    { dateKey: 'esperienze.item3.date', titleKey: 'esperienze.item3.title', subtitleKey: 'esperienze.item3.subtitle' },
+    { dateKey: 'esperienze.item4.date', titleKey: 'esperienze.item4.title', subtitleKey: 'esperienze.item4.subtitle' }
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
-    { text: 'WEB DEVELOPER', highlight: [4, 11] },
+    { text: 'WEB DEVELOPER', highlight: [4, 13] },
     { text: 'FRONT-END', highlight: [0, 9] }
   ];
 

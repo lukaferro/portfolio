@@ -25,7 +25,8 @@ interface SkillCategory {
 }
 
 interface CertificationLink {
-  label: string;
+  label?: string;
+  labelKey?: string;
   url: string;
 }
 
@@ -36,6 +37,7 @@ interface Certification {
   descKey: string;
   skills?: string[];
   links?: CertificationLink[];
+  extraLinks?: CertificationLink[];
 }
 
 interface SoftSkill {
@@ -56,10 +58,16 @@ export class FormazioneComponent implements OnInit {
   private meta = inject(MetaService);
   private route = inject(ActivatedRoute);
 
+  showAllCerts = false;
+
+  toggleAllCerts(): void {
+    this.showAllCerts = !this.showAllCerts;
+  }
+
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
-      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, TypeScript, Blazor, .NET, Java, PHP e Anthropic Claude AI.'
+      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, TypeScript, Blazor, C#, .NET, Java, PHP e Anthropic Claude AI.'
     });
 
     this.route.fragment.subscribe(fragment => {
@@ -81,8 +89,8 @@ export class FormazioneComponent implements OnInit {
         { name: 'JavaScript', level: 85 },
         { name: 'HTML5', level: 90 },
         { name: 'CSS3', level: 85 },
-        { name: 'Blazor', level: 70 },
-        { name: 'React', level: 60 },
+        { name: 'Blazor', level: 75 },
+        { name: 'React', level: 55 },
         { name: 'Next.js', level: 50 }
       ]
     },
@@ -91,11 +99,9 @@ export class FormazioneComponent implements OnInit {
       color: '#4fc3f7',
       skills: [
         { name: 'Java', level: 75 },
-        { name: 'Quarkus', level: 70 },
-        { name: 'C#', level: 65 },
-        { name: '.NET', level: 60 },
-        { name: 'PHP', level: 50 },
-        { name: 'Python', level: 40 }
+        { name: 'C#', level: 70 },
+        { name: '.NET', level: 70 },
+        { name: 'PHP', level: 65 }
       ]
     },
     {
@@ -103,21 +109,31 @@ export class FormazioneComponent implements OnInit {
       color: '#81c784',
       skills: [
         { name: 'SQL', level: 75 },
-        { name: 'MySQL', level: 70 },
+        { name: 'MySQL', level: 75 },
         { name: 'MongoDB', level: 60 },
-        { name: 'Redis', level: 30 }
+        { name: 'Redis', level: 40 }
       ]
     },
     {
       labelKey: 'competenze.cat.tools',
       color: '#ce93d8',
       skills: [
-        { name: 'VS Code', level: 90 },
+        { name: 'Visual Studio Code', level: 90 },
         { name: 'Git', level: 80 },
-        { name: 'Figma', level: 70 },
+        { name: 'Figma', level: 75 },
         { name: 'Adobe Illustrator', level: 65 }
       ]
     }
+  ];
+
+  concepts: string[] = [
+    'competenze.concept.responsive',
+    'competenze.concept.design_system',
+    'competenze.concept.a11y',
+    'competenze.concept.state',
+    'competenze.concept.rest',
+    'competenze.concept.validation',
+    'competenze.concept.refactoring'
   ];
 
   softSkills: SoftSkill[] = [
@@ -137,29 +153,41 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item4.issuer',
       dateKey: 'certificazioni.item4.date',
       descKey: 'certificazioni.item4.desc',
-      skills: ['AI Literacy', 'Claude', 'API Anthropic', 'MCP', 'Claude Code'],
+      skills: ['Claude API', 'MCP', 'Claude Code', 'AWS Bedrock', 'Google Cloud (GCP)', 'Subagents'],
       links: [
+        { label: 'Building with the Claude API', url: '/certificazioni/claude/claude-anthropic-api.pdf' },
+        { label: 'MCP Advanced Topics', url: '/certificazioni/claude/mcp-advanced-topics.pdf' },
+        { label: 'Claude Code in Action', url: '/certificazioni/claude/claude-code-in-action.pdf' },
+        { label: 'Claude in Amazon Bedrock (AWS)', url: '/certificazioni/claude/claude-bedrock.pdf' },
+        { label: 'Claude on Google Cloud (GCP)', url: '/certificazioni/claude/claude-google-cloud.pdf' },
+        { label: 'Introduction to Subagents', url: '/certificazioni/claude/introduction-to-subagents.pdf' }
+      ],
+      extraLinks: [
         { label: 'Claude 101', url: '/certificazioni/claude/claude-101.pdf' },
         { label: 'Claude Platform 101', url: '/certificazioni/claude/claude-platform-101.pdf' },
         { label: 'Claude Code 101', url: '/certificazioni/claude/claude-code-101.pdf' },
-        { label: 'Claude Code in Action', url: '/certificazioni/claude/claude-code-in-action.pdf' },
         { label: 'Intro Claude Cowork', url: '/certificazioni/claude/intro-claude-cowork.pdf' },
-        { label: 'Claude with Anthropic API', url: '/certificazioni/claude/claude-anthropic-api.pdf' },
-        { label: 'AI Fluency: Foundations', url: '/certificazioni/claude/ai-fluency-foundations.pdf' },
         { label: 'Intro Model Context Protocol', url: '/certificazioni/claude/intro-mcp.pdf' },
+        { label: 'Introduction to Agent Skills', url: '/certificazioni/claude/introduction-to-agent-skills.pdf' },
+        { label: 'AI Capabilities and Limitations', url: '/certificazioni/claude/ai-capabilities-and-limitations.pdf' },
+        { label: 'AI Fluency: Foundations', url: '/certificazioni/claude/ai-fluency-foundations.pdf' },
+        { label: 'AI Fluency for Builders', url: '/certificazioni/claude/ai-fluency-for-builders.pdf' },
+        { label: 'AI Fluency for Small Businesses', url: '/certificazioni/claude/ai-fluency-for-small-businesses.pdf' },
+        { label: 'AI Fluency for Nonprofits', url: '/certificazioni/claude/ai-fluency-for-nonprofits.pdf' },
         { label: 'AI Fluency for Educators', url: '/certificazioni/claude/ai-fluency-educators.pdf' },
         { label: 'AI Fluency for Students', url: '/certificazioni/claude/ai-fluency-students.pdf' },
-        { label: 'MCP Advanced Topics', url: '/certificazioni/claude/mcp-advanced-topics.pdf' },
-        { label: 'Claude with Amazon Bedrock', url: '/certificazioni/claude/claude-bedrock.pdf' },
-        { label: 'Claude on Google Cloud', url: '/certificazioni/claude/claude-google-cloud.pdf' },
-        { label: 'Teaching AI Fluency', url: '/certificazioni/claude/teaching-ai-fluency.pdf' },
-        { label: 'AI Fluency for nonprofit', url: '/certificazioni/claude/ai-fluency-for-nonprofits.pdf' },
-        { label: 'Introduction to agent skills', url: '/certificazioni/claude/introduction-to-agent-skills.pdf' },
-        { label: 'Introduction to subagents', url: '/certificazioni/claude/introduction-to-subagents.pdf' },
-        { label: 'AI Capabilities and Limitations', url: '/certificazioni/claude/ai-capabilities-and-limitations.pdf' },
-        { label: 'AI Fluency for Small Businesses', url: '/certificazioni/claude/ai-fluency-for-small-businesses.pdf' },
-        { label: 'AI Fluency for Builders', url: '/certificazioni/claude/ai-fluency-for-builders.pdf' },
-        { label: 'AI Fluency for K-12 Educators', url: '/certificazioni/claude/ai-fluency-for-k-12-educators.pdf' }
+        { label: 'AI Fluency for K-12 Educators', url: '/certificazioni/claude/ai-fluency-for-k-12-educators.pdf' },
+        { label: 'Teaching AI Fluency', url: '/certificazioni/claude/teaching-ai-fluency.pdf' }
+      ]
+    },
+    {
+      titleKey: 'certificazioni.item1.title',
+      issuerKey: 'certificazioni.item1.issuer',
+      dateKey: 'certificazioni.item1.date',
+      descKey: 'certificazioni.item1.desc',
+      skills: ['Angular', 'TypeScript', 'Java', 'MySQL', 'UX / UI', 'DevOps'],
+      links: [
+        { labelKey: 'certificazioni.view_cert', url: '/certificazioni/its-web-developer.pdf' }
       ]
     },
     {
@@ -169,7 +197,7 @@ export class FormazioneComponent implements OnInit {
       descKey: 'certificazioni.item3.desc',
       skills: ['Comunicazione Pubblica', 'Privacy', 'Accessibilità Web', 'Usabilità Web'],
       links: [
-        { label: 'Visualizza attestato →', url: '/certificazioni/corso-mosaico.pdf' }
+        { labelKey: 'certificazioni.view_cert', url: '/certificazioni/corso-mosaico.pdf' }
       ]
     },
     {
@@ -179,7 +207,7 @@ export class FormazioneComponent implements OnInit {
       descKey: 'certificazioni.item2.desc',
       skills: ['Project Management', 'Turismo Sostenibile', 'Comunicazione Pubblica'],
       links: [
-        { label: 'Visualizza attestato →', url: '/certificazioni/servizio-civile.pdf' }
+        { labelKey: 'certificazioni.view_cert', url: '/certificazioni/servizio-civile.pdf' }
       ]
     }
   ];
