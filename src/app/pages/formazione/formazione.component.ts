@@ -47,6 +47,13 @@ interface SoftSkill {
   rotation: number;
 }
 
+interface LanguageSkill {
+  nameKey: string;
+  levelKey: string;
+  descKey?: string;
+  badge: string;
+}
+
 @Component({
   selector: 'app-formazione',
   imports: [ScrollFadeDirective, SkillBarDirective, TranslatePipe],
@@ -67,7 +74,7 @@ export class FormazioneComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
-      description: 'Competenze tecniche, certificazioni e percorso di studi: Angular, TypeScript, Blazor, C#, .NET, Java, PHP e Anthropic Claude AI.',
+      description: 'Competenze tecniche, certificazioni e formazione: Angular, TypeScript, Blazor, C#, .NET, Java, PHP, API REST, database relazionali e conformità a11y (WCAG 2.1).',
       titleKey: 'meta.formazione.title',
       descKey: 'meta.formazione.desc'
     });
@@ -88,42 +95,47 @@ export class FormazioneComponent implements OnInit {
       skills: [
         { name: 'Angular', level: 90 },
         { name: 'TypeScript', level: 85 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'HTML5', level: 90 },
-        { name: 'CSS3', level: 85 },
-        { name: 'Blazor', level: 75 },
-        { name: 'React', level: 55 },
-        { name: 'Next.js', level: 50 }
+        { name: 'JavaScript (ES6+)', level: 85 },
+        { name: 'HTML5 / CSS3 (SASS)', level: 90 },
+        { name: 'Blazor WebAssembly', level: 80 },
+        { name: 'React', level: 60 },
+        { name: 'UI/UX Design System', level: 85 },
+        { name: 'Web Accessibility (WCAG 2.1 / a11y)', level: 90 }
       ]
     },
     {
       labelKey: 'competenze.cat.backend',
       color: '#4fc3f7',
       skills: [
+        { name: 'C# (.NET / Blazor – Produzione)', level: 85 },
+        { name: 'Web API RESTful', level: 85 },
         { name: 'Java', level: 75 },
-        { name: 'C#', level: 70 },
-        { name: '.NET', level: 70 },
-        { name: 'PHP', level: 65 }
+        { name: 'PHP', level: 70 },
+        { name: 'Python', level: 65 }
       ]
     },
     {
       labelKey: 'competenze.cat.database',
       color: '#81c784',
       skills: [
-        { name: 'SQL', level: 75 },
-        { name: 'MySQL', level: 75 },
-        { name: 'MongoDB', level: 60 },
-        { name: 'Redis', level: 40 }
+        { name: 'MySQL', level: 80 },
+        { name: 'SQL Server', level: 75 },
+        { name: 'MongoDB (NoSQL)', level: 65 },
+        { name: 'Redis', level: 50 }
       ]
     },
     {
       labelKey: 'competenze.cat.tools',
       color: '#ce93d8',
       skills: [
-        { name: 'Visual Studio Code', level: 90 },
-        { name: 'Git', level: 80 },
+        { name: 'Visual Studio / VS Code', level: 90 },
+        { name: 'Git / GitHub', level: 85 },
+        { name: 'Postman', level: 80 },
+        { name: 'Vercel', level: 80 },
+        { name: 'Docker', level: 70 },
         { name: 'Figma', level: 75 },
-        { name: 'Adobe Illustrator', level: 65 }
+        { name: 'Adobe Illustrator', level: 65 },
+        { name: 'npm', level: 85 }
       ]
     }
   ];
@@ -135,7 +147,14 @@ export class FormazioneComponent implements OnInit {
     'competenze.concept.state',
     'competenze.concept.rest',
     'competenze.concept.validation',
-    'competenze.concept.refactoring'
+    'competenze.concept.refactoring',
+    'competenze.concept.cybersecurity',
+    'competenze.concept.ai'
+  ];
+
+  languages: LanguageSkill[] = [
+    { nameKey: 'lingue.it', levelKey: 'lingue.it.level', badge: 'IT' },
+    { nameKey: 'lingue.en', levelKey: 'lingue.en.level', descKey: 'lingue.en.desc', badge: 'EN' }
   ];
 
   softSkills: SoftSkill[] = [
@@ -155,14 +174,14 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item4.issuer',
       dateKey: 'certificazioni.item4.date',
       descKey: 'certificazioni.item4.desc',
-      skills: ['Claude API', 'MCP', 'Claude Code', 'AWS Bedrock', 'Google Cloud (GCP)', 'Subagents'],
+      skills: ['Claude API', 'MCP', 'Subagents', 'Claude Code', 'AWS Bedrock', 'GCP Vertex AI'],
       links: [
         { label: 'Building with the Claude API', url: '/certificazioni/claude/claude-anthropic-api.pdf' },
         { label: 'MCP Advanced Topics', url: '/certificazioni/claude/mcp-advanced-topics.pdf' },
+        { label: 'Introduction to Subagents', url: '/certificazioni/claude/introduction-to-subagents.pdf' },
         { label: 'Claude Code in Action', url: '/certificazioni/claude/claude-code-in-action.pdf' },
         { label: 'Claude in Amazon Bedrock (AWS)', url: '/certificazioni/claude/claude-bedrock.pdf' },
-        { label: 'Claude on Google Cloud (GCP)', url: '/certificazioni/claude/claude-google-cloud.pdf' },
-        { label: 'Introduction to Subagents', url: '/certificazioni/claude/introduction-to-subagents.pdf' }
+        { label: 'Claude on Google Cloud (GCP)', url: '/certificazioni/claude/claude-google-cloud.pdf' }
       ],
       extraLinks: [
         { label: 'Claude 101', url: '/certificazioni/claude/claude-101.pdf' },
@@ -187,7 +206,7 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item1.issuer',
       dateKey: 'certificazioni.item1.date',
       descKey: 'certificazioni.item1.desc',
-      skills: ['Angular', 'TypeScript', 'Java', 'MySQL', 'UX / UI', 'DevOps'],
+      skills: ['Full-Stack', 'Angular', 'TypeScript', 'Java', 'PHP', 'MySQL', 'Docker', 'WCAG 2.1'],
       links: [
         { labelKey: 'certificazioni.view_cert', url: '/certificazioni/its-web-developer.pdf' }
       ]
@@ -207,7 +226,7 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item2.issuer',
       dateKey: 'certificazioni.item2.date',
       descKey: 'certificazioni.item2.desc',
-      skills: ['Project Management', 'Turismo Sostenibile', 'Comunicazione Pubblica'],
+      skills: ['Servizi Camerali', 'Digitalizzazione', 'Relazioni Utenza & Imprese'],
       links: [
         { labelKey: 'certificazioni.view_cert', url: '/certificazioni/servizio-civile.pdf' }
       ]

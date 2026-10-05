@@ -33,6 +33,25 @@
     </div>
   </div>
 
+  <h2 class="section-subtitle" appScrollFade>{{ 'lingue.title' | translate }}</h2>
+
+  <div class="languages-grid" appScrollFade>
+    @for (lang of languages; track lang.badge) {
+      <div class="language-card">
+        <div class="language-badge">{{ lang.badge }}</div>
+        <div class="language-info">
+          <div class="language-header">
+            <span class="language-name">{{ lang.nameKey | translate }}</span>
+            <span class="language-level">{{ lang.levelKey | translate }}</span>
+          </div>
+          @if (lang.descKey) {
+            <p class="language-desc">{{ lang.descKey | translate }}</p>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
   <h2 class="section-subtitle" appScrollFade>{{ 'formazione.certifications' | translate }}</h2>
 
   <div class="certs-grid" appScrollFade>

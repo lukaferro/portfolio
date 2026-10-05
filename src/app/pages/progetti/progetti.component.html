@@ -1,7 +1,7 @@
 <section class="page-section">
   <h1 class="page-title" appScrollFade>{{ 'progetti.title' | translate }}</h1>
 
-  <div class="filter-bar" role="group" aria-label="Filtra progetti per tecnologia" appScrollFade>
+  <div class="filter-bar" role="group" [attr.aria-label]="'progetti.filter.aria' | translate" appScrollFade>
     @for (f of filters; track f.id) {
       <button
         type="button"

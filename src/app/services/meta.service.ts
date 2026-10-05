@@ -46,7 +46,7 @@ export class MetaService {
     this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
     this.meta.updateTag({ name: 'twitter:title', content: `${title} | Luca Ferro` });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:image', content: `${this.baseUrl}/me.png` });
-    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/me.png` });
+    this.meta.updateTag({ name: 'twitter:image', content: `${this.baseUrl}/me.webp` });
+    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/me.webp` });
   }
 }

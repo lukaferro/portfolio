@@ -80,7 +80,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item2.title',
       descKey: 'progetti.item2.desc',
-      techs: ['Blazor', 'C#', '.NET', 'Figma', 'UI/UX'],
+      techs: ['Blazor', 'C#', '.NET', 'SQL', 'UI/UX'],
       categories: ['blazor', 'fullstack'],
       links: [],
       visibility: 'nda'
@@ -88,7 +88,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item3.title',
       descKey: 'progetti.item3.desc',
-      techs: ['HTML5', 'CSS3', 'a11y', 'UI Library'],
+      techs: ['HTML5', 'CSS3', 'WCAG 2.1 / a11y', 'Claymorphism'],
       categories: ['vanilla'],
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' },

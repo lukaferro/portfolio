@@ -354,3 +354,55 @@
     justify-content: center;
   }
 }
+
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.language-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+.language-badge {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #ff9900;
+  background: rgba(255, 153, 0, 0.12);
+  border: 1px solid rgba(255, 153, 0, 0.3);
+  border-radius: 8px;
+  padding: 6px 10px;
+  line-height: 1;
+}
+.language-info { flex: 1; }
+.language-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.language-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+}
+.language-level {
+  font-size: 0.85rem;
+  color: #ff9900;
+  font-weight: 600;
+}
+.language-desc {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.4;
+  margin: 0;
+}

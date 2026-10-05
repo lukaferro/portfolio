@@ -30,11 +30,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   topSkills: TopSkill[] = [
     { name: 'Angular', level: 90, color: '#ff9900' },
     { name: 'TypeScript', level: 85, color: '#ff9900' },
-    { name: 'JavaScript', level: 85, color: '#ff9900' },
+    { name: 'C# / .NET / Blazor', level: 85, color: '#ff9900' },
     { name: 'HTML5 / CSS3', level: 90, color: '#ff9900' },
-    { name: 'Blazor', level: 75, color: '#ff9900' },
-    { name: 'C# / .NET', level: 70, color: '#4fc3f7' },
-    { name: 'Java', level: 75, color: '#4fc3f7' }
+    { name: 'Web API RESTful', level: 80, color: '#4fc3f7' },
+    { name: 'Java', level: 75, color: '#4fc3f7' },
+    { name: 'MySQL / SQL Server', level: 75, color: '#81c784' },
+    { name: 'Git / Docker', level: 75, color: '#ce93d8' }
   ];
 
   homeTimeline: HomeTimelineItem[] = [
@@ -46,8 +47,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
-    { text: 'WEB DEVELOPER', highlight: [4, 13] },
-    { text: 'FRONT-END', highlight: [0, 9] }
+    { text: 'FULL-STACK DEVELOPER', highlight: [0, 10] },
+    { text: 'WEB DEVELOPER', highlight: [4, 13] }
   ];
 
   displayedHtml = '';
@@ -60,7 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Home',
-      description: 'Portfolio di Luca Ferro, Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo web.',
+      description: 'Portfolio di Luca Ferro, Full-Stack Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo web completo.',
       titleKey: 'meta.home.title',
       descKey: 'meta.home.desc'
     });
