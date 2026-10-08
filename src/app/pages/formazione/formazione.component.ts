@@ -4,6 +4,7 @@ import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { skillLevelKey } from '../../utils/skill-level';
 
 interface TimelineItem {
   dateKey: string;
@@ -44,7 +45,6 @@ interface SoftSkill {
   icon: string;
   labelKey: string;
   color: string;
-  rotation: number;
 }
 
 interface LanguageSkill {
@@ -64,6 +64,8 @@ interface LanguageSkill {
 export class FormazioneComponent implements OnInit {
   private meta = inject(MetaService);
   private route = inject(ActivatedRoute);
+
+  readonly skillLevelKey = skillLevelKey;
 
   showAllCerts = false;
 
@@ -107,7 +109,7 @@ export class FormazioneComponent implements OnInit {
       labelKey: 'competenze.cat.backend',
       color: '#4fc3f7',
       skills: [
-        { name: 'C# (.NET / Blazor – Produzione)', level: 85 },
+        { name: 'C# / .NET / Blazor', level: 85 },
         { name: 'Web API RESTful', level: 85 },
         { name: 'Java', level: 75 },
         { name: 'PHP', level: 70 },
@@ -158,14 +160,14 @@ export class FormazioneComponent implements OnInit {
   ];
 
   softSkills: SoftSkill[] = [
-    { icon: '🤝', labelKey: 'competenze.teamwork', color: '#ff9900', rotation: -3 },
-    { icon: '💬', labelKey: 'competenze.communication', color: '#4fc3f7', rotation: 2 },
-    { icon: '📋', labelKey: 'competenze.organization', color: '#81c784', rotation: -1.5 },
-    { icon: '🧠', labelKey: 'competenze.problemsolving', color: '#ce93d8', rotation: 3.5 },
-    { icon: '🔄', labelKey: 'competenze.adaptability', color: '#ff8a65', rotation: -2 },
-    { icon: '📚', labelKey: 'competenze.selflearning', color: '#4dd0e1', rotation: 1.5 },
-    { icon: '⚡', labelKey: 'competenze.proactivity', color: '#ffd54f', rotation: -4 },
-    { icon: '❤️', labelKey: 'competenze.empathy', color: '#f48fb1', rotation: 2.5 }
+    { icon: '🤝', labelKey: 'competenze.teamwork', color: '#ff9900' },
+    { icon: '💬', labelKey: 'competenze.communication', color: '#4fc3f7' },
+    { icon: '📋', labelKey: 'competenze.organization', color: '#81c784' },
+    { icon: '🧠', labelKey: 'competenze.problemsolving', color: '#ce93d8' },
+    { icon: '🔄', labelKey: 'competenze.adaptability', color: '#ff8a65' },
+    { icon: '📚', labelKey: 'competenze.selflearning', color: '#4dd0e1' },
+    { icon: '⚡', labelKey: 'competenze.proactivity', color: '#ffd54f' },
+    { icon: '❤️', labelKey: 'competenze.empathy', color: '#f48fb1' }
   ];
 
   certifications: Certification[] = [
@@ -216,7 +218,7 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item3.issuer',
       dateKey: 'certificazioni.item3.date',
       descKey: 'certificazioni.item3.desc',
-      skills: ['Comunicazione Pubblica', 'Privacy', 'Accessibilità Web', 'Usabilità Web'],
+      skills: ['tag.public_comm', 'Privacy', 'tag.web_a11y', 'tag.web_usability'],
       links: [
         { labelKey: 'certificazioni.view_cert', url: '/certificazioni/corso-mosaico.pdf' }
       ]
@@ -226,7 +228,7 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item2.issuer',
       dateKey: 'certificazioni.item2.date',
       descKey: 'certificazioni.item2.desc',
-      skills: ['Servizi Camerali', 'Digitalizzazione', 'Relazioni Utenza & Imprese'],
+      skills: ['tag.chamber_services', 'tag.digitalization', 'tag.business_relations'],
       links: [
         { labelKey: 'certificazioni.view_cert', url: '/certificazioni/servizio-civile.pdf' }
       ]
