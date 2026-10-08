@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, afterNextRender, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, afterNextRender, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
@@ -55,10 +55,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   /** Typed text split around the highlighted range, rendered without innerHTML. */
-  typedBefore = '';
-  typedHighlight = '';
-  typedAfter = '';
-  heroLoaded = false;
+  // Signals, not plain fields: the typing timers start in afterNextRender, which runs outside
+  // the Angular zone, so plain field updates would never be rendered.
+  readonly typedBefore = signal('');
+  readonly typedHighlight = signal('');
+  readonly typedAfter = signal('');
+  readonly heroLoaded = signal(false);
   private phraseIndex = 0;
   private charIndex = 0;
   private deleting = false;
@@ -80,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.setTyped(text, highlight);
 
     afterNextRender(() => {
-      setTimeout(() => this.heroLoaded = true);
+      setTimeout(() => this.heroLoaded.set(true));
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       this.charIndex = 0;
       this.setTyped('', highlight);
@@ -118,8 +120,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private setTyped(visible: string, [start, end]: [number, number]): void {
-    this.typedBefore = visible.substring(0, start);
-    this.typedHighlight = visible.substring(start, end);
-    this.typedAfter = visible.substring(end);
+    this.typedBefore.set(visible.substring(0, start));
+    this.typedHighlight.set(visible.substring(start, end));
+    this.typedAfter.set(visible.substring(end));
   }
 }
