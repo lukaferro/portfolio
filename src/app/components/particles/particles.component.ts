@@ -1,14 +1,29 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, inject, viewChild } from '@angular/core';
 
 interface Particle {
+  /** Current position and velocity */
   x: number;
   y: number;
   vx: number;
   vy: number;
+  /** Home position: slowly drifts across the screen and pulls the particle back (no permanent holes) */
+  hx: number;
+  hy: number;
+  hvx: number;
+  hvy: number;
   size: number;
   opacity: number;
-  drift: number;
+  /** 0..1, how lit-up the particle is by the cursor (smoothed) */
+  glow: number;
 }
+
+interface Pointer {
+  x: number;
+  y: number;
+  active: boolean;
+}
+
+const COLOR = '255, 153, 0';
 
 @Component({
   selector: 'app-particles',
@@ -30,17 +45,27 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   private zone = inject(NgZone);
 
   private ctx: CanvasRenderingContext2D | null = null;
+  private width = 0;
+  private height = 0;
   private particles: Particle[] = [];
-  private mouse = { x: -1000, y: -1000 };
+  /** Particles currently lit by the cursor, reused every frame to draw the links */
+  private lit: Particle[] = [];
+  private pointer: Pointer = { x: 0, y: 0, active: false };
   private animationId = 0;
   private running = false;
+
   private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   private readonly isMobile = window.innerWidth < 768;
-  private readonly count = this.isMobile ? 60 : 700;
-  private readonly mouseRadius = this.isMobile ? 80 : 280;
-  private readonly mouseForce = this.isMobile ? 0.004 : 0.07;
-  private readonly damping = this.isMobile ? 0.94 : 0.955;
-  private readonly speed = this.isMobile ? 0.06 : 0.12;
+  private readonly count = this.isMobile ? 70 : 650;
+  /** Radius in which particles light up and link together */
+  private readonly hoverRadius = this.isMobile ? 120 : 180;
+  /** Smaller radius in which particles are gently pushed away */
+  private readonly repelRadius = this.isMobile ? 60 : 85;
+  private readonly repelForce = this.isMobile ? 0.5 : 0.7;
+  private readonly linkDistance = this.isMobile ? 70 : 85;
+  private readonly spring = 0.012;
+  private readonly damping = 0.88;
+  private readonly driftSpeed = this.isMobile ? 0.08 : 0.12;
 
   ngAfterViewInit() {
     this.ctx = this.canvasRef().nativeElement.getContext('2d');
@@ -58,9 +83,10 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
     // Animation and pointer tracking run outside Angular: they never touch bindings,
     // so there is no reason to trigger change detection on every frame / mouse move.
     this.zone.runOutsideAngular(() => {
-      document.addEventListener('mousemove', this.onMouseMove, { passive: true });
-      document.addEventListener('touchmove', this.onTouchMove, { passive: true });
-      document.addEventListener('touchend', this.onTouchEnd, { passive: true });
+      document.addEventListener('pointermove', this.onPointerMove, { passive: true });
+      document.addEventListener('pointerdown', this.onPointerDown, { passive: true });
+      document.addEventListener('pointerup', this.onPointerUp, { passive: true });
+      document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
       document.addEventListener('visibilitychange', this.onVisibilityChange);
       window.addEventListener('resize', this.onResize);
       this.start();
@@ -69,29 +95,47 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.stop();
-    document.removeEventListener('mousemove', this.onMouseMove);
-    document.removeEventListener('touchmove', this.onTouchMove);
-    document.removeEventListener('touchend', this.onTouchEnd);
+    document.removeEventListener('pointermove', this.onPointerMove);
+    document.removeEventListener('pointerdown', this.onPointerDown);
+    document.removeEventListener('pointerup', this.onPointerUp);
+    document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
     document.removeEventListener('visibilitychange', this.onVisibilityChange);
     window.removeEventListener('resize', this.onResize);
     window.removeEventListener('resize', this.onResizeStatic);
   }
 
-  private onMouseMove = (e: MouseEvent) => {
-    this.mouse.x = e.clientX;
-    this.mouse.y = e.clientY;
+  private onPointerMove = (e: PointerEvent) => {
+    this.pointer.x = e.clientX;
+    this.pointer.y = e.clientY;
+    this.pointer.active = true;
   };
 
-  private onTouchMove = (e: TouchEvent) => {
-    if (e.touches.length > 0) {
-      this.mouse.x = e.touches[0].clientX;
-      this.mouse.y = e.touches[0].clientY;
+  /** Click / tap: a shockwave that pushes particles outwards; the springs bring them back. */
+  private onPointerDown = (e: PointerEvent) => {
+    this.pointer.x = e.clientX;
+    this.pointer.y = e.clientY;
+    this.pointer.active = true;
+    const radius = this.isMobile ? 160 : 240;
+    for (const p of this.particles) {
+      const dx = p.x - e.clientX;
+      const dy = p.y - e.clientY;
+      const dist = Math.hypot(dx, dy);
+      if (dist < radius && dist > 0.5) {
+        const impulse = (1 - dist / radius) * 9;
+        p.vx += (dx / dist) * impulse;
+        p.vy += (dy / dist) * impulse;
+        p.glow = 1;
+      }
     }
   };
 
-  private onTouchEnd = () => {
-    this.mouse.x = -1000;
-    this.mouse.y = -1000;
+  /** On touch screens the finger lifts off: stop reacting where it was. */
+  private onPointerUp = (e: PointerEvent) => {
+    if (e.pointerType !== 'mouse') this.pointer.active = false;
+  };
+
+  private onPointerLeave = () => {
+    this.pointer.active = false;
   };
 
   private onVisibilityChange = () => {
@@ -102,10 +146,22 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
     }
   };
 
-  private onResize = () => this.resize();
+  private onResize = () => {
+    const oldW = this.width;
+    const oldH = this.height;
+    this.resize();
+    // Keep the distribution even: scale home positions to the new viewport
+    const sx = this.width / oldW;
+    const sy = this.height / oldH;
+    for (const p of this.particles) {
+      p.hx *= sx;
+      p.hy *= sy;
+    }
+  };
 
   private onResizeStatic = () => {
     this.resize();
+    this.initParticles();
     this.draw();
   };
 
@@ -122,34 +178,34 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
 
   private resize() {
     const canvas = this.canvasRef().nativeElement;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    canvas.width = this.width;
+    canvas.height = this.height;
   }
 
   private createParticle(x: number, y: number): Particle {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = this.driftSpeed * (0.3 + Math.random() * 0.7);
     return {
       x,
       y,
-      vx: (Math.random() - 0.5) * this.speed,
-      vy: (Math.random() - 0.5) * this.speed,
-      size: Math.random() * 2 + 0.8,
-      opacity: Math.random() * 0.35 + 0.1,
-      drift: (Math.random() - 0.5) * 0.002,
+      vx: 0,
+      vy: 0,
+      hx: x,
+      hy: y,
+      hvx: Math.cos(angle) * speed,
+      hvy: Math.sin(angle) * speed,
+      size: Math.random() * 1.8 + 0.8,
+      opacity: Math.random() * 0.35 + 0.12,
+      glow: 0,
     };
   }
 
   private initParticles() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    if (this.isMobile) {
-      this.particles = Array.from({ length: this.count }, () =>
-        this.createParticle(Math.random() * w, Math.random() * h)
-      );
-      return;
-    }
-
-    // Distribute particles on a jittered grid so the desktop background looks even.
+    const w = this.width;
+    const h = this.height;
+    // Jittered grid: an even starting distribution with no clumps or gaps
     const cols = Math.ceil(Math.sqrt(this.count * (w / h)));
     const rows = Math.ceil(this.count / cols);
     const cellW = w / cols;
@@ -170,43 +226,92 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   };
 
   private update() {
-    const { width, height } = this.canvasRef().nativeElement;
+    const { width, height, pointer } = this;
+    const margin = 20;
+    this.lit.length = 0;
 
     for (const p of this.particles) {
-      const dx = this.mouse.x - p.x;
-      const dy = this.mouse.y - p.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      // Home drifts; wrapping teleports particle and home together, off-screen
+      p.hx += p.hvx;
+      p.hy += p.hvy;
+      if (p.hx < -margin) { p.hx += width + margin * 2; p.x += width + margin * 2; }
+      else if (p.hx > width + margin) { p.hx -= width + margin * 2; p.x -= width + margin * 2; }
+      if (p.hy < -margin) { p.hy += height + margin * 2; p.y += height + margin * 2; }
+      else if (p.hy > height + margin) { p.hy -= height + margin * 2; p.y -= height + margin * 2; }
 
-      if (dist < this.mouseRadius && dist > 1) {
-        const force = ((this.mouseRadius - dist) / this.mouseRadius) * this.mouseForce;
-        p.vx -= (dx / dist) * force;
-        p.vy -= (dy / dist) * force;
+      // Spring towards home
+      let ax = (p.hx - p.x) * this.spring;
+      let ay = (p.hy - p.y) * this.spring;
+
+      let targetGlow = 0;
+      if (pointer.active) {
+        const dx = p.x - pointer.x;
+        const dy = p.y - pointer.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < this.hoverRadius) {
+          targetGlow = 1 - dist / this.hoverRadius;
+          if (dist < this.repelRadius && dist > 0.5) {
+            const t = 1 - dist / this.repelRadius;
+            const f = t * t * this.repelForce;
+            ax += (dx / dist) * f;
+            ay += (dy / dist) * f;
+          }
+        }
       }
 
-      p.vx += p.drift;
-      p.vy += p.drift * 0.5;
-      p.vx *= this.damping;
-      p.vy *= this.damping;
+      p.vx = (p.vx + ax) * this.damping;
+      p.vy = (p.vy + ay) * this.damping;
       p.x += p.vx;
       p.y += p.vy;
 
-      if (p.x < -30 || p.x > width + 30 || p.y < -30 || p.y > height + 30) {
-        Object.assign(p, this.createParticle(Math.random() * width, Math.random() * height));
-      }
+      p.glow += (targetGlow - p.glow) * (targetGlow > p.glow ? 0.25 : 0.04);
+      if (p.glow > 0.04) this.lit.push(p);
     }
   }
 
   private draw() {
     const ctx = this.ctx;
     if (!ctx) return;
-    const { width, height } = this.canvasRef().nativeElement;
 
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = 'rgb(255, 153, 0)';
+    ctx.clearRect(0, 0, this.width, this.height);
+
+    // Soft halo under the cursor
+    if (this.pointer.active && !this.reducedMotion) {
+      const { x, y } = this.pointer;
+      const halo = ctx.createRadialGradient(x, y, 0, x, y, this.hoverRadius);
+      halo.addColorStop(0, `rgba(${COLOR}, 0.07)`);
+      halo.addColorStop(1, `rgba(${COLOR}, 0)`);
+      ctx.fillStyle = halo;
+      ctx.fillRect(x - this.hoverRadius, y - this.hoverRadius, this.hoverRadius * 2, this.hoverRadius * 2);
+    }
+
+    // Constellation: thin links between nearby lit particles
+    const lit = this.lit;
+    const maxDist = this.linkDistance;
+    ctx.lineWidth = 0.7;
+    for (let i = 0; i < lit.length; i++) {
+      const a = lit[i];
+      for (let j = i + 1; j < lit.length; j++) {
+        const b = lit[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 > maxDist * maxDist) continue;
+        const alpha = (1 - Math.sqrt(d2) / maxDist) * Math.min(a.glow, b.glow) * 0.45;
+        ctx.strokeStyle = `rgba(${COLOR}, ${alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    // Particles: lit ones get brighter and slightly bigger
+    ctx.fillStyle = `rgb(${COLOR})`;
     for (const p of this.particles) {
-      ctx.globalAlpha = p.opacity;
+      ctx.globalAlpha = Math.min(1, p.opacity + p.glow * 0.6);
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, p.size * (1 + p.glow * 0.5), 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.globalAlpha = 1;
