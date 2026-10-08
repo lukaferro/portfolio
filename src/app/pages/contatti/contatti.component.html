@@ -31,32 +31,42 @@
       <div class="form-row">
         <div class="form-group">
           <label for="nome">{{ 'contatti.form.name' | translate }}</label>
-          <input type="text" id="nome" name="nome" [(ngModel)]="formData.nome" [placeholder]="'contatti.form.name.placeholder' | translate" required aria-required="true">
+          <input type="text" id="nome" name="nome" autocomplete="name" [maxlength]="maxLength.nome" [(ngModel)]="formData.nome" [placeholder]="'contatti.form.name.placeholder' | translate" required aria-required="true">
         </div>
         <div class="form-group">
           <label for="email">{{ 'contatti.form.email' | translate }}</label>
-          <input type="email" id="email" name="email" [(ngModel)]="formData.email" [placeholder]="'contatti.form.email.placeholder' | translate" required aria-required="true">
+          <input type="email" id="email" name="email" autocomplete="email" [maxlength]="maxLength.email" [(ngModel)]="formData.email" [placeholder]="'contatti.form.email.placeholder' | translate" required aria-required="true">
         </div>
       </div>
       <div class="form-group">
         <label for="oggetto">{{ 'contatti.form.subject' | translate }}</label>
-        <input type="text" id="oggetto" name="oggetto" [(ngModel)]="formData.oggetto" [placeholder]="'contatti.form.subject.placeholder' | translate" required aria-required="true">
+        <input type="text" id="oggetto" name="oggetto" [maxlength]="maxLength.oggetto" [(ngModel)]="formData.oggetto" [placeholder]="'contatti.form.subject.placeholder' | translate" required aria-required="true">
       </div>
       <div class="form-group">
         <label for="messaggio">{{ 'contatti.form.message' | translate }}</label>
-        <textarea id="messaggio" name="messaggio" [(ngModel)]="formData.messaggio" [placeholder]="'contatti.form.message.placeholder' | translate" rows="5" required aria-required="true"></textarea>
+        <textarea id="messaggio" name="messaggio" [maxlength]="maxLength.messaggio" [(ngModel)]="formData.messaggio" [placeholder]="'contatti.form.message.placeholder' | translate" rows="5" required aria-required="true"></textarea>
       </div>
 
-      @if (errore) {
-        <div class="form-message error" role="alert" aria-live="assertive">{{ errore }}</div>
-      }
-      @if (inviato) {
-        <div class="form-message success" role="status" aria-live="polite">{{ 'contatti.form.success' | translate }}</div>
-      }
+      <!-- Honeypot: hidden from users and assistive tech, bots tend to fill it -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" [(ngModel)]="formData.website">
+      </div>
+
+      <div class="form-feedback" aria-live="polite">
+        @if (erroreKey) {
+          <div class="form-message error" role="alert">{{ erroreKey | translate }}</div>
+        }
+        @if (inviato) {
+          <div class="form-message success" role="status">{{ 'contatti.form.success' | translate }}</div>
+        }
+      </div>
 
       <button type="submit" class="submit-btn" [disabled]="caricamento" [attr.aria-busy]="caricamento">
         {{ caricamento ? ('contatti.form.sending' | translate) : ('contatti.form.submit' | translate) }}
       </button>
+
+      <p class="recaptcha-notice">{{ 'contatti.form.recaptcha_notice' | translate }}</p>
     </form>
   </div>
 </section>

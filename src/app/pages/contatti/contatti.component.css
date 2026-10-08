@@ -37,9 +37,7 @@
   height: 28px;
 }
 
-.info-card h2,
-.info-card h2,
-.info-card h3 {
+.info-card h2 {
   font-size: 0.75rem;
   color: #ff9900;
   font-weight: 700;
@@ -54,7 +52,7 @@
   color: #ddd;
   margin: 0;
   text-decoration: none;
-  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .info-card a:hover {
@@ -162,6 +160,26 @@
   font-family: inherit;
   width: fit-content;
   align-self: center;
+}
+
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-feedback:empty {
+  display: none;
+}
+
+.recaptcha-notice {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #8a8a8a;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .submit-btn:disabled {
