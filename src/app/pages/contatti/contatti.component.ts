@@ -17,6 +17,11 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /** Server error codes (see api/contact.ts) that have a dedicated message. */
 const KNOWN_ERRORS = ['required', 'email', 'too_long', 'captcha'];
 
+interface Feedback {
+  type: 'success' | 'error';
+  key: string;
+}
+
 @Component({
   selector: 'app-contatti',
   imports: [FormsModule, ScrollFadeDirective, TranslatePipe],
@@ -39,11 +44,10 @@ export class ContattiComponent implements OnInit, OnDestroy {
     website: ''
   };
 
-  inviato = false;
-  /** Translation key of the current error, so the message follows language changes */
-  erroreKey = '';
+  /** Floating toast: overlays the page so the form never shifts. Key-based so it follows language changes. */
+  feedback: Feedback | null = null;
   caricamento = false;
-  private successTimeout: ReturnType<typeof setTimeout> | undefined;
+  private feedbackTimeout: ReturnType<typeof setTimeout> | undefined;
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -56,7 +60,7 @@ export class ContattiComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearTimeout(this.successTimeout);
+    clearTimeout(this.feedbackTimeout);
   }
 
   private loadRecaptcha(): void {
@@ -79,23 +83,29 @@ export class ContattiComponent implements OnInit, OnDestroy {
     return Promise.race([tokenPromise, timeout]).catch(() => '');
   }
 
-  private setError(key: string): void {
-    this.erroreKey = key;
+  private showFeedback(type: Feedback['type'], key: string): void {
+    clearTimeout(this.feedbackTimeout);
+    this.feedback = { type, key };
+    this.cdr.detectChanges();
+    this.feedbackTimeout = setTimeout(() => this.dismissFeedback(), type === 'success' ? 6000 : 9000);
+  }
+
+  dismissFeedback(): void {
+    clearTimeout(this.feedbackTimeout);
+    this.feedback = null;
     this.cdr.detectChanges();
   }
 
   async inviaForm() {
     const { nome, email, oggetto, messaggio } = this.formData;
-    this.erroreKey = '';
-    this.inviato = false;
-    clearTimeout(this.successTimeout);
+    this.dismissFeedback();
 
     if (!nome.trim() || !email.trim() || !oggetto.trim() || !messaggio.trim()) {
-      return this.setError('contatti.form.error.required');
+      return this.showFeedback('error', 'contatti.form.error.required');
     }
 
     if (!EMAIL_REGEX.test(email.trim())) {
-      return this.setError('contatti.form.error.email');
+      return this.showFeedback('error', 'contatti.form.error.email');
     }
 
     this.caricamento = true;
@@ -115,18 +125,14 @@ export class ContattiComponent implements OnInit, OnDestroy {
         // The body may not be JSON (e.g. a platform error page): never surface parser errors.
         const data = await res.json().catch(() => null) as { error?: string } | null;
         const code = data?.error ?? '';
-        this.erroreKey = KNOWN_ERRORS.includes(code) ? `contatti.form.error.${code}` : 'contatti.form.error.generic';
+        this.showFeedback('error', KNOWN_ERRORS.includes(code) ? `contatti.form.error.${code}` : 'contatti.form.error.generic');
         return;
       }
 
-      this.inviato = true;
       this.formData = { nome: '', email: '', oggetto: '', messaggio: '', website: '' };
-      this.successTimeout = setTimeout(() => {
-        this.inviato = false;
-        this.cdr.detectChanges();
-      }, 6000);
+      this.showFeedback('success', 'contatti.form.success');
     } catch {
-      this.erroreKey = 'contatti.form.error.connection';
+      this.showFeedback('error', 'contatti.form.error.connection');
     } finally {
       this.caricamento = false;
       this.cdr.detectChanges();

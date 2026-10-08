@@ -51,15 +51,6 @@
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" [(ngModel)]="formData.website">
         </div>
 
-        <div class="form-feedback" aria-live="polite">
-          @if (erroreKey) {
-            <div class="form-message error" role="alert">{{ erroreKey | translate }}</div>
-          }
-          @if (inviato) {
-            <div class="form-message success" role="status">{{ 'contatti.form.success' | translate }}</div>
-          }
-        </div>
-
         <button type="submit" class="submit-btn" [disabled]="caricamento" [attr.aria-busy]="caricamento">
           {{ caricamento ? ('contatti.form.sending' | translate) : ('contatti.form.submit' | translate) }}
         </button>
@@ -67,5 +58,16 @@
         <p class="recaptcha-notice">{{ 'contatti.form.recaptcha_notice' | translate }}</p>
       </form>
     </div>
+  </div>
+
+  <!-- Toast outside the form: appearing never shifts the layout -->
+  <div class="toast-region" aria-live="polite" aria-atomic="true">
+    @if (feedback; as fb) {
+      <div class="toast" [class.toast-error]="fb.type === 'error'">
+        <span class="toast-icon" aria-hidden="true">{{ fb.type === 'success' ? '✓' : '!' }}</span>
+        <span class="toast-text">{{ fb.key | translate }}</span>
+        <button type="button" class="toast-close" (click)="dismissFeedback()" [attr.aria-label]="'contatti.toast.close' | translate">×</button>
+      </div>
+    }
   </div>
 </section>
