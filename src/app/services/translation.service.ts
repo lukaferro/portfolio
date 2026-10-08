@@ -203,7 +203,6 @@ export class TranslationService {
 
       'contatti.title': 'Contatti',
       'contatti.email': 'Email',
-      'contatti.phone': 'Telefono',
       'contatti.location': 'Località',
       'contatti.location.value': '21100 Varese, Italia',
       'contatti.details': 'Recapiti',
@@ -432,7 +431,6 @@ export class TranslationService {
 
       'contatti.title': 'Contact',
       'contatti.email': 'Email',
-      'contatti.phone': 'Phone',
       'contatti.location': 'Location',
       'contatti.location.value': '21100 Varese, Italy',
       'contatti.details': 'Contact details',
