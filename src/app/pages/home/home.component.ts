@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   topSkills: TopSkill[] = [
     { name: 'Angular', level: 90, color: '#ff9900' },
     { name: 'TypeScript', level: 85, color: '#ff9900' },
-    { name: 'Blazor', level: 80, color: '#ff9900' },
+    { name: 'Blazor (C#)', level: 80, color: '#ff9900' },
     { name: 'HTML5 / CSS3', level: 90, color: '#ff9900' },
-    { name: 'C# / .NET', level: 70, color: '#4fc3f7' },
-    { name: 'Web API RESTful', level: 70, color: '#4fc3f7' },
-    { name: 'MySQL / SQL Server', level: 70, color: '#81c784' },
-    { name: 'Git / GitHub', level: 75, color: '#ce93d8' }
+    { name: 'skill.a11y', level: 90, color: '#ff9900' },
+    { name: 'API REST', level: 75, color: '#4fc3f7' },
+    { name: 'MySQL / SQL', level: 70, color: '#81c784' },
+    { name: 'Git / GitHub', level: 80, color: '#ce93d8' }
   ];
 
   homeTimeline: HomeTimelineItem[] = [
@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
-    { text: 'FULL-STACK DEVELOPER', highlight: [0, 10] },
-    { text: 'WEB DEVELOPER', highlight: [4, 13] }
+    { text: 'WEB DEVELOPER', highlight: [4, 13] },
+    { text: 'FRONTEND & UI', highlight: [0, 8] }
   ];
 
   /** Typed text split around the highlighted range, rendered without innerHTML. */
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Home',
-      description: 'Portfolio di Luca Ferro, Full-Stack Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo web completo.',
+      description: 'Portfolio di Luca Ferro, Web Developer Frontend & UI. Scopri i miei progetti, competenze ed esperienze nello sviluppo di interfacce web con Angular, TypeScript e Blazor/.NET.',
       titleKey: 'meta.home.title',
       descKey: 'meta.home.desc'
     });

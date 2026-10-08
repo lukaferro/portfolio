@@ -50,7 +50,7 @@ export class ProgettiComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Progetti',
-      description: 'I miei progetti di sviluppo web: siti aziendali in Angular, piattaforme B2B in Blazor/.NET, UI Component Library accessibili e applicazioni full-stack.',
+      description: 'I miei progetti di sviluppo web: siti aziendali in Angular, piattaforme B2B in Blazor/.NET, UI Component Library accessibili in Vue.js e applicazioni web.',
       titleKey: 'meta.progetti.title',
       descKey: 'meta.progetti.desc'
     });
@@ -90,11 +90,11 @@ export class ProgettiComponent implements OnInit {
 
   projects: Project[] = [
     {
-      repo: 'fm-group/showcase-sites',
+      repo: 'fm-group/aftersaleshub',
       titleKey: 'progetti.item1.title',
       descKey: 'progetti.item1.desc',
-      techs: ['Angular', 'TypeScript', 'PHP', 'Figma', 'Responsive'],
-      categories: ['angular', 'fullstack'],
+      techs: ['Angular', 'TypeScript', 'Figma', 'i18n', 'PHP'],
+      categories: ['angular'],
       links: [],
       visibility: 'nda'
     },
@@ -102,15 +102,15 @@ export class ProgettiComponent implements OnInit {
       repo: 'fm-group/easywebparts',
       titleKey: 'progetti.item2.title',
       descKey: 'progetti.item2.desc',
-      techs: ['Blazor', 'C#', '.NET', 'SQL', 'UI/UX'],
-      categories: ['blazor', 'fullstack'],
+      techs: ['Blazor', 'C#', '.NET', 'API REST', 'WCAG 2.1'],
+      categories: ['blazor'],
       links: [],
       visibility: 'nda'
     },
     {
       titleKey: 'progetti.item3.title',
       descKey: 'progetti.item3.desc',
-      techs: ['HTML5', 'CSS3', 'WCAG 2.1 / a11y', 'Claymorphism'],
+      techs: ['Vue.js', 'HTML5', 'CSS3 / SASS', 'WCAG 2.1 / a11y', 'Claymorphism'],
       categories: ['vanilla'],
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' },
@@ -142,7 +142,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item12.title',
       descKey: 'progetti.item12.desc',
-      techs: ['Angular', 'Quarkus', 'Java', 'MongoDB', 'SCSS'],
+      techs: ['Angular', 'Quarkus', 'Java', 'SCSS'],
       categories: ['angular', 'fullstack'],
       visibility: 'public',
       links: [
