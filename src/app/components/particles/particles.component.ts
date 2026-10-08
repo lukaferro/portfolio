@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, inject, viewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnDestroy, afterNextRender, inject, viewChild } from '@angular/core';
 
 interface Particle {
   /** Current position and velocity */
@@ -40,7 +40,7 @@ const COLOR = '255, 153, 0';
     }
   `]
 })
-export class ParticlesComponent implements AfterViewInit, OnDestroy {
+export class ParticlesComponent implements OnDestroy {
   readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
   private zone = inject(NgZone);
 
@@ -54,20 +54,39 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   private animationId = 0;
   private running = false;
 
-  private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  private readonly isMobile = window.innerWidth < 768;
-  private readonly count = this.isMobile ? 70 : 650;
+  // Viewport-dependent settings, resolved in the browser only (there is no window while pre-rendering)
+  private reducedMotion = false;
+  private isMobile = false;
+  private count = 650;
   /** Radius in which particles light up and link together */
-  private readonly hoverRadius = this.isMobile ? 120 : 180;
+  private hoverRadius = 180;
   /** Smaller radius in which particles are gently pushed away */
-  private readonly repelRadius = this.isMobile ? 60 : 85;
-  private readonly repelForce = this.isMobile ? 0.5 : 0.7;
-  private readonly linkDistance = this.isMobile ? 70 : 85;
+  private repelRadius = 85;
+  private repelForce = 0.7;
+  private linkDistance = 85;
   private readonly spring = 0.012;
   private readonly damping = 0.88;
-  private readonly driftSpeed = this.isMobile ? 0.08 : 0.12;
+  private driftSpeed = 0.12;
 
-  ngAfterViewInit() {
+  constructor() {
+    afterNextRender(() => this.init());
+  }
+
+  private configure() {
+    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.isMobile = window.innerWidth < 768;
+    if (this.isMobile) {
+      this.count = 70;
+      this.hoverRadius = 120;
+      this.repelRadius = 60;
+      this.repelForce = 0.5;
+      this.linkDistance = 70;
+      this.driftSpeed = 0.08;
+    }
+  }
+
+  private init() {
+    this.configure();
     this.ctx = this.canvasRef().nativeElement.getContext('2d');
     if (!this.ctx) return;
 
@@ -94,6 +113,7 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (typeof document === 'undefined') return;
     this.stop();
     document.removeEventListener('pointermove', this.onPointerMove);
     document.removeEventListener('pointerdown', this.onPointerDown);

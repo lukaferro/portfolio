@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject, DOCUMENT } from '@angular/core';
 
 type Translations = Record<string, string>;
 
@@ -22,10 +22,13 @@ function readStoredLang(): Lang {
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
+  private readonly document = inject(DOCUMENT);
+
+  /** During pre-rendering there is no localStorage: readStoredLang() falls back to 'it'. */
   readonly currentLang = signal<Lang>(readStoredLang());
 
   constructor() {
-    document.documentElement.lang = this.currentLang();
+    this.document.documentElement.lang = this.currentLang();
   }
 
   private readonly translations: Record<Lang, Translations> = {
@@ -494,7 +497,7 @@ export class TranslationService {
   setLang(lang: Lang): void {
     if (!isLang(lang)) return;
     this.currentLang.set(lang);
-    document.documentElement.lang = lang;
+    this.document.documentElement.lang = lang;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch {
