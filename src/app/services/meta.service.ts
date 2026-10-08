@@ -62,8 +62,8 @@ export class MetaService {
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: `${title} | Luca Ferro` });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:image', content: `${this.baseUrl}/og-image.png` });
-    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/og-image.png` });
+    this.meta.updateTag({ name: 'twitter:image', content: `${this.baseUrl}/og-image.jpg` });
+    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/og-image.jpg` });
   }
 
   private setCanonical(url: string): void {
