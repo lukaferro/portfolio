@@ -2,21 +2,33 @@ import { Injectable, signal, computed } from '@angular/core';
 
 type Translations = Record<string, string>;
 
-interface TranslationSet {
-  [lang: string]: Translations;
-  it: Translations;
-  en: Translations;
+export type Lang = 'it' | 'en';
+
+const SUPPORTED_LANGS: readonly Lang[] = ['it', 'en'];
+const STORAGE_KEY = 'portfolio-lang';
+
+function isLang(value: unknown): value is Lang {
+  return SUPPORTED_LANGS.includes(value as Lang);
+}
+
+function readStoredLang(): Lang {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return isLang(stored) ? stored : 'it';
+  } catch {
+    return 'it';
+  }
 }
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
-  private readonly storageKey = 'portfolio-lang';
+  readonly currentLang = signal<Lang>(readStoredLang());
 
-  readonly currentLang = signal<string>(
-    (typeof localStorage !== 'undefined' ? localStorage.getItem(this.storageKey) : null) || 'it'
-  );
+  constructor() {
+    document.documentElement.lang = this.currentLang();
+  }
 
-  private readonly translations: TranslationSet = {
+  private readonly translations: Record<Lang, Translations> = {
     it: {
       'nav.home': 'HOME',
       'nav.formazione': 'FORMAZIONE',
@@ -192,7 +204,7 @@ export class TranslationService {
       'contatti.title': 'Contatti',
       'contatti.email': 'Email',
       'contatti.phone': 'Telefono',
-      'contatti.location': 'Ubicazione',
+      'contatti.location': 'Località',
       'contatti.location.value': '21100 Varese, Italia',
       'contatti.form.title': 'Scrivimi',
       'contatti.form.name': 'Nome',
@@ -208,12 +220,41 @@ export class TranslationService {
       'contatti.form.success': 'Messaggio inviato con successo! Ti risponderò al più presto.',
       'contatti.form.error.required': 'Tutti i campi sono obbligatori.',
       'contatti.form.error.email': 'Inserisci un indirizzo email valido.',
-      'contatti.form.error.generic': 'Errore nell\'invio del messaggio.',
+      'contatti.form.error.generic': 'Errore nell\'invio del messaggio. Riprova più tardi o scrivimi via email.',
       'contatti.form.error.connection': 'Errore di connessione. Riprova più tardi.',
 
       'notfound.title': 'Pagina non trovata',
       'notfound.desc': 'La pagina che stai cercando non esiste o è stata spostata.',
       'notfound.back': 'Torna alla Home',
+
+      'nav.aria_main': 'Menu principale',
+      'nav.aria_mobile': 'Menu di navigazione',
+      'nav.menu_open': 'Apri menu',
+      'nav.menu_close': 'Chiudi menu',
+      'nav.switch_lang': 'Switch to English',
+      'nav.cv_aria': 'Scarica il CV (PDF, si apre in una nuova scheda)',
+
+      'home.journey': 'Esperienze e formazione',
+      'home.see_experience': 'Vedi tutte le esperienze →',
+      'esperienze.see_skills': 'Vedi competenze e formazione →',
+
+      'level.advanced': 'Avanzato',
+      'level.intermediate': 'Intermedio',
+      'level.basic': 'Base',
+
+      'tag.chamber_services': 'Servizi camerali',
+      'tag.digitalization': 'Digitalizzazione',
+      'tag.business_relations': 'Relazioni con utenza e imprese',
+      'tag.document_management': 'Gestione documentale',
+      'tag.public_comm': 'Comunicazione pubblica',
+      'tag.web_a11y': 'Accessibilità web',
+      'tag.web_usability': 'Usabilità web',
+
+      'progetti.badge.nda': 'Progetto aziendale · NDA',
+
+      'contatti.form.error.too_long': 'Uno dei campi supera la lunghezza massima consentita.',
+      'contatti.form.error.captcha': 'Verifica anti-spam non superata. Riprova, oppure scrivimi direttamente via email.',
+      'contatti.form.recaptcha_notice': 'Questo sito è protetto da reCAPTCHA: si applicano la Privacy Policy e i Termini di servizio di Google.',
     },
     en: {
       'nav.home': 'HOME',
@@ -392,7 +433,7 @@ export class TranslationService {
       'contatti.phone': 'Phone',
       'contatti.location': 'Location',
       'contatti.location.value': '21100 Varese, Italy',
-      'contatti.form.title': 'Write me',
+      'contatti.form.title': 'Get in touch',
       'contatti.form.name': 'Name',
       'contatti.form.name.placeholder': 'Your name',
       'contatti.form.email': 'Email',
@@ -406,24 +447,58 @@ export class TranslationService {
       'contatti.form.success': 'Message sent successfully! I will reply as soon as possible.',
       'contatti.form.error.required': 'All fields are required.',
       'contatti.form.error.email': 'Please enter a valid email address.',
-      'contatti.form.error.generic': 'Error sending message.',
+      'contatti.form.error.generic': 'Error sending the message. Please try again later or email me.',
       'contatti.form.error.connection': 'Connection error. Please try again later.',
 
       'notfound.title': 'Page Not Found',
       'notfound.desc': 'The page you are looking for does not exist or has been moved.',
       'notfound.back': 'Back to Home',
+
+      'nav.aria_main': 'Main menu',
+      'nav.aria_mobile': 'Navigation menu',
+      'nav.menu_open': 'Open menu',
+      'nav.menu_close': 'Close menu',
+      'nav.switch_lang': 'Passa all\'italiano',
+      'nav.cv_aria': 'Download CV (PDF, opens in a new tab)',
+
+      'home.journey': 'Experience & Education',
+      'home.see_experience': 'See all experience →',
+      'esperienze.see_skills': 'See skills & education →',
+
+      'level.advanced': 'Advanced',
+      'level.intermediate': 'Intermediate',
+      'level.basic': 'Basic',
+
+      'tag.chamber_services': 'Chamber services',
+      'tag.digitalization': 'Digitalization',
+      'tag.business_relations': 'Public & business relations',
+      'tag.document_management': 'Document management',
+      'tag.public_comm': 'Public communication',
+      'tag.web_a11y': 'Web accessibility',
+      'tag.web_usability': 'Web usability',
+
+      'progetti.badge.nda': 'Company project · NDA',
+
+      'contatti.form.error.too_long': 'One of the fields exceeds the maximum allowed length.',
+      'contatti.form.error.captcha': 'Anti-spam check failed. Please try again, or email me directly.',
+      'contatti.form.recaptcha_notice': 'This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.',
     }
   };
 
   readonly tr = computed(() => this.translations[this.currentLang()]);
 
-  setLang(lang: string): void {
+  setLang(lang: Lang): void {
+    if (!isLang(lang)) return;
     this.currentLang.set(lang);
-    localStorage.setItem(this.storageKey, lang);
     document.documentElement.lang = lang;
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      // Storage unavailable (private mode / blocked): language still applies for this session.
+    }
   }
 
   t(key: string): string {
-    return this.tr()[key] || key;
+    return this.tr()[key] ?? key;
   }
 }

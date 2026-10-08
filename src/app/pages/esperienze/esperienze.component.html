@@ -3,7 +3,7 @@
 
   <div class="timeline">
     <div class="timeline-item" appScrollFade>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot" aria-hidden="true"></div>
       <div class="timeline-content">
         <span class="timeline-date">{{ 'esperienze.item1.date' | translate }}</span>
         <h2>{{ 'esperienze.item1.title' | translate }}</h2>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="timeline-item" appScrollFade>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot" aria-hidden="true"></div>
       <div class="timeline-content">
         <span class="timeline-date">{{ 'esperienze.item2.date' | translate }}</span>
         <h2>{{ 'esperienze.item2.title' | translate }}</h2>
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="timeline-item" appScrollFade>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot" aria-hidden="true"></div>
       <div class="timeline-content">
         <span class="timeline-date">{{ 'esperienze.item3.date' | translate }}</span>
         <h2>{{ 'esperienze.item3.title' | translate }}</h2>
@@ -57,21 +57,21 @@
       </div>
     </div>
     <div class="timeline-item" appScrollFade>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot" aria-hidden="true"></div>
       <div class="timeline-content">
         <span class="timeline-date">{{ 'esperienze.item4.date' | translate }}</span>
         <h2>{{ 'esperienze.item4.title' | translate }}</h2>
         <h3>{{ 'esperienze.item4.subtitle' | translate }}</h3>
         <p>{{ 'esperienze.item4.desc' | translate }}</p>
         <div class="tech-tags">
-          <span class="tech-tag">Servizi Camerali</span>
-          <span class="tech-tag">Digitalizzazione</span>
-          <span class="tech-tag">Relazioni Imprese</span>
-          <span class="tech-tag">Document Management</span>
+          <span class="tech-tag">{{ 'tag.chamber_services' | translate }}</span>
+          <span class="tech-tag">{{ 'tag.digitalization' | translate }}</span>
+          <span class="tech-tag">{{ 'tag.business_relations' | translate }}</span>
+          <span class="tech-tag">{{ 'tag.document_management' | translate }}</span>
         </div>
       </div>
     </div>
   </div>
 
-  <a routerLink="/formazione" fragment="competenze" class="page-link" appScrollFade>{{ 'home.see_education' | translate }}</a>
+  <a routerLink="/formazione" fragment="competenze" class="page-link" appScrollFade>{{ 'esperienze.see_skills' | translate }}</a>
 </section>
