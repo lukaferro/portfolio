@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, afterNextRender, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
@@ -25,7 +25,7 @@ interface HomeTimelineItem {
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class HomeComponent implements OnInit, OnDestroy {
   private meta = inject(MetaService);
 
   readonly skillLevelKey = skillLevelKey;
@@ -71,17 +71,21 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       titleKey: 'meta.home.title',
       descKey: 'meta.home.desc'
     });
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const { text, highlight } = this.phrases[0];
-      this.setTyped(text, highlight);
-      return;
-    }
-    this.tick();
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => this.heroLoaded = true);
+  constructor() {
+    // Pre-rendered HTML shows the full first phrase; the typing loop runs in the browser only
+    // (an endless timer chain would also keep pre-rendering from ever finishing).
+    const { text, highlight } = this.phrases[0];
+    this.setTyped(text, highlight);
+
+    afterNextRender(() => {
+      setTimeout(() => this.heroLoaded = true);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      this.charIndex = 0;
+      this.setTyped('', highlight);
+      this.tick();
+    });
   }
 
   ngOnDestroy(): void {

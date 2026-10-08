@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectorRef, afterNextRender } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { MetaService } from '../../services/meta.service';
@@ -49,6 +49,10 @@ export class ContattiComponent implements OnInit, OnDestroy {
   caricamento = false;
   private feedbackTimeout: ReturnType<typeof setTimeout> | undefined;
 
+  constructor() {
+    afterNextRender(() => this.loadRecaptcha());
+  }
+
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Contatti',
@@ -56,7 +60,6 @@ export class ContattiComponent implements OnInit, OnDestroy {
       titleKey: 'meta.contatti.title',
       descKey: 'meta.contatti.desc'
     });
-    this.loadRecaptcha();
   }
 
   ngOnDestroy(): void {
