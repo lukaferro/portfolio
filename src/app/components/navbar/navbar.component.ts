@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { Component, ChangeDetectionStrategy, ElementRef, HostListener, inject, viewChild } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { TranslationService } from '../../services/translation.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
@@ -12,7 +12,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 })
 export class NavbarComponent {
   private ts = inject(TranslationService);
-  private router = inject(Router);
+  private readonly hamburger = viewChild<ElementRef<HTMLButtonElement>>('hamburger');
 
   menuOpen = false;
 
@@ -22,6 +22,13 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.menuOpen = false;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (!this.menuOpen) return;
+    this.closeMenu();
+    this.hamburger()?.nativeElement.focus();
   }
 
   toggleLang(): void {

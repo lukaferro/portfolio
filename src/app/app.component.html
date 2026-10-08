@@ -1,6 +1,6 @@
-<a href="#main-content" class="skip-link">{{ 'app.skip_link' | translate }}</a>
+<a href="#main-content" class="skip-link" (click)="skipToMain($event)">{{ 'app.skip_link' | translate }}</a>
 <app-particles aria-hidden="true"></app-particles>
 <app-navbar></app-navbar>
-<main id="main-content">
+<main #main id="main-content" tabindex="-1">
   <router-outlet></router-outlet>
 </main>
