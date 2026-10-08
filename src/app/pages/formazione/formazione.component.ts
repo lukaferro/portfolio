@@ -100,7 +100,7 @@ export class FormazioneComponent implements OnInit {
         { name: 'JavaScript (ES6+)', level: 85 },
         { name: 'HTML5 / CSS3 (SASS)', level: 90 },
         { name: 'Blazor WebAssembly', level: 80 },
-        { name: 'React', level: 60 },
+        { name: 'React', level: 70 },
         { name: 'UI/UX Design System', level: 85 },
         { name: 'Web Accessibility (WCAG 2.1 / a11y)', level: 90 }
       ]
@@ -109,35 +109,35 @@ export class FormazioneComponent implements OnInit {
       labelKey: 'competenze.cat.backend',
       color: '#4fc3f7',
       skills: [
-        { name: 'C# / .NET / Blazor', level: 85 },
-        { name: 'Web API RESTful', level: 85 },
-        { name: 'Java', level: 75 },
-        { name: 'PHP', level: 70 },
-        { name: 'Python', level: 65 }
+        { name: 'C# / .NET', level: 70 },
+        { name: 'Web API RESTful', level: 70 },
+        { name: 'Java', level: 65 },
+        { name: 'PHP', level: 60 },
+        { name: 'Python', level: 55 }
       ]
     },
     {
       labelKey: 'competenze.cat.database',
       color: '#81c784',
       skills: [
-        { name: 'MySQL', level: 80 },
-        { name: 'SQL Server', level: 75 },
-        { name: 'MongoDB (NoSQL)', level: 65 },
-        { name: 'Redis', level: 50 }
+        { name: 'MySQL', level: 70 },
+        { name: 'SQL Server', level: 65 },
+        { name: 'MongoDB (NoSQL)', level: 55 },
+        { name: 'Redis', level: 40 }
       ]
     },
     {
       labelKey: 'competenze.cat.tools',
       color: '#ce93d8',
       skills: [
-        { name: 'Visual Studio / VS Code', level: 90 },
-        { name: 'Git / GitHub', level: 85 },
-        { name: 'Postman', level: 80 },
-        { name: 'Vercel', level: 80 },
-        { name: 'Docker', level: 70 },
-        { name: 'Figma', level: 75 },
-        { name: 'Adobe Illustrator', level: 65 },
-        { name: 'npm', level: 85 }
+        { name: 'Visual Studio / VS Code', level: 75 },
+        { name: 'Git / GitHub', level: 75 },
+        { name: 'Postman', level: 70 },
+        { name: 'Vercel', level: 70 },
+        { name: 'Docker', level: 50 },
+        { name: 'Figma', level: 70 },
+        { name: 'Adobe Illustrator', level: 55 },
+        { name: 'npm', level: 75 }
       ]
     }
   ];
