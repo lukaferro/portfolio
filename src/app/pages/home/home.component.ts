@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   topSkills: TopSkill[] = [
     { name: 'Angular', level: 90, color: '#ff9900' },
     { name: 'TypeScript', level: 85, color: '#ff9900' },
-    { name: 'C# / .NET / Blazor', level: 85, color: '#ff9900' },
+    { name: 'Blazor', level: 80, color: '#ff9900' },
     { name: 'HTML5 / CSS3', level: 90, color: '#ff9900' },
-    { name: 'Web API RESTful', level: 80, color: '#4fc3f7' },
-    { name: 'Java', level: 75, color: '#4fc3f7' },
-    { name: 'MySQL / SQL Server', level: 75, color: '#81c784' },
-    { name: 'Git / Docker', level: 75, color: '#ce93d8' }
+    { name: 'C# / .NET', level: 70, color: '#4fc3f7' },
+    { name: 'Web API RESTful', level: 70, color: '#4fc3f7' },
+    { name: 'MySQL / SQL Server', level: 70, color: '#81c784' },
+    { name: 'Git / GitHub', level: 75, color: '#ce93d8' }
   ];
 
   homeTimeline: HomeTimelineItem[] = [
