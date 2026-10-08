@@ -12,10 +12,10 @@
             <div class="skill-item">
               <div class="skill-info">
                 <span class="skill-name">{{ skill.name }}</span>
-                <span class="skill-percent">{{ skill.level }}%</span>
+                <span class="skill-level">{{ skillLevelKey(skill.level) | translate }}</span>
               </div>
-              <div class="skill-bar" appSkillBar>
-                <div class="skill-fill" [style.width.%]="skill.level" [style.background]="cat.color"></div>
+              <div class="skill-bar" appSkillBar aria-hidden="true">
+                <div class="skill-fill" [style.--level]="skill.level + '%'" [style.background]="cat.color"></div>
               </div>
             </div>
           }
@@ -72,7 +72,7 @@
           @if (cert.skills && cert.skills.length > 0) {
             <div class="cert-skills">
               @for (skill of cert.skills; track skill) {
-                <span class="skill-badge">{{ skill }}</span>
+                <span class="skill-badge">{{ skill | translate }}</span>
               }
             </div>
           }
@@ -106,8 +106,8 @@
 
   <div class="soft-tags" appScrollFade>
     @for (soft of softSkills; track soft.labelKey) {
-      <span class="soft-tag" [style.--tag-color]="soft.color" [style.transform]="'rotate(' + soft.rotation + 'deg)'">
-        <span class="soft-tag-icon">{{ soft.icon }}</span>
+      <span class="soft-tag" [style.--tag-color]="soft.color">
+        <span class="soft-tag-icon" aria-hidden="true">{{ soft.icon }}</span>
         {{ soft.labelKey | translate }}
       </span>
     }
@@ -118,7 +118,7 @@
   <div class="timeline" appScrollFade>
     @for (item of timeline; track item.titleKey) {
       <div class="timeline-item">
-        <div class="timeline-dot"></div>
+        <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-content">
           <span class="timeline-date">{{ item.dateKey | translate }}</span>
           <h3>{{ item.titleKey | translate }}</h3>

@@ -4,6 +4,7 @@ import { ScrollFadeDirective } from '../../directives/scroll-fade.directive';
 import { SkillBarDirective } from '../../directives/skill-bar.directive';
 import { MetaService } from '../../services/meta.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { skillLevelKey } from '../../utils/skill-level';
 
 interface TopSkill {
   name: string;
@@ -26,6 +27,8 @@ interface HomeTimelineItem {
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private meta = inject(MetaService);
+
+  readonly skillLevelKey = skillLevelKey;
 
   topSkills: TopSkill[] = [
     { name: 'Angular', level: 90, color: '#ff9900' },
@@ -51,12 +54,15 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     { text: 'WEB DEVELOPER', highlight: [4, 13] }
   ];
 
-  displayedHtml = '';
+  /** Typed text split around the highlighted range, rendered without innerHTML. */
+  typedBefore = '';
+  typedHighlight = '';
+  typedAfter = '';
   heroLoaded = false;
   private phraseIndex = 0;
   private charIndex = 0;
   private deleting = false;
-  private timeoutId: any;
+  private timeoutId: ReturnType<typeof setTimeout> | undefined;
 
   ngOnInit(): void {
     this.meta.setPageMeta({
@@ -65,6 +71,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       titleKey: 'meta.home.title',
       descKey: 'meta.home.desc'
     });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const { text, highlight } = this.phrases[0];
+      this.setTyped(text, highlight);
+      return;
+    }
     this.tick();
   }
 
@@ -96,17 +108,14 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     }
 
-    this.displayedHtml = this.buildHtml(text.substring(0, this.charIndex), highlight);
+    this.setTyped(text.substring(0, this.charIndex), highlight);
     const speed = this.deleting ? 50 : 100;
     this.timeoutId = setTimeout(() => this.tick(), speed);
   }
 
-  private buildHtml(visible: string, highlight: [number, number]): string {
-    const [start, end] = highlight;
-    if (visible.length <= start) return visible;
-    if (visible.length >= end) {
-      return visible.substring(0, start) + `<span class="highlight">${visible.substring(start, end)}</span>` + visible.substring(end);
-    }
-    return visible.substring(0, start) + `<span class="highlight">${visible.substring(start)}</span>`;
+  private setTyped(visible: string, [start, end]: [number, number]): void {
+    this.typedBefore = visible.substring(0, start);
+    this.typedHighlight = visible.substring(start, end);
+    this.typedAfter = visible.substring(end);
   }
 }
