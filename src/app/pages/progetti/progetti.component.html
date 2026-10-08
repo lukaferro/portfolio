@@ -17,12 +17,19 @@
 
   <div class="projects-grid">
     @for (project of filteredProjects; track project.titleKey) {
-      <div class="project-card" appScrollFade>
+      <article class="project-card" [style.--accent]="accentOf(project)" appScrollFade>
+        <div class="card-chrome" aria-hidden="true">
+          <span class="chrome-dots"><span></span><span></span><span></span></span>
+          <span class="chrome-path">~/{{ repoLabel(project) }}</span>
+          @if (project.visibility !== 'public') {
+            <svg class="chrome-lock" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          }
+        </div>
         <div class="card-body">
           <div class="card-header">
             <h2 class="card-title">{{ project.titleKey | translate }}</h2>
             @if (project.visibility === 'nda') {
-              <span class="badge badge-nda">NDA</span>
+              <span class="badge badge-nda">{{ 'progetti.badge.nda' | translate }}</span>
             } @else if (project.visibility === 'private') {
               <span class="badge badge-private">{{ 'progetti.badge.private' | translate }}</span>
             }
@@ -36,12 +43,12 @@
           @if (project.links.length > 0) {
             <div class="card-links">
               @for (link of project.links; track link.labelKey) {
-                <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="card-link">{{ link.labelKey | translate }}</a>
+                <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="card-link" [attr.aria-label]="(link.labelKey | translate) + ' – ' + (project.titleKey | translate)">{{ link.labelKey | translate }}</a>
               }
             </div>
           }
         </div>
-      </div>
+      </article>
     }
   </div>
 </section>
