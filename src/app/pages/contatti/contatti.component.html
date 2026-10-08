@@ -63,7 +63,7 @@
   <!-- Toast outside the form: appearing never shifts the layout -->
   <div class="toast-region" aria-live="polite" aria-atomic="true">
     @if (feedback; as fb) {
-      <div class="toast" [class.toast-error]="fb.type === 'error'">
+      <div class="toast" [class.toast-error]="fb.type === 'error'" animate.leave="toast-leave">
         <span class="toast-icon" aria-hidden="true">{{ fb.type === 'success' ? '✓' : '!' }}</span>
         <span class="toast-text">{{ fb.key | translate }}</span>
         <button type="button" class="toast-close" (click)="dismissFeedback()" [attr.aria-label]="'contatti.toast.close' | translate">×</button>

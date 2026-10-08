@@ -262,6 +262,22 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Exit is the mirror of the entrance; Angular keeps the element until it ends */
+.toast.toast-leave {
+  animation: toast-out 0.3s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
 @keyframes toast-in {
   from {
     opacity: 0;
