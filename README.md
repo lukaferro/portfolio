@@ -19,7 +19,7 @@ Portfolio personale sviluppato con **Angular 22** (standalone components), tema 
 | Home | `/` | Hero con typewriter, bio professionale, top skills e timeline sintetica |
 | Formazione e Competenze | `/formazione` | Competenze tecniche, Tecnologie e Concetti, Certificazioni, Soft Skills e Studi |
 | Esperienze | `/esperienze` | Timeline esperienze lavorative e professionali con tech tags |
-| Progetti | `/progetti` | Griglia progetti filtrabile per tecnologia (Angular, Blazor/.NET, Full-Stack, HTML/CSS/JS) |
+| Progetti | `/progetti` | Griglia progetti filtrabile per tecnologia (Angular, Blazor/.NET, Java/Backend, HTML/CSS/JS) |
 | Contatti | `/contatti` | Info contatto + form serverless con validazione e reCAPTCHA |
 | 404 | `**` | Pagina personalizzata |
 
