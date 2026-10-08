@@ -12,6 +12,8 @@ interface ProjectLink {
 }
 
 interface Project {
+  /** Shown in the card's window bar; defaults to the GitHub "owner/repo" */
+  repo?: string;
   titleKey: string;
   descKey: string;
   techs: string[];
@@ -54,6 +56,24 @@ export class ProgettiComponent implements OnInit {
     });
   }
 
+  private readonly accents: Record<FilterId, string> = {
+    all: '#ff9900',
+    angular: '#ff9900',
+    blazor: '#ce93d8',
+    fullstack: '#4fc3f7',
+    vanilla: '#81c784'
+  };
+
+  accentOf(project: Project): string {
+    return this.accents[project.categories[0]];
+  }
+
+  repoLabel(project: Project): string {
+    if (project.repo) return project.repo;
+    const github = project.links.find(l => l.url.startsWith('https://github.com/'));
+    return github ? github.url.replace('https://github.com/', '').toLowerCase() : '';
+  }
+
   setFilter(filter: FilterId): void {
     this.activeFilter = filter;
   }
@@ -70,6 +90,7 @@ export class ProgettiComponent implements OnInit {
 
   projects: Project[] = [
     {
+      repo: 'fm-group/showcase-sites',
       titleKey: 'progetti.item1.title',
       descKey: 'progetti.item1.desc',
       techs: ['Angular', 'TypeScript', 'PHP', 'Figma', 'Responsive'],
@@ -78,6 +99,7 @@ export class ProgettiComponent implements OnInit {
       visibility: 'nda'
     },
     {
+      repo: 'fm-group/easywebparts',
       titleKey: 'progetti.item2.title',
       descKey: 'progetti.item2.desc',
       techs: ['Blazor', 'C#', '.NET', 'SQL', 'UI/UX'],

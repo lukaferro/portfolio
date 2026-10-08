@@ -58,6 +58,9 @@
 }
 
 .project-card {
+  --accent: #ff9900;
+  display: flex;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 153, 0, 0.15);
@@ -68,28 +71,69 @@
               box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.project-card::before {
-  content: '';
-  display: block;
-  height: 4px;
-  background: linear-gradient(90deg, #ff9900, transparent);
-  border-radius: 16px 16px 0 0;
+/* Editor-style window bar: a visual identity for every project, NDA ones included */
+.card-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Code', Consolas, monospace;
+  font-size: 0.75rem;
+  color: #9a9a9a;
+}
+
+.chrome-dots {
+  display: inline-flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.chrome-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.chrome-dots span:first-child {
+  background: var(--accent);
+}
+
+.chrome-path {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chrome-lock {
+  flex-shrink: 0;
+  color: #ff6b6b;
 }
 
 .project-card:hover {
-  border-color: rgba(255, 153, 0, 0.4);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(255, 153, 0, 0.1);
 }
 
 .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 1.5rem;
 }
 
 .card-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.4rem 0.6rem;
   margin-bottom: 0.5rem;
 }
 
@@ -141,13 +185,16 @@
 
 .card-links {
   display: flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: auto;
 }
 
 .card-link {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  min-height: 32px;
   font-size: 0.85rem;
   font-weight: 600;
   color: #ff9900;
