@@ -90,6 +90,7 @@ export class FormazioneComponent implements OnInit {
     });
   }
 
+  /** `name` is either a literal label or a translation key (the pipe falls back to the key). */
   categories: SkillCategory[] = [
     {
       labelKey: 'competenze.cat.frontend',
@@ -98,22 +99,24 @@ export class FormazioneComponent implements OnInit {
         { name: 'Angular', level: 90 },
         { name: 'TypeScript', level: 85 },
         { name: 'JavaScript (ES6+)', level: 85 },
-        { name: 'HTML5 / CSS3 (SASS)', level: 90 },
-        { name: 'Blazor WebAssembly', level: 80 },
-        { name: 'React', level: 70 },
-        { name: 'UI/UX Design System', level: 85 },
-        { name: 'Web Accessibility (WCAG 2.1 / a11y)', level: 90 }
+        { name: 'skill.html5', level: 90 },
+        { name: 'CSS3 / SASS', level: 90 },
+        { name: 'skill.responsive', level: 90 },
+        { name: 'skill.a11y', level: 90 },
+        { name: 'Blazor (C#)', level: 80 },
+        { name: 'Vue.js', level: 55 },
+        { name: 'skill.react', level: 50 }
       ]
     },
     {
       labelKey: 'competenze.cat.backend',
       color: '#4fc3f7',
       skills: [
-        { name: 'C# / .NET', level: 70 },
-        { name: 'Web API RESTful', level: 70 },
-        { name: 'Java', level: 65 },
-        { name: 'PHP', level: 60 },
-        { name: 'Python', level: 55 }
+        { name: 'API REST', level: 75 },
+        { name: 'skill.csharp_blazor', level: 70 },
+        { name: 'PHP', level: 65 },
+        { name: 'Java (OOP)', level: 65 },
+        { name: 'Python', level: 50 }
       ]
     },
     {
@@ -121,23 +124,21 @@ export class FormazioneComponent implements OnInit {
       color: '#81c784',
       skills: [
         { name: 'MySQL', level: 70 },
-        { name: 'SQL Server', level: 65 },
-        { name: 'MongoDB (NoSQL)', level: 55 },
-        { name: 'Redis', level: 40 }
+        { name: 'skill.sql', level: 70 },
+        { name: 'skill.nosql', level: 50 }
       ]
     },
     {
       labelKey: 'competenze.cat.tools',
       color: '#ce93d8',
       skills: [
-        { name: 'Visual Studio / VS Code', level: 75 },
-        { name: 'Git / GitHub', level: 75 },
+        { name: 'Git / GitHub', level: 80 },
+        { name: 'VS Code / Visual Studio', level: 80 },
         { name: 'Postman', level: 70 },
-        { name: 'Vercel', level: 70 },
-        { name: 'Docker', level: 50 },
         { name: 'Figma', level: 70 },
-        { name: 'Adobe Illustrator', level: 55 },
-        { name: 'npm', level: 75 }
+        { name: 'npm', level: 75 },
+        { name: 'Docker', level: 50 },
+        { name: 'Claude API', level: 70 }
       ]
     }
   ];
@@ -208,7 +209,7 @@ export class FormazioneComponent implements OnInit {
       issuerKey: 'certificazioni.item1.issuer',
       dateKey: 'certificazioni.item1.date',
       descKey: 'certificazioni.item1.desc',
-      skills: ['Full-Stack', 'Angular', 'TypeScript', 'Java', 'PHP', 'MySQL', 'Docker', 'WCAG 2.1'],
+      skills: ['Angular', 'TypeScript', 'Java', 'PHP', 'MySQL', 'Docker', 'WCAG 2.1'],
       links: [
         { labelKey: 'certificazioni.view_cert', url: '/certificazioni/its-web-developer.pdf' }
       ]

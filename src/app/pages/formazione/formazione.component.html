@@ -11,7 +11,7 @@
           @for (skill of cat.skills; track skill.name) {
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-name">{{ skill.name | translate }}</span>
                 <span class="skill-level">{{ skillLevelKey(skill.level) | translate }}</span>
               </div>
               <div class="skill-bar" appSkillBar aria-hidden="true">

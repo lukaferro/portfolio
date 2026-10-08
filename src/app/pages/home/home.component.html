@@ -4,7 +4,7 @@
             <p class="subtitle">{{ 'home.subtitle' | translate }}</p>
             <h1 class="main-title">LUCA FERRO</h1>
             <h2 class="role-title">
-                <span class="visually-hidden">Full-Stack Developer, Web Developer</span>
+                <span class="visually-hidden">Web Developer — Frontend &amp; UI</span>
                 <span aria-hidden="true">{{ typedBefore() }}<span class="highlight">{{ typedHighlight() }}</span>{{ typedAfter() }}<span class="blink">|</span></span>
             </h2>
             <p class="description">{{ 'home.description' | translate }}</p>
@@ -23,7 +23,7 @@
         @for (skill of topSkills; track skill.name) {
             <li class="home-skill-item">
                 <div class="home-skill-info">
-                    <span class="home-skill-name">{{ skill.name }}</span>
+                    <span class="home-skill-name">{{ skill.name | translate }}</span>
                     <span class="home-skill-level">{{ skillLevelKey(skill.level) | translate }}</span>
                 </div>
                 <div class="home-skill-bar" appSkillBar aria-hidden="true">
