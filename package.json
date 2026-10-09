@@ -29,5 +29,11 @@
     "@types/node": "^26.6.4",
     "@types/nodemailer": "^8.0.2",
     "typescript": "~6.0.3"
+  },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "esbuild": false,
+    "lmdb": false,
+    "msgpackr-extract": false
   }
 }

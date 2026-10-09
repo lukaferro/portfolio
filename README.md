@@ -28,7 +28,6 @@ Portfolio personale sviluppato con **Angular 22** (standalone components), tema 
 ```bash
 ng serve        # Avvia dev server su http://localhost:4200
 ng build        # Build produzione in dist/
-ng test         # Esegui test unitari
 ```
 
 ## Deploy
