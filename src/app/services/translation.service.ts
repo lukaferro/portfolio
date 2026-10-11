@@ -141,6 +141,9 @@ export class TranslationService {
       'progetti.item13.title': 'Project Work Mona S.P.A.',
       'progetti.item13.desc': 'Project work scolastico con backend Quarkus/Java e frontend Next.js/TypeScript. Applicazione aziendale con grafici e gestione dati.',
 
+      'progetti.item14.title': 'Manga & Anime',
+      'progetti.item14.desc': 'App Next.js/React per scoprire e tracciare anime e manga tramite l\'API GraphQL di AniList. Catalogo con filtri e scroll infinito, calendario delle uscite, lista personale con statistiche, login AniList o modalità ospite, tema chiaro/scuro.',
+
       'certificazioni.title': 'Certificazioni',
       'certificazioni.empty': 'Nessuna certificazione ancora.',
       'certificazioni.view_cert': 'Visualizza attestato →',
@@ -377,6 +380,9 @@ export class TranslationService {
 
       'progetti.item13.title': 'Mona S.P.A. Project Work',
       'progetti.item13.desc': 'School project work with Quarkus/Java backend and Next.js/TypeScript frontend. Business application with charts and data management.',
+
+      'progetti.item14.title': 'Manga & Anime',
+      'progetti.item14.desc': 'Next.js/React app to discover and track anime and manga via the AniList GraphQL API. Catalog with filters and infinite scroll, airing schedule, personal list with stats, AniList login or guest mode, light/dark theme.',
 
       'certificazioni.title': 'Certifications',
       'certificazioni.empty': 'No certifications yet.',

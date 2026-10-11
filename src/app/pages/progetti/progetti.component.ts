@@ -129,6 +129,17 @@ export class ProgettiComponent implements OnInit {
       ]
     },
     {
+      titleKey: 'progetti.item14.title',
+      descKey: 'progetti.item14.desc',
+      techs: ['Next.js', 'React', 'TypeScript', 'GraphQL', 'AniList API', 'Vercel'],
+      categories: ['fullstack'],
+      visibility: 'public',
+      links: [
+        { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/manga' },
+        { labelKey: 'progetti.link.demo', url: 'https://manga-sage-phi.vercel.app' }
+      ]
+    },
+    {
       titleKey: 'progetti.item8.title',
       descKey: 'progetti.item8.desc',
       techs: ['Angular', 'TypeScript', 'CSS3', 'TMDB API', 'Vercel'],
