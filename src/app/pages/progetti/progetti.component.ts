@@ -4,7 +4,7 @@ import { MetaService } from '../../services/meta.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 type Visibility = 'public' | 'private' | 'nda';
-type FilterId = 'all' | 'angular' | 'blazor' | 'fullstack' | 'vanilla';
+type FilterId = 'all' | 'angular' | 'react' | 'blazor' | 'fullstack' | 'vanilla';
 
 interface ProjectLink {
   labelKey: string;
@@ -42,6 +42,7 @@ export class ProgettiComponent implements OnInit {
   filters: FilterOption[] = [
     { id: 'all', labelKey: 'progetti.filter.all' },
     { id: 'angular', labelKey: 'progetti.filter.angular' },
+    { id: 'react', labelKey: 'progetti.filter.react' },
     { id: 'blazor', labelKey: 'progetti.filter.blazor' },
     { id: 'fullstack', labelKey: 'progetti.filter.fullstack' },
     { id: 'vanilla', labelKey: 'progetti.filter.vanilla' }
@@ -59,6 +60,7 @@ export class ProgettiComponent implements OnInit {
   private readonly accents: Record<FilterId, string> = {
     all: '#ff9900',
     angular: '#ff9900',
+    react: '#61dafb',
     blazor: '#ce93d8',
     fullstack: '#4fc3f7',
     vanilla: '#81c784'
@@ -132,7 +134,7 @@ export class ProgettiComponent implements OnInit {
       titleKey: 'progetti.item14.title',
       descKey: 'progetti.item14.desc',
       techs: ['Next.js', 'React', 'TypeScript', 'GraphQL', 'AniList API', 'Vercel'],
-      categories: ['fullstack'],
+      categories: ['react'],
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/lukaferro/manga' },
@@ -165,7 +167,7 @@ export class ProgettiComponent implements OnInit {
       titleKey: 'progetti.item13.title',
       descKey: 'progetti.item13.desc',
       techs: ['Quarkus', 'Next.js', 'Java', 'TypeScript', 'CSS'],
-      categories: ['fullstack'],
+      categories: ['fullstack', 'react'],
       visibility: 'public',
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/MarcoCorradini0/Gruppo_2_PW_3' }
