@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
-    { text: 'WEB DEVELOPER', highlight: [4, 13] },
-    { text: 'FRONTEND & UI', highlight: [0, 8] }
+    { text: 'FULL-STACK WEB DEVELOPER', highlight: [0, 10] },
+    { text: 'FRONTEND WEB DEVELOPER', highlight: [0, 8] }
   ];
 
   /** Typed text split around the highlighted range, rendered without innerHTML. */
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Home',
-      description: 'Portfolio di Luca Ferro, Web Developer Frontend & UI. Scopri i miei progetti, competenze ed esperienze nello sviluppo di interfacce web con Angular, TypeScript e Blazor/.NET.',
+      description: 'Portfolio di Luca Ferro, Frontend & Full-Stack Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo di interfacce web con Angular, TypeScript e Blazor/.NET.',
       titleKey: 'meta.home.title',
       descKey: 'meta.home.desc'
     });

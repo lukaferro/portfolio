@@ -138,7 +138,8 @@ export class FormazioneComponent implements OnInit {
         { name: 'Figma', level: 70 },
         { name: 'npm', level: 75 },
         { name: 'Docker', level: 50 },
-        { name: 'Claude API', level: 70 }
+        { name: 'Claude API', level: 70 },
+        { name: 'Model Context Protocol (MCP)', level: 60 }
       ]
     }
   ];

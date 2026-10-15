@@ -75,6 +75,7 @@
 
 .text-content {
     flex: 1;
+    min-width: 0;
 }
 
 .subtitle {
@@ -100,10 +101,6 @@
     margin: 0.5rem 0 1rem 0;
     white-space: nowrap;
     min-height: 1.2em;
-}
-
-.highlight {
-    color: #ff9900;
 }
 
 .blink {
