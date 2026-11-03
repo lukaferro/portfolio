@@ -8,7 +8,32 @@
                 <span aria-hidden="true"></span>
             </button>
             <div class="nav-top-actions">
-                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="cv-btn" [attr.aria-label]="'nav.cv_aria' | translate">{{ 'nav.cv' | translate }}</a>
+                <div class="cv-dropdown">
+                    <button type="button" class="cv-btn" (click)="toggleCvMenu($event)" [attr.aria-expanded]="cvMenuOpen" aria-haspopup="menu" [attr.aria-label]="'nav.cv_aria' | translate">
+                        <span>{{ 'nav.cv' | translate }}</span>
+                        <svg class="cv-chevron" [class.open]="cvMenuOpen" viewBox="0 0 10 6" width="9" height="5" aria-hidden="true">
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </button>
+                    @if (cvMenuOpen) {
+                        <div class="cv-menu" role="menu" (click)="$event.stopPropagation()">
+                            <a [href]="cvItUrl" target="_blank" rel="noopener noreferrer" class="cv-menu-item" (click)="closeCvMenu()" role="menuitem">
+                                <span class="cv-flag">🇮🇹</span>
+                                <span class="cv-text">{{ 'cv.it' | translate }}</span>
+                                @if (currentLang === 'it') {
+                                    <span class="cv-badge">{{ 'cv.current' | translate }}</span>
+                                }
+                            </a>
+                            <a [href]="cvEnUrl" target="_blank" rel="noopener noreferrer" class="cv-menu-item" (click)="closeCvMenu()" role="menuitem">
+                                <span class="cv-flag">🇬🇧</span>
+                                <span class="cv-text">{{ 'cv.en' | translate }}</span>
+                                @if (currentLang === 'en') {
+                                    <span class="cv-badge">{{ 'cv.current' | translate }}</span>
+                                }
+                            </a>
+                        </div>
+                    }
+                </div>
                 <button type="button" class="lang-btn" (click)="toggleLang()" [attr.aria-label]="'nav.switch_lang' | translate" [attr.lang]="currentLang === 'it' ? 'en' : 'it'">
                     {{ currentLang === 'it' ? 'EN' : 'IT' }}
                 </button>
@@ -44,7 +69,32 @@
             <a routerLink="/contatti" class="nav-link" routerLinkActive="active">{{ 'nav.contatti' | translate }}</a>
         </div>
         <div class="nav-actions">
-            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="cv-btn" [attr.aria-label]="'nav.cv_aria' | translate">{{ 'nav.cv' | translate }}</a>
+            <div class="cv-dropdown">
+                    <button type="button" class="cv-btn" (click)="toggleCvMenu($event)" [attr.aria-expanded]="cvMenuOpen" aria-haspopup="menu" [attr.aria-label]="'nav.cv_aria' | translate">
+                        <span>{{ 'nav.cv' | translate }}</span>
+                        <svg class="cv-chevron" [class.open]="cvMenuOpen" viewBox="0 0 10 6" width="9" height="5" aria-hidden="true">
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </button>
+                    @if (cvMenuOpen) {
+                        <div class="cv-menu" role="menu" (click)="$event.stopPropagation()">
+                            <a [href]="cvItUrl" target="_blank" rel="noopener noreferrer" class="cv-menu-item" (click)="closeCvMenu()" role="menuitem">
+                                <span class="cv-flag">🇮🇹</span>
+                                <span class="cv-text">{{ 'cv.it' | translate }}</span>
+                                @if (currentLang === 'it') {
+                                    <span class="cv-badge">{{ 'cv.current' | translate }}</span>
+                                }
+                            </a>
+                            <a [href]="cvEnUrl" target="_blank" rel="noopener noreferrer" class="cv-menu-item" (click)="closeCvMenu()" role="menuitem">
+                                <span class="cv-flag">🇬🇧</span>
+                                <span class="cv-text">{{ 'cv.en' | translate }}</span>
+                                @if (currentLang === 'en') {
+                                    <span class="cv-badge">{{ 'cv.current' | translate }}</span>
+                                }
+                            </a>
+                        </div>
+                    }
+                </div>
             <button type="button" class="lang-btn" (click)="toggleLang()" [attr.aria-label]="'nav.switch_lang' | translate" [attr.lang]="currentLang === 'it' ? 'en' : 'it'">
                 {{ currentLang === 'it' ? 'EN' : 'IT' }}
             </button>

@@ -7,8 +7,11 @@
                 <span class="visually-hidden">Frontend &amp; Full-Stack Web Developer</span>
                 <span aria-hidden="true">{{ typedBefore() }}<span class="highlight">{{ typedHighlight() }}</span>{{ typedAfter() }}<span class="blink">|</span></span>
             </h2>
-            <p class="description">{{ 'home.description' | translate }}</p>
-            <p class="bio">{{ 'home.bio' | translate }}</p>
+            <p class="pitch">{{ 'home.pitch' | translate }}</p>
+            <div class="hero-actions">
+                <a routerLink="/progetti" class="hero-btn hero-btn-primary">{{ 'home.cta_projects' | translate }}</a>
+                <a routerLink="/contatti" class="hero-btn hero-btn-secondary">{{ 'home.cta_contact' | translate }}</a>
+            </div>
         </div>
         <div class="image-content">
             <div class="image-glow" aria-hidden="true"></div>

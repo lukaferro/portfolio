@@ -33,8 +33,8 @@ const COLOR = '255, 153, 0';
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 0;
     }
@@ -167,8 +167,17 @@ export class ParticlesComponent implements OnDestroy {
   };
 
   private onResize = () => {
-    const oldW = this.width;
-    const oldH = this.height;
+    const newW = window.innerWidth;
+    const newH = window.innerHeight;
+
+    // Ignore mobile address bar collapse/expand (only height fluctuates by < 180px while width is unchanged)
+    if (this.isMobile && newW === this.width && Math.abs(newH - this.height) < 180) {
+      return;
+    }
+
+    const oldW = this.width || newW;
+    const oldH = this.height || newH;
+    this.configure();
     this.resize();
     // Keep the distribution even: scale home positions to the new viewport
     const sx = this.width / oldW;
@@ -180,6 +189,12 @@ export class ParticlesComponent implements OnDestroy {
   };
 
   private onResizeStatic = () => {
+    const newW = window.innerWidth;
+    const newH = window.innerHeight;
+    if (this.isMobile && newW === this.width && Math.abs(newH - this.height) < 180) {
+      return;
+    }
+    this.configure();
     this.resize();
     this.initParticles();
     this.draw();
@@ -199,7 +214,10 @@ export class ParticlesComponent implements OnDestroy {
   private resize() {
     const canvas = this.canvasRef().nativeElement;
     this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    // On mobile, size height to screen.height so the canvas buffer covers the entire display area
+    // without gaps or stretching when dynamic browser toolbars hide/show.
+    const screenH = typeof window !== 'undefined' && window.screen ? Math.max(window.innerHeight, window.screen.height || 0) : window.innerHeight;
+    this.height = this.isMobile ? screenH : window.innerHeight;
     canvas.width = this.width;
     canvas.height = this.height;
   }

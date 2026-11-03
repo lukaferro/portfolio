@@ -15,17 +15,42 @@ export class NavbarComponent {
   private readonly hamburger = viewChild<ElementRef<HTMLButtonElement>>('hamburger');
 
   menuOpen = false;
+  cvMenuOpen = false;
+
+  readonly cvItUrl = '/cv_It.pdf';
+  readonly cvEnUrl = '/cv_En.pdf';
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+    if (this.menuOpen) this.cvMenuOpen = false;
   }
 
   closeMenu(): void {
     this.menuOpen = false;
   }
 
+  toggleCvMenu(event?: MouseEvent): void {
+    event?.stopPropagation();
+    this.cvMenuOpen = !this.cvMenuOpen;
+  }
+
+  closeCvMenu(): void {
+    this.cvMenuOpen = false;
+  }
+
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    if (this.cvMenuOpen) {
+      this.closeCvMenu();
+    }
+  }
+
   @HostListener('document:keydown.escape')
   onEscape(): void {
+    if (this.cvMenuOpen) {
+      this.closeCvMenu();
+      return;
+    }
     if (!this.menuOpen) return;
     this.closeMenu();
     this.hamburger()?.nativeElement.focus();

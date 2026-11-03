@@ -61,6 +61,13 @@ export class TranslationService {
       'home.description': 'Benvenuto nel mio sito personale.',
       'home.bio': 'Frontend & Full-Stack Web Developer con Diploma ITS in Web Development (EQF 5), specializzato nello sviluppo di interfacce moderne in Angular, TypeScript e Blazor (C#) e nella gestione dello stack backend e database (C#/.NET, API REST, PHP, SQL/MySQL). Ho esperienza nello sviluppo end-to-end in autonomia di piattaforme web B2B e portali aziendali in produzione, curando l\'intero ciclo di vita dell\'applicativo: dalla progettazione UX/UI su Figma alla realizzazione di componenti responsive e accessibili (WCAG 2.1 AA), fino allo sviluppo della logica server-side e all\'integrazione dei dati.',
 
+            'home.pitch': 'Sviluppo applicazioni web moderne, reattive e accessibili con Angular, TypeScript e Blazor/.NET, curando l\'intero ciclo del progetto dalla UI all\'integrazione backend.',
+      'home.cta_projects': 'Scopri i progetti →',
+      'home.cta_contact': 'Contattami',
+      'cv.it': 'Italiano (PDF)',
+      'cv.en': 'English (PDF)',
+      'cv.current': 'Attuale',
+
       'home.tech_stack': 'Tech Stack',
       'home.cta': 'Scopri i miei progetti →',
 
@@ -301,6 +308,13 @@ export class TranslationService {
       'home.subtitle': "Hello World, I'm",
       'home.description': 'Welcome to my personal website.',
       'home.bio': 'Frontend & Full-Stack Web Developer with an ITS Diploma in Web Development (EQF 5), specialised in building modern interfaces with Angular, TypeScript and Blazor (C#) and in managing the backend and database stack (C#/.NET, REST APIs, PHP, SQL/MySQL). I have hands-on experience developing B2B web platforms and corporate portals end-to-end in autonomy, taking care of the entire application lifecycle: from UX/UI design in Figma to responsive, accessible components (WCAG 2.1 AA), down to server-side logic and data integration.',
+
+            'home.pitch': 'I build modern, responsive, and accessible web applications with Angular, TypeScript, and Blazor/.NET, covering the full stack from UI design to backend integration.',
+      'home.cta_projects': 'Explore projects →',
+      'home.cta_contact': 'Contact me',
+      'cv.it': 'Italian (PDF)',
+      'cv.en': 'English (PDF)',
+      'cv.current': 'Active',
 
       'home.tech_stack': 'Tech Stack',
       'home.cta': 'Discover my projects →',

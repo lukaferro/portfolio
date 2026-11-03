@@ -34,8 +34,8 @@
 .hero-section .subtitle,
 .hero-section .main-title,
 .hero-section .role-title,
-.hero-section .description,
-.hero-section .bio,
+.hero-section .pitch,
+.hero-section .hero-actions,
 .hero-section .image-content {
     opacity: 0;
 }
@@ -52,11 +52,11 @@
     animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
 }
 
-.hero-section.loaded .description {
+.hero-section.loaded .pitch {
     animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.55s forwards;
 }
 
-.hero-section.loaded .bio {
+.hero-section.loaded .hero-actions {
     animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.65s forwards;
 }
 
@@ -116,19 +116,57 @@
     }
 }
 
-.description {
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.6rem;
+.pitch {
+    color: #b8b8b8;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0.5rem 0 2rem 0;
+    max-width: 540px;
 }
 
-.bio {
-    color: #b8b8b8;
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.8rem;
+    border-radius: 50px;
     font-size: 0.95rem;
-    line-height: 1.65;
-    margin: 0;
-    max-width: 520px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.hero-btn-primary {
+    background: #ff9900;
+    color: #0c0c0c;
+    border: 1px solid #ff9900;
+}
+
+.hero-btn-primary:hover {
+    background: #ffaa22;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 153, 0, 0.35);
+}
+
+.hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn-secondary:hover {
+    background: rgba(255, 153, 0, 0.1);
+    border-color: #ff9900;
+    color: #ff9900;
+    transform: translateY(-3px);
 }
 
 .image-content {
@@ -391,8 +429,12 @@
         gap: 2.5rem;
     }
 
-    .bio {
-        margin: 0 auto;
+    .pitch {
+        margin: 0.5rem auto 1.8rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
     }
 
     .main-title {
@@ -459,8 +501,14 @@
         height: 210px;
     }
 
-    .description {
-        font-size: 0.95rem;
+    .pitch {
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+
+    .hero-btn {
+        padding: 0.75rem 1.4rem;
+        font-size: 0.88rem;
     }
 
     .cta-btn {

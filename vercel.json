@@ -19,6 +19,10 @@
       "destination": "/contatti/index.html"
     },
     {
+      "source": "/cv.pdf",
+      "destination": "/cv_It.pdf"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.csr.html"
     }
