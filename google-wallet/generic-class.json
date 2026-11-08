@@ -1,0 +1,16 @@
+{
+  "id": "3388000000023238791.business_card_luca_ferro",
+  "reviewStatus": "UNDER_REVIEW",
+  "multipleDevicesAndHoldersAllowedStatus": "MULTIPLE_HOLDERS",
+  "classTemplateInfo": {
+    "cardTemplateConfig": {
+      "cardBarcodeSectionDetails": {
+        "firstBarcode": {
+          "type": "QR_CODE",
+          "value": "https://portfolio-five-sand-51.vercel.app/card",
+          "alternateText": "https://portfolio-five-sand-51.vercel.app/card"
+        }
+      }
+    }
+  }
+}

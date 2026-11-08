@@ -40,8 +40,10 @@ testem.log
 # opencode agent workspace
 .opencode/
 
-# Environment variables
+# Environment variables & Google Wallet Keys
 .env.local
+google-wallet/service-account-key.json
+google-wallet/*.txt
 
 # System files
 .DS_Store

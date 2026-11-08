@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /card
+Disallow: /connect
 Allow: /
 
 Sitemap: https://portfolio-five-sand-51.vercel.app/sitemap.xml

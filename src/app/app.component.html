@@ -1,6 +1,8 @@
 <a href="#main-content" class="skip-link" (click)="skipToMain($event)">{{ 'app.skip_link' | translate }}</a>
 <app-particles aria-hidden="true"></app-particles>
-<app-navbar></app-navbar>
-<main #main id="main-content" tabindex="-1">
+@if (!isCardPage()) {
+  <app-navbar></app-navbar>
+}
+<main #main id="main-content" tabindex="-1" [class.main-card-page]="isCardPage()">
   <router-outlet></router-outlet>
 </main>

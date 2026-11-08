@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Ferro;Luca;;;
+FN:Luca Ferro
+TITLE:Web Developer — Frontend & UI
+TEL;TYPE=CELL,VOICE:+393775454100
+EMAIL;TYPE=INTERNET,HOME:luca.ferro2003@gmail.com
+URL;TYPE=Portfolio:https://portfolio-five-sand-51.vercel.app
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/luca-ferro-849a212b8/
+URL;TYPE=GitHub:https://github.com/lukaferro
+NOTE:Web Developer — Frontend & UI | Angular, TypeScript, UI/UX, REST API
+END:VCARD

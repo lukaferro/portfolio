@@ -7,5 +7,7 @@ export const routes: Routes = [
     { path: 'esperienze', loadComponent: () => import('./pages/esperienze/esperienze.component').then(c => c.EsperienzeComponent) },
     { path: 'progetti', loadComponent: () => import('./pages/progetti/progetti.component').then(c => c.ProgettiComponent) },
     { path: 'contatti', loadComponent: () => import('./pages/contatti/contatti.component').then(c => c.ContattiComponent) },
+    { path: 'card', loadComponent: () => import('./pages/card/card.component').then(c => c.CardComponent) },
+    { path: 'connect', redirectTo: 'card', pathMatch: 'full' },
     { path: '**', loadComponent: () => import('./pages/not-found/not-found.component').then(c => c.NotFoundComponent) }
 ];

@@ -1,0 +1,107 @@
+{
+  "id": "3388000000023238791.luca_ferro_card_001",
+  "classId": "3388000000023238791.business_card_luca_ferro",
+  "state": "ACTIVE",
+  "cardTitle": {
+    "defaultValue": {
+      "language": "it",
+      "value": "BIGLIETTO DA VISITA DIGITALE"
+    }
+  },
+  "header": {
+    "defaultValue": {
+      "language": "it",
+      "value": "Luca Ferro"
+    }
+  },
+  "subheader": {
+    "defaultValue": {
+      "language": "it",
+      "value": "Web Developer — Frontend & UI"
+    }
+  },
+  "hexBackgroundColor": "#0c0c0c",
+  "logo": {
+    "sourceUri": {
+      "uri": "https://portfolio-five-sand-51.vercel.app/favicon.png"
+    },
+    "contentDescription": {
+      "defaultValue": {
+        "language": "it",
+        "value": "Luca Ferro Logo"
+      }
+    }
+  },
+  "heroImage": {
+    "sourceUri": {
+      "uri": "https://portfolio-five-sand-51.vercel.app/og-card-2.jpg"
+    },
+    "contentDescription": {
+      "defaultValue": {
+        "language": "it",
+        "value": "Luca Ferro Portfolio Preview"
+      }
+    }
+  },
+  "barcode": {
+    "type": "QR_CODE",
+    "value": "https://portfolio-five-sand-51.vercel.app/card",
+    "alternateText": "Scansiona la Card"
+  },
+  "textModulesData": [
+    {
+      "id": "email_module",
+      "header": "EMAIL",
+      "body": "luca.ferro2003@gmail.com"
+    },
+    {
+      "id": "phone_module",
+      "header": "TELEFONO",
+      "body": "+39 377 545 4100"
+    },
+    {
+      "id": "location_module",
+      "header": "SEDE & STATO",
+      "body": "Varese, IT • Disponibile / Ibrido e Remoto"
+    },
+    {
+      "id": "skills_module",
+      "header": "COMPETENZE CORE",
+      "body": "Angular, TypeScript, HTML5 semantico, CSS3/SASS, API REST, UI/UX"
+    }
+  ],
+  "linksModuleData": {
+    "uris": [
+      {
+        "kind": "walletobjects#uri",
+        "uri": "https://portfolio-five-sand-51.vercel.app",
+        "description": "Sito Web Portfolio",
+        "id": "portfolio_link"
+      },
+      {
+        "kind": "walletobjects#uri",
+        "uri": "https://www.linkedin.com/in/luca-ferro-849a212b8/",
+        "description": "Profilo LinkedIn",
+        "id": "linkedin_link"
+      },
+      {
+        "kind": "walletobjects#uri",
+        "uri": "https://github.com/lukaferro",
+        "description": "Profilo GitHub",
+        "id": "github_link"
+      },
+      {
+        "kind": "walletobjects#uri",
+        "uri": "tel:+393775454100",
+        "description": "Chiama al Telefono",
+        "id": "call_link"
+      },
+      {
+        "kind": "walletobjects#uri",
+        "uri": "https://portfolio-five-sand-51.vercel.app/contatto.vcf",
+        "description": "Scarica vCard (.vcf)",
+        "id": "vcf_link"
+      }
+    ]
+  }
+}

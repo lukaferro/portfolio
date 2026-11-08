@@ -8,8 +8,10 @@ export interface PageMeta {
   description: string;
   titleKey?: string;
   descKey?: string;
-  /** Keep the page out of search results (e.g. 404) */
+  /** Keep the page out of search results (e.g. 404, card) */
   noindex?: boolean;
+  /** Custom robots directive, defaults to 'noindex, nofollow' when noindex is true */
+  robots?: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -55,7 +57,7 @@ export class MetaService {
     this.meta.updateTag({ property: 'og:locale:alternate', content: isEnglish ? 'it_IT' : 'en_US' });
     this.setCanonical(currentUrl);
     if (page.noindex) {
-      this.meta.updateTag({ name: 'robots', content: 'noindex' });
+      this.meta.updateTag({ name: 'robots', content: page.robots ?? 'noindex, nofollow' });
     } else {
       this.meta.removeTag("name='robots'");
     }
