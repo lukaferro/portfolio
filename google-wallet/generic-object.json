@@ -32,6 +32,17 @@
       }
     }
   },
+  "heroImage": {
+    "sourceUri": {
+      "uri": "https://portfolio-five-sand-51.vercel.app/wallet-hero.png"
+    },
+    "contentDescription": {
+      "defaultValue": {
+        "language": "it",
+        "value": "Luca Ferro Speed & Tech Wave Graphic"
+      }
+    }
+  },
   "barcode": {
     "type": "QR_CODE",
     "value": "https://portfolio-five-sand-51.vercel.app/card?source=wallet&key=lf-wallet-pass",
