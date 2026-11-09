@@ -23,7 +23,7 @@
   "hexBackgroundColor": "#0c0c0c",
   "logo": {
     "sourceUri": {
-      "uri": "https://portfolio-five-sand-51.vercel.app/favicon.png"
+      "uri": "https://portfolio-five-sand-51.vercel.app/wallet-logo.png"
     },
     "contentDescription": {
       "defaultValue": {
@@ -32,21 +32,10 @@
       }
     }
   },
-  "heroImage": {
-    "sourceUri": {
-      "uri": "https://portfolio-five-sand-51.vercel.app/og-card-2.jpg"
-    },
-    "contentDescription": {
-      "defaultValue": {
-        "language": "it",
-        "value": "Luca Ferro Portfolio Preview"
-      }
-    }
-  },
   "barcode": {
     "type": "QR_CODE",
-    "value": "https://portfolio-five-sand-51.vercel.app/card",
-    "alternateText": "Scansiona la Card"
+    "value": "https://portfolio-five-sand-51.vercel.app/card?source=wallet&key=lf-wallet-pass",
+    "alternateText": "Scansiona per visualizzare la Card"
   },
   "textModulesData": [
     {

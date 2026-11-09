@@ -7,8 +7,8 @@
       "cardBarcodeSectionDetails": {
         "firstBarcode": {
           "type": "QR_CODE",
-          "value": "https://portfolio-five-sand-51.vercel.app/card",
-          "alternateText": "https://portfolio-five-sand-51.vercel.app/card"
+          "value": "https://portfolio-five-sand-51.vercel.app/card?source=wallet&key=lf-wallet-pass",
+          "alternateText": "Luca Ferro Digital Pass"
         }
       }
     }

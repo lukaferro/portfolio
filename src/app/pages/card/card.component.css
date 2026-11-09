@@ -37,7 +37,7 @@
 .link-label{font-size:.64rem;color:#9ca3af;text-transform:uppercase;font-weight:600}
 .link-value{font-size:.76rem;color:#fff;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .portfolio-link-section{margin-bottom:0}
-.portfolio-btn{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.65rem .85rem;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;font-weight:600;font-size:.84rem;transition:.2s;box-sizing:border-box}
+.portfolio-btn{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.65rem .85rem;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;font-weight:600;font-size:.84rem;font-family:inherit;cursor:pointer;transition:.2s;box-sizing:border-box}
 .portfolio-btn:hover{background:rgba(255,153,0,.1);border-color:rgba(255,153,0,.35);color:#f90}
 .portfolio-btn-content{display:flex;align-items:center;gap:.5rem}
 .arrow-icon{color:#f90;transition:transform .2s}

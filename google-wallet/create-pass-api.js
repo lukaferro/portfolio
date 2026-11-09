@@ -81,10 +81,19 @@ async function main() {
     console.error('Errore controllo classe:', errData);
     return;
   } else {
-    console.log('Classe già esistente.');
+    console.log('Classe già esistente. Aggiornamento template classe...');
+    await fetch(`https://walletobjects.googleapis.com/walletobjects/v1/genericClass/${classId}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(genericClass)
+    });
+    console.log('Classe aggiornata con successo!');
   }
   
-  // 2. Check or Create Object
+  // 2. Check, Create or Update Object
   console.log('Verifica oggetto:', objectId);
   const objRes = await fetch(`https://walletobjects.googleapis.com/walletobjects/v1/genericObject/${objectId}`, {
     headers: { Authorization: `Bearer ${token}` }
@@ -111,7 +120,21 @@ async function main() {
     console.error('Errore controllo oggetto:', errData);
     return;
   } else {
-    console.log('Oggetto già esistente.');
+    console.log('Oggetto già esistente sul server Google. Aggiornamento in corso (PUT)...');
+    const updateObjRes = await fetch(`https://walletobjects.googleapis.com/walletobjects/v1/genericObject/${objectId}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(genericObject)
+    });
+    const updateData = await updateObjRes.json();
+    if (!updateObjRes.ok) {
+      console.error('Errore aggiornamento oggetto:', updateData);
+      return;
+    }
+    console.log('Oggetto aggiornato con successo sui server Google! Il pass salvato sul telefono si sincronizzerà automaticamente.');
   }
   
   // 3. Generate clean JWT with just the object reference

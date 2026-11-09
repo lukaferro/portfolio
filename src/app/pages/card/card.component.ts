@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
 import { TranslationService } from '../../services/translation.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
@@ -12,6 +12,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
   changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CardComponent implements OnInit {
+  private readonly router = inject(Router);
   private readonly meta = inject(MetaService);
   readonly ts = inject(TranslationService);
 
@@ -115,5 +116,15 @@ export class CardComponent implements OnInit {
   toggleLang(): void {
     const nextLang = this.ts.currentLang() === 'it' ? 'en' : 'it';
     this.ts.setLang(nextLang);
+  }
+
+  goToPortfolio(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('lf_site_button_clicked', 'true');
+    }
+    this.router.navigate(['/']);
   }
 }
