@@ -50,8 +50,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
-    { text: 'FULL-STACK & FRONTEND DEVELOPER', highlight: [0, 10] },
-    { text: 'ANGULAR · BLAZOR · C#/.NET', highlight: [0, 7] }
+    { text: 'FULL-STACK DEVELOPER', highlight: [0, 10] },
+    { text: 'FRONTEND DEVELOPER', highlight: [0, 8] },
+    { text: 'WEB DEVELOPER', highlight: [0, 3] }
   ];
 
   /** Typed text split around the highlighted range, rendered without innerHTML. */
