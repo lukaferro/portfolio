@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
     firstName: 'Luca',
     lastName: 'Ferro',
     fullName: 'Luca Ferro',
-    title: 'Web Developer — Frontend & UI',
+    title: 'Full-Stack & Frontend Web Developer',
     phone: '+393775454100',
     displayPhone: '+39 377 545 4100',
     email: 'luca.ferro2003@gmail.com',
@@ -32,13 +32,13 @@ export class CardComponent implements OnInit {
     linkedInUrl: 'https://www.linkedin.com/in/luca-ferro-849a212b8/',
     githubUrl: 'https://github.com/lukaferro',
     location: 'Varese, IT',
-    notes: 'Web Developer — Frontend & UI | Angular, TypeScript, UI/UX, REST API'
+    notes: 'Full-Stack & Frontend Web Developer | Angular, Blazor, C#/.NET, TypeScript, REST API, SQL, WCAG 2.1 AA'
   };
 
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Digital Business Card',
-      description: 'Biglietto da visita digitale di Luca Ferro — Web Developer Frontend & UI.',
+      description: 'Biglietto da visita digitale di Luca Ferro — Full-Stack & Frontend Web Developer.',
       titleKey: 'meta.card.title',
       descKey: 'meta.card.desc',
       noindex: true,
@@ -96,7 +96,7 @@ export class CardComponent implements OnInit {
       try {
         await navigator.share({
           title: 'Luca Ferro - Digital Business Card',
-          text: 'Biglietto da visita digitale di Luca Ferro — Web Developer Frontend & UI',
+          text: 'Biglietto da visita digitale di Luca Ferro — Full-Stack & Frontend Web Developer',
           url
         });
         return;
@@ -128,3 +128,4 @@ export class CardComponent implements OnInit {
     this.router.navigate(['/']);
   }
 }
+

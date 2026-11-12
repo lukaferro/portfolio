@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   topSkills: TopSkill[] = [
     { name: 'Angular', level: 90, color: '#ff9900' },
     { name: 'TypeScript', level: 85, color: '#ff9900' },
-    { name: 'Blazor (C#)', level: 80, color: '#ff9900' },
-    { name: 'HTML5 / CSS3', level: 90, color: '#ff9900' },
+    { name: 'Blazor (C#)', level: 85, color: '#ff9900' },
+    { name: 'C# / .NET', level: 80, color: '#4fc3f7' },
+    { name: 'API REST', level: 85, color: '#4fc3f7' },
+    { name: 'SQL / MySQL', level: 80, color: '#81c784' },
     { name: 'skill.a11y', level: 90, color: '#ff9900' },
-    { name: 'API REST', level: 75, color: '#4fc3f7' },
-    { name: 'MySQL / SQL', level: 70, color: '#81c784' },
-    { name: 'Git / GitHub', level: 80, color: '#ce93d8' }
+    { name: 'Git / Docker', level: 80, color: '#ce93d8' }
   ];
 
   homeTimeline: HomeTimelineItem[] = [
@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   private readonly phrases: { text: string; highlight: [number, number] }[] = [
-    { text: 'FRONTEND & WEB DEVELOPER', highlight: [0, 8] },
-    { text: 'FULL-STACK MINDSET', highlight: [0, 10] }
+    { text: 'FULL-STACK & FRONTEND DEVELOPER', highlight: [0, 10] },
+    { text: 'ANGULAR · BLAZOR · C#/.NET', highlight: [0, 7] }
   ];
 
   /** Typed text split around the highlighted range, rendered without innerHTML. */
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Home',
-      description: 'Portfolio di Luca Ferro, Frontend & Web Developer. Scopri i miei progetti, competenze ed esperienze nello sviluppo di interfacce web con Angular, TypeScript e Blazor/.NET.',
+      description: 'Portfolio di Luca Ferro, Full-Stack & Frontend Web Developer. Sviluppo enterprise e B2B con Angular, TypeScript, Blazor, C#/.NET, API REST, SQL e accessibilità WCAG 2.1 AA.',
       titleKey: 'meta.home.title',
       descKey: 'meta.home.desc'
     });

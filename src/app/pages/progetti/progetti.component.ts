@@ -51,7 +51,7 @@ export class ProgettiComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Progetti',
-      description: 'I miei progetti di sviluppo web: siti aziendali in Angular, piattaforme B2B in Blazor/.NET, UI Component Library accessibili in Vue.js e applicazioni web.',
+      description: 'Portfolio progetti di Luca Ferro: piattaforme enterprise B2B (Blazor/.NET, Angular), UI Component Library (Vue.js, WCAG 2.1 AA) e architetture web full-stack.',
       titleKey: 'meta.progetti.title',
       descKey: 'meta.progetti.desc'
     });
@@ -95,7 +95,7 @@ export class ProgettiComponent implements OnInit {
       repo: 'fm-group/aftersaleshub',
       titleKey: 'progetti.item1.title',
       descKey: 'progetti.item1.desc',
-      techs: ['Angular', 'TypeScript', 'Figma', 'i18n', 'PHP'],
+      techs: ['Angular', 'TypeScript', 'API REST', 'Figma', 'i18n', 'WCAG 2.1 AA', 'PHP'],
       categories: ['angular'],
       links: [],
       visibility: 'nda'
@@ -104,7 +104,7 @@ export class ProgettiComponent implements OnInit {
       repo: 'fm-group/easywebparts',
       titleKey: 'progetti.item2.title',
       descKey: 'progetti.item2.desc',
-      techs: ['Blazor', 'C#', '.NET', 'API REST', 'WCAG 2.1'],
+      techs: ['Blazor', 'C# / .NET', 'API REST', 'SQL', 'UI Components', 'WCAG 2.1 AA'],
       categories: ['blazor'],
       links: [],
       visibility: 'nda'
@@ -112,7 +112,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item3.title',
       descKey: 'progetti.item3.desc',
-      techs: ['Vue.js', 'HTML5', 'CSS3 / SASS', 'WCAG 2.1 / a11y', 'Claymorphism'],
+      techs: ['Vue.js', 'TypeScript', 'CSS3 / SASS', 'WCAG 2.1 AA', 'UI Library', 'Claymorphism'],
       categories: ['vanilla'],
       links: [
         { labelKey: 'progetti.link.github', url: 'https://github.com/Byloth/clay-vue' },
@@ -123,7 +123,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item4.title',
       descKey: 'progetti.item4.desc',
-      techs: ['Angular', 'TypeScript', 'CSS3', 'Vercel'],
+      techs: ['Angular', 'TypeScript', 'CSS3 / SASS', 'WCAG 2.1 AA', 'Signals', 'Vercel'],
       categories: ['angular'],
       visibility: 'public',
       links: [
@@ -155,7 +155,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item12.title',
       descKey: 'progetti.item12.desc',
-      techs: ['Angular', 'Quarkus', 'Java', 'SCSS'],
+      techs: ['Angular', 'Quarkus (Java)', 'API REST', 'JWT', 'SQL', 'SCSS'],
       categories: ['angular', 'fullstack'],
       visibility: 'public',
       links: [
@@ -166,7 +166,7 @@ export class ProgettiComponent implements OnInit {
     {
       titleKey: 'progetti.item13.title',
       descKey: 'progetti.item13.desc',
-      techs: ['Quarkus', 'Next.js', 'Java', 'TypeScript', 'CSS'],
+      techs: ['Quarkus (Java)', 'Next.js', 'TypeScript', 'API REST', 'SQL'],
       categories: ['fullstack', 'react'],
       visibility: 'public',
       links: [

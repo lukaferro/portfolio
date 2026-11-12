@@ -76,7 +76,7 @@ export class FormazioneComponent implements OnInit {
   ngOnInit(): void {
     this.meta.setPageMeta({
       title: 'Formazione e Competenze',
-      description: 'Competenze tecniche, certificazioni e formazione: Angular, TypeScript, Blazor, C#, .NET, Java, PHP, API REST, database relazionali e conformità a11y (WCAG 2.1).',
+      description: 'Competenze tecniche, certificazioni e formazione: Angular, TypeScript, Blazor (C#), .NET, Java, API REST, SQL, WCAG 2.1 AA, Docker e Claude API / MCP.',
       titleKey: 'meta.formazione.title',
       descKey: 'meta.formazione.desc'
     });
@@ -99,23 +99,23 @@ export class FormazioneComponent implements OnInit {
         { name: 'Angular', level: 90 },
         { name: 'TypeScript', level: 85 },
         { name: 'JavaScript (ES6+)', level: 85 },
+        { name: 'Blazor (C#)', level: 85 },
+        { name: 'Vue.js', level: 75 },
         { name: 'skill.html5', level: 90 },
         { name: 'CSS3 / SASS', level: 90 },
         { name: 'skill.responsive', level: 90 },
         { name: 'skill.a11y', level: 90 },
-        { name: 'Blazor (C#)', level: 80 },
-        { name: 'Vue.js', level: 55 },
-        { name: 'skill.react', level: 50 }
+        { name: 'skill.react', level: 60 }
       ]
     },
     {
       labelKey: 'competenze.cat.backend',
       color: '#4fc3f7',
       skills: [
-        { name: 'API REST', level: 75 },
-        { name: 'skill.csharp_blazor', level: 70 },
-        { name: 'PHP', level: 65 },
-        { name: 'Java (OOP)', level: 65 },
+        { name: 'C# / .NET', level: 80 },
+        { name: 'API REST', level: 85 },
+        { name: 'Java (OOP)', level: 75 },
+        { name: 'PHP', level: 70 },
         { name: 'Python', level: 50 }
       ]
     },
@@ -123,23 +123,23 @@ export class FormazioneComponent implements OnInit {
       labelKey: 'competenze.cat.database',
       color: '#81c784',
       skills: [
-        { name: 'MySQL', level: 70 },
-        { name: 'skill.sql', level: 70 },
-        { name: 'skill.nosql', level: 50 }
+        { name: 'skill.sql', level: 80 },
+        { name: 'MySQL', level: 80 },
+        { name: 'skill.nosql', level: 55 }
       ]
     },
     {
       labelKey: 'competenze.cat.tools',
       color: '#ce93d8',
       skills: [
-        { name: 'Git / GitHub', level: 80 },
-        { name: 'VS Code / Visual Studio', level: 80 },
-        { name: 'Postman', level: 70 },
-        { name: 'Figma', level: 70 },
-        { name: 'npm', level: 75 },
-        { name: 'Docker', level: 50 },
-        { name: 'Claude API', level: 70 },
-        { name: 'Model Context Protocol (MCP)', level: 60 }
+        { name: 'Git / GitHub', level: 85 },
+        { name: 'Docker', level: 65 },
+        { name: 'Claude API', level: 80 },
+        { name: 'Model Context Protocol (MCP)', level: 75 },
+        { name: 'Postman', level: 80 },
+        { name: 'Figma', level: 75 },
+        { name: 'VS Code / Visual Studio', level: 85 },
+        { name: 'npm', level: 80 }
       ]
     }
   ];
