@@ -8,11 +8,11 @@
     box-sizing: border-box;
 }
 
-/* ── Hero entrance animation ── */
-@keyframes fadeInUp {
+/* ── Hero entrance animation (fast, natural, immediately rendered) ── */
+@keyframes heroFadeInUp {
     from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(14px);
     }
     to {
         opacity: 1;
@@ -20,10 +20,10 @@
     }
 }
 
-@keyframes fadeInScale {
+@keyframes heroFadeInScale {
     from {
         opacity: 0;
-        transform: scale(0.92);
+        transform: scale(0.96);
     }
     to {
         opacity: 1;
@@ -35,33 +35,18 @@
 .hero-section .main-title,
 .hero-section .role-title,
 .hero-section .pitch,
-.hero-section .hero-actions,
+.hero-section .hero-actions {
+    animation: heroFadeInUp 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.hero-section .subtitle { animation-delay: 0.04s; }
+.hero-section .main-title { animation-delay: 0.08s; }
+.hero-section .role-title { animation-delay: 0.12s; }
+.hero-section .pitch { animation-delay: 0.16s; }
+.hero-section .hero-actions { animation-delay: 0.2s; }
+
 .hero-section .image-content {
-    opacity: 0;
-}
-
-.hero-section.loaded .subtitle {
-    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
-}
-
-.hero-section.loaded .main-title {
-    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s forwards;
-}
-
-.hero-section.loaded .role-title {
-    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
-}
-
-.hero-section.loaded .pitch {
-    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.55s forwards;
-}
-
-.hero-section.loaded .hero-actions {
-    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.65s forwards;
-}
-
-.hero-section.loaded .image-content {
-    animation: fadeInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+    animation: heroFadeInScale 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
 }
 
 .hero-content {

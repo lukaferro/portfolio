@@ -1,3 +1,14 @@
+@keyframes navEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .main-header {
     display: flex;
     justify-content: center;
@@ -8,8 +19,8 @@
     top: 0;
     left: 0;
     z-index: 10;
-    /* The header spans the full width: let clicks pass through its empty sides. */
     pointer-events: none;
+    animation: navEntrance 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .main-header nav {
