@@ -8,8 +8,14 @@ export class ScrollFadeDirective implements OnDestroy {
   private observer: IntersectionObserver | null = null;
 
   constructor() {
-    // Browser only: IntersectionObserver does not exist while pre-rendering
     afterNextRender(() => {
+      // If already in viewport on load, reveal immediately without scrolling delay
+      const rect = this.el.nativeElement.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        this.el.nativeElement.classList.add('visible');
+        return;
+      }
+
       this.observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {

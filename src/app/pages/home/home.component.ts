@@ -61,7 +61,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly typedBefore = signal('');
   readonly typedHighlight = signal('');
   readonly typedAfter = signal('');
-  readonly heroLoaded = signal(false);
   private phraseIndex = 0;
   private charIndex = 0;
   private deleting = false;
@@ -83,7 +82,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.setTyped(text, highlight);
 
     afterNextRender(() => {
-      setTimeout(() => this.heroLoaded.set(true));
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       this.charIndex = 0;
       this.setTyped('', highlight);

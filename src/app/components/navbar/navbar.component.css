@@ -1,14 +1,3 @@
-@keyframes navEntrance {
-    from {
-        opacity: 0;
-        transform: translateY(-16px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .main-header {
     display: flex;
     justify-content: center;
@@ -20,7 +9,6 @@
     left: 0;
     z-index: 10;
     pointer-events: none;
-    animation: navEntrance 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .main-header nav {

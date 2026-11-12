@@ -8,45 +8,14 @@
     box-sizing: border-box;
 }
 
-/* ── Hero entrance animation (fast, natural, immediately rendered) ── */
-@keyframes heroFadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(14px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroFadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.96);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
+/* ── Hero section entrance ── */
 .hero-section .subtitle,
 .hero-section .main-title,
 .hero-section .role-title,
 .hero-section .pitch,
-.hero-section .hero-actions {
-    animation: heroFadeInUp 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-.hero-section .subtitle { animation-delay: 0.04s; }
-.hero-section .main-title { animation-delay: 0.08s; }
-.hero-section .role-title { animation-delay: 0.12s; }
-.hero-section .pitch { animation-delay: 0.16s; }
-.hero-section .hero-actions { animation-delay: 0.2s; }
-
+.hero-section .hero-actions,
 .hero-section .image-content {
-    animation: heroFadeInScale 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+    opacity: 1;
 }
 
 .hero-content {
