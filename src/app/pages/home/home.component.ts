@@ -83,9 +83,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     afterNextRender(() => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      this.charIndex = 0;
-      this.setTyped('', highlight);
-      this.tick();
+      this.charIndex = text.length;
+      this.deleting = true;
+      this.timeoutId = setTimeout(() => this.tick(), 2000);
     });
   }
 
